@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> CLEANZO/TMG Shri Bahavan Groups</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-color: #5EB09F;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom {
+            background-color: #5EB09F;
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 1rem 2rem;
+            background-color: #5EB09F;
+            color: white;
+            animation: fadeSlide 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardFade 0.7s forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes cardFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .drawer {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .drawer.open {
+            right: 0;
+            animation: drawerSlide 0.5s forwards;
+        }
+
+        @keyframes drawerSlide {
+            from {
+                right: -400px;
+            }
+
+            to {
+                right: 0;
+            }
+        }
+
+        #loginModal,
+        #profileModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            text-align: center;
+            width: 300px;
+        }
+
+        #loginModal input {
+            margin-bottom: 10px;
+        }
+
+        #checkoutPage {
+            display: none;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.7s ease;
+            background-color: #fff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 500px;
+        }
+
+        #checkoutPage.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .qty-controls button {
+            width: 28px;
+            height: 28px;
+            padding: 0;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+
+        .processing {
+            display: none;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0.5rem 1rem !important;
+            }
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .header nav {
+                display: none !important;
+            }
+        }
+
+        /* Modern Success Notification */
+        .success-notification{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:3rem 4rem;border-radius:24px;box-shadow:0 20px 60px rgba(102,126,234,0.4);z-index:10000;text-align:center;max-width:500px;width:90%;animation:successPopIn 0.5s cubic-bezier(0.68,-0.55,0.265,1.55) forwards}
+        .success-notification.show{transform:translate(-50%,-50%) scale(1)}
+        .success-icon{width:80px;height:80px;background:white;border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;animation:successIconPulse 0.6s ease-out 0.3s}
+        .success-icon svg{width:50px;height:50px;stroke:#667eea;stroke-width:3;stroke-dasharray:100;stroke-dashoffset:100;animation:checkmarkDraw 0.5s ease-out 0.5s forwards}
+        .success-notification h3{font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;animation:fadeInUp 0.4s ease-out 0.6s both}
+        .success-notification p{font-size:1rem;opacity:0.95;margin-bottom:0;animation:fadeInUp 0.4s ease-out 0.7s both}
+        .success-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);z-index:9999;opacity:0;animation:fadeIn 0.3s ease-out forwards}
+        .confetti{position:fixed;width:10px;height:10px;background:#667eea;z-index:9998;animation:confettiFall 3s ease-out forwards}
+        @keyframes successPopIn{0%{transform:translate(-50%,-50%) scale(0) rotate(-180deg);opacity:0}100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}}
+        @keyframes successIconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+        @keyframes checkmarkDraw{to{stroke-dashoffset:0}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeIn{to{opacity:1}}
+        @keyframes confettiFall{0%{transform:translateY(-100vh) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-fluid d-flex justify-content-between align-items-center"
+            style="background-color: #5EB09F; padding: 0.5rem 1rem;">
+            <a class="navbar-brand fw-bold text-white" href="#"> CLEANZO</a>
+            <div class="d-flex align-items-center ms-auto">
+                <button id="openProfileBtn" class="btn btn-light btn-sm me-2"><i class="fa fa-user"></i>
+                    Profile</button>
+                <button id="openCartBtn" class="btn btn-light btn-sm position-relative">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span id="cartCount"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Bulk Form of oil</h1>
+        <p>We are new for market with Quality products</p>
+    </section>
+
+    <!-- Products Grid -->
+    <section id="agriSection" class="container my-5">
+        <h2 class="text-success mb-4">Bulk oil Products</h2>
+        <div id="agriGrid" class="row g-4"></div>
+    </section>
+
+    <!-- Checkout Page -->
+    <section id="checkoutPage" class="container">
+        <div class="processing" id="processing">
+            <i class="fa fa-spinner fa-spin fa-2x"></i> Processing your order...
+        </div>
+        <h2 class="text-success mb-3">Checkout</h2>
+        <p>Select Payment Option:</p>
+        <button id="onlinePayBtn" class="btn btn-custom mb-2"><i class="fa fa-credit-card"></i> Online
+            Payment</button><br>
+        <button id="codBtn" class="btn btn-custom"><i class="fa fa-money-bill-wave"></i> Cash On Delivery</button>
+
+        <div id="qrSection" class="text-center mt-3" style="display:none;">
+            <h5>Scan to Pay</h5>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=8110998030@upi&pn=TMGShriBahavanCleaners&tn=OrderPayment&am=&cu=INR"
+                alt="UPI QR Code" class="img-fluid" style="max-width:200px;">
+            <p class="mt-2">Send screenshot of payment along with your order to WhatsApp: <strong>8110998030</strong>
+            </p>
+            <button id="sendOrderBtn" class="btn btn-success mt-2"><i class="fa fa-paper-plane"></i> Send Order via
+                WhatsApp</button>
+        </div>
+    </section>
+
+    <!-- Cart Drawer -->
+    <aside id="cartDrawer" class="drawer">
+        <div class="p-3 border-bottom d-flex justify-content-between align-items-center">
+            <strong>Your Cart</strong>
+            <button id="closeCartBtn" class="btn btn-sm btn-danger"><i class="fa fa-times"></i> Close</button>
+        </div>
+        <div id="cartBody" class="p-3 flex-grow-1 overflow-auto"></div>
+        <div class="p-3 border-top">
+            <div class="d-flex justify-content-between"><span>Total</span><strong id="total">₹0</strong></div>
+            <div class="d-flex justify-content-between mt-3">
+                <button id="clearCartBtn" class="btn btn-secondary btn-sm"><i class="fa fa-trash"></i> Clear</button>
+                <button id="submitOrderBtn" class="btn btn-success btn-sm"><i class="fa fa-paper-plane"></i> Submit
+                    Order</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Login Modal -->
+    <div id="loginModal">
+        <h4>Welcome!</h4>
+        <p>Enter your details to log in and continue ordering.</p>
+        <input type="text" id="username" class="form-control" placeholder="Your Name">
+        <input type="text" id="address" class="form-control" placeholder="Your Address">
+        <input type="text" id="phone" class="form-control" placeholder="Phone Number">
+        <button id="loginBtn" class="btn btn-custom mt-2">Log In</button>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal">
+        <h4>Your Profile</h4>
+        <p><strong>Name:</strong> <span id="profileName"></span></p>
+        <p><strong>Address:</strong> <span id="profileAddress"></span></p>
+        <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+        <button id="closeProfileBtn" class="btn btn-custom mt-2">Close</button>
+        <button id="logoutBtn" class="btn btn-danger mt-2">Logout</button>
+    </div>
+
+    <footer class="text-center py-3 bg-success text-white">
+        © <span id="year"></span> CLEANZO/TMG Shri Bahavan Groups
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="order-manager.js"></script>
+    <script src="product-manager.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        let user = JSON.parse(localStorage.getItem('user')) || null;
+        let isLoggedIn = !!user;
+
+        // Load products dynamically
+        let products = initializeCategory('bulk');
+
+        const agriGrid = document.getElementById('agriGrid');
+        const cartCount = document.getElementById('cartCount');
+        const drawer = document.getElementById('cartDrawer');
+
+
+
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const name = document.getElementById('username').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            if (!name || !address || !phone) { alert("Please fill all fields"); return; }
+            user = { name, address, phone };
+            localStorage.setItem('user', JSON.stringify(user));
+            isLoggedIn = true;
+            document.getElementById('loginModal').style.display = 'none';
+            alert("Login successful!");
+        });
+
+        function requireLogin(callback) {
+            if (!isLoggedIn) {
+                document.getElementById('loginModal').style.display = 'block';
+                return false;
+            } else {
+                callback();
+            }
+        }
+
+        function renderProducts() {
+            agriGrid.innerHTML = '';
+            products.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = 'col-6 col-md-4';
+                card.innerHTML = `
+                <div class="card shadow-sm p-3 h-100">
+                    <img src="${p.img}" class="product-img" alt="${p.name}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">${p.name}</h5>
+                        <p class="card-text fw-bold">₹${p.price}</p>
+                        <div class="d-flex justify-content-around mt-3">
+                            <button class="btn btn-success btn-sm" onclick="addToCart(${i})">
+                                <i class="fa fa-cart-plus"></i> Add
+                            </button>
+                            <button class="btn btn-warning btn-sm" onclick="buyNow(${i})">
+                                <i class="fa fa-bolt"></i> Buy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+                agriGrid.appendChild(card);
+            });
+        }
+
+        function addToCart(index) {
+            requireLogin(() => {
+                products[index].qty += 1;
+                updateCart();
+            });
+        }
+
+        function updateCart() {
+            let totalItems = products.reduce((acc, p) => acc + p.qty, 0);
+            cartCount.textContent = totalItems;
+
+            const cartBody = document.getElementById('cartBody');
+            cartBody.innerHTML = '';
+
+            let total = 0;
+
+            products.forEach((p, i) => {
+                if (p.qty > 0) {
+                    const div = document.createElement('div');
+                    div.className = 'd-flex justify-content-between align-items-center mb-2';
+                    div.innerHTML = `
+                    <div>
+                        <strong>${p.name}</strong><br>
+                        ₹${p.price} x ${p.qty} = ₹${p.price * p.qty}
+                    </div>
+                    <div class="qty-controls">
+                        <button class="btn btn-sm btn-danger" onclick="changeQty(${i}, -1)">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button class="btn btn-sm btn-success" onclick="changeQty(${i}, 1)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                `;
+                    cartBody.appendChild(div);
+                    total += p.price * p.qty;
+                }
+            });
+
+            document.getElementById('total').innerHTML = `₹${total}`;
+        }
+
+        function changeQty(index, delta) {
+            products[index].qty += delta;
+            if (products[index].qty < 0) products[index].qty = 0;
+            updateCart();
+        }
+
+        document.getElementById('openCartBtn').addEventListener('click', () => drawer.classList.add('open'));
+        document.getElementById('closeCartBtn').addEventListener('click', () => drawer.classList.remove('open'));
+        document.getElementById('clearCartBtn').addEventListener('click', () => {
+            products.forEach(p => p.qty = 0);
+            updateCart();
+        });
+
+        // BUY NOW
+        function buyNow(index) {
+            requireLogin(() => {
+                products.forEach(p => p.qty = 0);
+                products[index].qty = 1;
+                updateCart();
+
+                const checkoutPage = document.getElementById('checkoutPage');
+                checkoutPage.classList.add('show');
+                window.scrollTo({ top: checkoutPage.offsetTop, behavior: 'smooth' });
+
+                const p = products[index];
+
+                const message =
+                    `Hello! I want to place an order (Cash On Delivery) from CLEANZO/TMG Shri Bahavan Groups.%0A%0A` +
+                    `${p.name} x ${p.qty} = ₹${p.price * p.qty}%0A%0A` +
+                    `Total: ₹${p.price * p.qty}%0A%0A` +
+                    `Name: ${user.name}%0AAddress: ${user.address}%0APhone: ${user.phone}`;
+
+                const whatsappURL = `https://wa.me/918110998030?text=${message}`;
+            });
+        }
+
+        // Submit Order
+        document.getElementById('submitOrderBtn').addEventListener('click', () => {
+            requireLogin(() => {
+                drawer.classList.remove('open');
+                const checkoutPage = document.getElementById('checkoutPage');
+                checkoutPage.classList.add('show');
+                window.scrollTo({ top: checkoutPage.offsetTop, behavior: 'smooth' });
+            });
+        });
+
+        // Profile Modal
+        const profileModal = document.getElementById('profileModal');
+
+        document.getElementById('openProfileBtn').addEventListener('click', () => {
+            if (!isLoggedIn) {
+                document.getElementById('loginModal').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('profileName').textContent = user.name;
+            document.getElementById('profileAddress').textContent = user.address;
+            document.getElementById('profilePhone').textContent = user.phone;
+
+            profileModal.style.display = 'block';
+        });
+
+        document.getElementById('closeProfileBtn').addEventListener('click', () => {
+            profileModal.style.display = 'none';
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('user');
+            user = null;
+            isLoggedIn = false;
+            profileModal.style.display = 'none';
+            alert("Logged out successfully!");
+            document.getElementById('loginModal').style.display = 'block';
+        });
+
+        // Payment Options
+        document.getElementById('onlinePayBtn').addEventListener('click', () => {
+            document.getElementById('qrSection').style.display = 'block';
+        });
+
+        document.getElementById('codBtn').addEventListener('click', () => {
+            requireLogin(() => {
+                const orderedItems = products.filter(p => p.qty > 0);
+
+                if (orderedItems.length === 0) {
+                    alert("Your cart is empty!");
+                    return;
+                }
+
+                let total = 0;
+                const items = [];
+                
+                orderedItems.forEach(p => {
+                    items.push({
+                        name: p.name,
+                        quantity: p.qty,
+                        price: p.price
+                    });
+                    total += p.price * p.qty;
+                });
+
+                const orderData = {
+                    customerName: user.name,
+                    email: user.phone + '@bulk-order',
+                    phone: user.phone,
+                    address: user.address,
+                    items: items,
+                    totalAmount: total,
+                    paymentMethod: 'Cash On Delivery',
+                    notes: 'Order placed from Bulk Service Page'
+                };
+
+                const newOrder = orderManager.addOrder(orderData);
+                if (newOrder) {
+                    showSuccessNotification("Order Placed Successfully!", "Admin will contact you soon to confirm your order.");
+                    products.forEach(p => p.qty = 0);
+                    updateCart();
+                    drawer.classList.remove('open');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Error placing order. Please try again.');
+                }
+            });
+        });
+
+        function showSuccessNotification(t,m){const o=document.createElement('div');o.className='success-overlay';document.body.appendChild(o);const n=document.createElement('div');n.className='success-notification';n.innerHTML=`<div class="success-icon"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none"/><path fill="none" d="M14 27l7.5 7.5L38 18"/></svg></div><h3>${t}</h3><p>${m}</p>`;document.body.appendChild(n);const c=['#667eea','#764ba2','#f093fb','#4facfe','#43e97b'];for(let i=0;i<50;i++){setTimeout(()=>{const cf=document.createElement('div');cf.className='confetti';cf.style.left=Math.random()*100+'%';cf.style.background=c[Math.floor(Math.random()*c.length)];cf.style.animationDelay=Math.random()*0.5+'s';cf.style.animationDuration=(Math.random()*2+2)+'s';document.body.appendChild(cf);setTimeout(()=>cf.remove(),3500)},i*30)}setTimeout(()=>n.classList.add('show'),10);setTimeout(()=>{n.style.animation='successPopIn 0.3s ease-out reverse';o.style.animation='fadeIn 0.3s ease-out reverse';setTimeout(()=>{n.remove();o.remove()},300)},2500)}
+        renderProducts();
+        updateCart();
+    </script>
+
+</body>
+
+</html>

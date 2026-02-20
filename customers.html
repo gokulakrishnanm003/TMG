@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMG - Shri Bhavan Cleaners</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    .customers-hero {
+      background: var(--gradient-dark);
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+
+    .customers-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: var(--gradient-primary);
+      filter: blur(120px);
+      opacity: 0.15;
+      border-radius: 50%;
+    }
+
+    .location-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s ease;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .location-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+
+    .flow-container {
+      background: var(--white);
+      border-radius: 30px;
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .flow-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 8px solid white;
+    }
+
+    #mainContent {
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+
+    </style>
+</head>
+
+<body>
+
+  <div id="mainContent">
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg glass-nav sticky-top">
+      <div class="container-fluid px-4 px-lg-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/Tmglogo.jpg" alt="TMG Logo" class="rounded-pill border shadow-sm" style="height: 50px;">
+          <div class="ms-3 d-none d-sm-block">
+            <span class="fs-4 fw-bold text-dark d-block lh-1" style="font-family: 'Poppins', sans-serif;">CLEANZOD</span>
+            <small class="text-muted fw-semi-bold ls-1">SRI BHAVAN GROUPS</small>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
+                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
+                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
+                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
+                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
+            <li class="nav-item"><a class="nav-link active" href="customers.html">Clients</a></li>
+            <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item rounded-3" href="aboutus.html">Our Story</a></li>
+                <li><a class="dropdown-item rounded-3" href="contactus.html">Support</a></li>
+                <li><a class="dropdown-item rounded-3" href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm rounded-pill">
+              <i class="fa-solid fa-phone me-1"></i> <span>8110998030</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section class="customers-hero">
+      <div class="container bg-transparent shadow-none border-0">
+        <span class="glass-badge mb-4">HAPPY CLIENTS</span>
+        <h1 class="display-3 fw-900 mb-4" style="line-height: 1.1;">Our Trusted <br><span class="text-primary-light">Network</span></h1>
+        <p class="lead opacity-75 mb-0">Serving thousands of satisfied customers across Tamil Nadu and beyond.</p>
+      </div>
+    </section>
+
+    <!-- ================= LOCATIONS SECTION ================= -->
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <h2 class="section-title text-start mb-4">Regional <span>Presence</span></h2>
+            <p class="lead text-muted mb-4"><strong>CLEANZOD</strong> proudly serves customers across <strong>Pudukkottai District</strong> and surrounding regions with unmatched dedication.</p>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="location-card">
+                  <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-geo-alt-fill me-2"></i>Pudukkottai</h5>
+                  <p class="small text-muted mb-0">Aranthangi, Kattumavadi, Manalmelkudi, Keeramangalam, Kottaipattinam, Arasarkulam, and more.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="location-card">
+                  <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-geo-alt-fill me-2"></i>Thanjavur</h5>
+                  <p class="small text-muted mb-0">Pattukkottai, Peravurani, and Merppanikadu regional hubs.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="location-card">
+                  <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-geo-alt-fill me-2"></i>Sivagangai</h5>
+                  <p class="small text-muted mb-0">Direct distribution in Karaikkudi and surrounding industrial areas.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="location-card">
+                  <h5 class="fw-bold mb-3 text-primary"><i class="bi bi-globe me-2"></i>Pan India</h5>
+                  <p class="small text-muted mb-0">Now expanding our professional network to every state in India.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="position-relative">
+              <img src="logo/oil main.jpg" alt="Cleanzod Logistics" class="img-fluid rounded-4 shadow-lg">
+              <div class="position-absolute -bottom-4 -left-4 bg-white p-4 rounded-4 shadow-lg d-none d-md-block" style="max-width: 250px;">
+                <h6 class="fw-bold mb-1">Express Delivery</h6>
+                <p class="small text-muted mb-0">Door-to-door service across all active districts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPANSION SECTION ================= -->
+    <section class="py-5 bg-light overflow-hidden">
+      <div class="container py-5">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 order-lg-2">
+            <h2 class="section-title text-start mb-4">Scaling <span>New Heights</span></h2>
+            <p class="lead text-muted mb-4">We are excited to bring our trusted products to homes, businesses, and industries in every state across India.</p>
+            <ul class="list-unstyled d-grid gap-3">
+              <li class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-circle p-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <span class="fw-bold">Handmade Soaps & Pure Oils</span>
+              </li>
+              <li class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-circle p-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <span class="fw-bold">Professional Phenyl & Sanitizers</span>
+              </li>
+              <li class="d-flex align-items-center gap-3">
+                <div class="bg-primary text-white rounded-circle p-2" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <span class="fw-bold">Industrial Chlorine Solutions</span>
+              </li>
+            </ul>
+            <a href="aboutus.html" class="gradient-btn mt-5">LEARN MORE ABOUT US</a>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="position-relative text-center">
+              <img src="logo/oilbot.webp" alt="Cleanzod Products" class="img-fluid rounded-4 shadow-2xl" style="max-height: 500px;">
+              <div class="position-absolute top-0 end-0 bg-primary-light text-dark fw-bold px-4 py-2 rounded-pill mt-4 me-4 shadow-lg">
+                READY TO SHIP
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FLOW SECTION ================= -->
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Our Growing <span>Network</span></h2>
+          <p class="text-muted lead">Tracking our footprint from local to national.</p>
+        </div>
+        <div class="flow-container">
+          <img src="logo/locationflow.jpg" alt="Distribution Flow" class="flow-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BRAND SUMMARY ================= -->
+    <section class="py-5 bg-dark text-white text-center position-relative overflow-hidden">
+      <div class="container bg-transparent shadow-none border-0 py-5 position-relative z-1">
+        <h2 class="mb-4" style="color: var(--primary-light)">TMG / Sri Bahavan Groups</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="lead text-white-50 mb-0">
+              Behind every success of <strong>TMG – Sri Bhavan Cleaners</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="tmg-footer">
+      <div class="container bg-transparent shadow-none border-0 p-0">
+        <div class="row g-5 text-start">
+          <!-- Brand Column -->
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <a href="index.html" class="text-decoration-none">
+              <h3 class="footer-brand-text">CLEANZOD</h3>
+            </a>
+            <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
+              Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Quick Links</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-2">
+              <li><a href="aboutus.html" class="footer-link"><i class="fa fa-chevron-right"></i>Our Story</a></li>
+              <li><a href="bulkpro.html" class="footer-link"><i class="fa fa-chevron-right"></i>Bulk Buy</a></li>
+              <li><a href="service.html" class="footer-link"><i class="fa fa-chevron-right"></i>Services</a></li>
+              <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Contact Us</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-3">
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Email</span>
+                  gogularasai82@gmail.com
+                </div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-phone mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Phone</span>
+                  +91 8110998030
+                </div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-map-marker-alt mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Location</span>
+                  Arasarkulam (North), TN
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter Column -->
+          <div class="col-lg-3 col-md-6">
+            <h6 class="footer-heading">Newsletter</h6>
+            <p class="text-white-50 mb-4">Join 1,000+ cleaning specialists for exclusive updates.</p>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Email address">
+              <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(30px)";
+      section.style.transition = "all 0.8s ease-out";
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+
+</html>

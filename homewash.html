@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Wash - Cleanzod Premium</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        :root {
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .service-hero {
+              background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), 
+                        url('img/homecleanzomain.jpg') fixed center/cover;
+            height: 35vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .service-hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .premium-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        .premium-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .gradient-btn {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .gradient-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            color: white;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drawer.active {
+            right: 0;
+        }
+
+        #productDrawer {
+            position: fixed;
+            top: 0;
+            right: -550px;
+            width: 550px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 3100;
+            box-shadow: -10px 0 50px rgba(0,0,0,0.2);
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 2.5rem;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+            border-radius: 16px;
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .processing {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5000;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        #checkoutPage {
+            display: none;
+            padding: 4rem 0;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .badge-premium {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-success);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(56, 239, 125, 0.4);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.3rem;
+        }
+
+        .drawer-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2999;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #4a5568 !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #667eea !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        .hover-white:hover {
+            color: white !important;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                display: none !important;
+            }
+            .navbar-brand img {
+                height: 35px !important;
+            }
+            .glass-nav {
+                padding: 0.5rem 0 !important;
+            }
+        }
+
+        /* Modern Success Notification */
+        .success-notification{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:3rem 4rem;border-radius:24px;box-shadow:0 20px 60px rgba(102,126,234,0.4);z-index:10000;text-align:center;max-width:500px;width:90%;animation:successPopIn 0.5s cubic-bezier(0.68,-0.55,0.265,1.55) forwards}
+        .success-notification.show{transform:translate(-50%,-50%) scale(1)}
+        .success-icon{width:80px;height:80px;background:white;border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;animation:successIconPulse 0.6s ease-out 0.3s}
+        .success-icon svg{width:50px;height:50px;stroke:#667eea;stroke-width:3;stroke-dasharray:100;stroke-dashoffset:100;animation:checkmarkDraw 0.5s ease-out 0.5s forwards}
+        .success-notification h3{font-size:1.8rem;font-weight:700;margin-bottom:0.5rem;animation:fadeInUp 0.4s ease-out 0.6s both}
+        .success-notification p{font-size:1rem;opacity:0.95;margin-bottom:0;animation:fadeInUp 0.4s ease-out 0.7s both}
+        .success-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);z-index:9999;opacity:0;animation:fadeIn 0.3s ease-out forwards}
+        .confetti{position:fixed;width:10px;height:10px;background:#667eea;z-index:9998;animation:confettiFall 3s ease-out forwards}
+        @keyframes successPopIn{0%{transform:translate(-50%,-50%) scale(0) rotate(-180deg);opacity:0}100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}}
+        @keyframes successIconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+        @keyframes checkmarkDraw{to{stroke-dashoffset:0}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeIn{to{opacity:1}}
+        @keyframes confettiFall{0%{transform:translateY(-100vh) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg glass-nav sticky-top">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/Tmglogo.jpg" alt="TMG Logo" class="rounded-pill border shadow-sm" style="height: 50px;">
+                <div class="ms-3 d-none d-sm-block">
+                    <span class="fs-4 fw-bold text-dark d-block lh-1" style="font-family: 'Poppins', sans-serif;">CLEANZOD</span>
+                    <small class="text-muted fw-semi-bold ls-1">SRI BHAVAN GROUPS</small>
+                </div>
+            </a>
+
+            <div class="d-flex align-items-center gap-2 ms-auto">
+                    <button id="openProfileBtnNav" class="btn btn-light rounded-pill px-3 py-2 border shadow-sm">
+                        <i class="fa fa-user-circle"></i> <span class="d-none d-md-inline">Account</span>
+                    </button>
+                    <button id="openCartBtn" class="btn btn-dark rounded-pill px-3 py-2 shadow-sm position-relative">
+                        <i class="fa fa-shopping-cart"></i> <span class="d-none d-md-inline">Cart</span>
+                        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                    </button>
+                    <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm d-none d-lg-inline-block">
+                        <i class="fa-solid fa-phone me-1"></i> <span>Call Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 class="display-2 fw-bold mb-3">Home Hygiene Solutions</h1>
+            <p class="fs-4 opacity-90 mb-4">Clean floors, fresh aromas, and perfect sanitation for your sanctuary.</p>
+            <a href="#productDisplaySection" class="gradient-btn px-5 py-3 fs-5 shadow-lg">
+                <i class="fa fa-arrow-down me-2"></i> Explore Products
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section id="productDisplaySection" class="container py-5">
+        <div class="text-center mb-5 pt-4">
+            <h2 class="section-title display-5 mb-3">Complete Home Care Range</h2>
+            <p class="text-muted lead">From floors to toilets - comprehensive hygiene solutions</p>
+        </div>
+        <div class="row g-4" id="agriGrid"></div>
+    </section>
+
+    <!-- Checkout Page -->
+    <section id="checkoutPage" class="container">
+        <div class="processing" id="processing">
+            <div class="spinner-border text-primary mb-3" role="status"></div>
+            <p class="mb-0">Processing your order...</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="premium-card p-5">
+                    <h2 class="fw-bold mb-4">Secure Checkout</h2>
+                    <p class="text-muted mb-4">Choose your preferred payment method below.</p>
+                    <button id="onlinePayBtn" class="gradient-btn w-100 mb-3 py-3">
+                        <i class="fa fa-credit-card"></i> ONLINE PAYMENT
+                    </button>
+                    <button id="codBtn" class="btn btn-outline-dark w-100 py-3 rounded-pill fw-bold">
+                        <i class="fa fa-money-bill-wave"></i> CASH ON DELIVERY
+                    </button>
+
+                    <div id="qrSection" class="text-center mt-5 p-4 bg-light rounded-4" style="display:none;">
+                        <h5 class="fw-bold mb-3">Scan UPI QR Code</h5>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=gokulakrishnan143143143@okhdfcbank&pn=TMGShriBahavanCleaners&tn=OrderPayment&am=&cu=INR" alt="UPI QR" class="img-fluid rounded-3 mb-3" style="max-width:200px;">
+                        <p class="small text-muted mb-4">After payment, send a screenshot to <strong>8110998030</strong></p>
+                        <button id="sendOrderBtn" class="btn btn-success rounded-pill px-5 py-2">
+                            <i class="fa fa-whatsapp"></i> SUBMIT VIA WHATSAPP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Drawer -->
+    <aside id="cartDrawer" class="drawer">
+        <div class="p-4 border-bottom d-flex justify-content-between align-items-center" style="background: var(--gradient-primary);">
+            <h5 class="fw-bold m-0 text-white" style="font-family: 'Poppins', sans-serif;">
+                <i class="fa fa-shopping-cart me-2"></i>Your Cart
+            </h5>
+            <button id="closeCartBtn" class="btn-close btn-close-white"></button>
+        </div>
+        <div id="cartBody" class="p-4 flex-grow-1 overflow-auto" style="background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);">
+            <!-- Cart items will be dynamically inserted here -->
+            <div id="emptyCartMessage" class="text-center py-5" style="display: none;">
+                <i class="fa fa-shopping-cart text-muted" style="font-size: 4rem; opacity: 0.3;"></i>
+                <p class="text-muted mt-3 mb-0">Your cart is empty</p>
+                <small class="text-muted">Add some products to get started!</small>
+            </div>
+        </div>
+        <div class="p-4 border-top" style="background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px);">
+            <div class="d-flex justify-content-between align-items-center mb-4 p-3 rounded-3" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+                <span class="fs-6 fw-semibold text-dark">Total Amount</span>
+                <strong id="total" class="fs-3 fw-bold" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₹0</strong>
+            </div>
+            <div class="d-grid gap-2">
+                <button id="submitOrderBtn" class="gradient-btn py-3 fw-bold">
+                    <i class="fa fa-lock me-2"></i>SECURE CHECKOUT
+                </button>
+                <button id="clearCartBtn" class="btn btn-link text-danger fw-semibold">
+                    <i class="fa fa-trash me-1"></i>Clear All Items
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Backdrop Overlay -->
+    <div id="drawerBackdrop" class="drawer-backdrop" onclick="closeAllDrawers()" style="display: none;"></div>
+
+    <!-- Product Details Drawer -->
+    <aside id="productDrawer">
+        <button id="closeProductDrawerBtn" class="btn-close position-absolute top-0 end-0 m-4 shadow-sm" style="z-index: 10;"></button>
+        <div id="drawerImages" class="mb-4 rounded-4 overflow-hidden shadow-lg" style="height: 350px; border: 3px solid rgba(255,255,255,0.8);"></div>
+        <div class="details">
+            <h3 id="drawerName" class="fw-bold mb-3" style="font-family: 'Poppins', sans-serif; color: #2d3748;"></h3>
+            <p id="drawerPrice" class="fs-2 fw-bold mb-3" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></p>
+            <div class="mb-4 p-3 rounded-3" style="background: rgba(102, 126, 234, 0.05); border-left: 4px solid var(--gradient-primary);">
+                <p id="drawerAbout" class="text-muted mb-0 small"></p>
+            </div>
+            <div class="d-grid gap-3">
+                <button class="gradient-btn py-3 fw-bold" id="drawerAdd">
+                    <i class="fa fa-cart-plus me-2"></i>ADD TO CART
+                </button>
+                <button class="btn btn-outline-primary py-3 rounded-pill fw-bold" id="drawerBuy">
+                    <i class="fa fa-shopping-bag me-2"></i>BUY IT NOW
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="tmg-footer">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <a href="index.html" class="text-decoration-none">
+                        <h3 class="footer-brand-text">CLEANZOD</h3>
+                    </a>
+                    <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
+                        Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="footer-heading">Quick Links</h6>
+                    <ul class="list-unstyled mb-0 d-grid gap-2">
+                        <li><a href="aboutus.html" class="footer-link"><i class="fa fa-chevron-right"></i>Our Story</a></li>
+                        <li><a href="bulkpro.html" class="footer-link"><i class="fa fa-chevron-right"></i>Bulk Buy</a></li>
+                        <li><a href="service.html" class="footer-link"><i class="fa fa-chevron-right"></i>Services</a></li>
+                        <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="footer-heading">Contact Us</h6>
+                    <ul class="list-unstyled mb-0 d-grid gap-3">
+                        <li class="d-flex align-items-start text-white-50">
+                            <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
+                            <div>
+                                <span class="d-block text-white mb-1">Email</span>
+                                gogularasai82@gmail.com
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start text-white-50">
+                            <i class="fa fa-phone mt-1 me-3 text-primary"></i>
+                            <div>
+                                <span class="d-block text-white mb-1">Phone</span>
+                                +91 8110998030
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start text-white-50">
+                            <i class="fa fa-map-marker-alt mt-1 me-3 text-primary"></i>
+                            <div>
+                                <span class="d-block text-white mb-1">Location</span>
+                                Arasarkulam (North), TN
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="footer-heading">Newsletter</h6>
+                    <p class="text-white-50 mb-4">Join 1,000+ cleaning specialists for exclusive updates.</p>
+                    <div class="newsletter-box">
+                        <input type="email" class="newsletter-input" placeholder="Email address">
+                        <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                        <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                        <a href="#" class="footer-bottom-link">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= LOGIN MODAL ================= -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <h4 class="fw-800 text-dark pt-3 ps-2">Welcome Back</h4>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted mb-4 ps-2">Please enter your details to browse our premium collection.</p>
+                    <div class="mb-3">
+                        <input id="username" class="form-control rounded-pill px-4 py-2 border-0 bg-light" placeholder="Username">
+                    </div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <input id="age" type="number" class="form-control rounded-pill px-4 py-2 border-0 bg-light" placeholder="Age">
+                        </div>
+                        <div class="col-6">
+                            <select id="gender" class="form-select rounded-pill px-4 py-2 border-0 bg-light">
+                                <option value="">Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input id="number" class="form-control rounded-pill px-4 py-2 border-0 bg-light" placeholder="Phone Number (10 digits)">
+                    </div>
+                    <div class="mb-3">
+                        <input id="address" class="form-control rounded-pill px-4 py-2 border-0 bg-light" placeholder="Address">
+                    </div>
+                    <div class="row g-2 mb-4">
+                        <div class="col-8">
+                            <input id="city" class="form-control rounded-pill px-4 py-2 border-0 bg-light" placeholder="City">
+                        </div>
+                        <div class="col-4">
+                            <input id="pincode" class="form-control rounded-pill px-4 py-2 border-0 bg-light" placeholder="Pin">
+                        </div>
+                    </div>
+                    <button class="gradient-btn w-100 py-3 rounded-pill shadow-sm" onclick="loginUser()">
+                        GET STARTED <i class="fa fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="order-manager.js"></script>
+    <script src="product-manager.js"></script>
+    <script>
+        let user = JSON.parse(localStorage.getItem('user')) || null;
+        let isLoggedIn = !!user;
+
+        // Load products dynamically
+        const products = initializeCategory('homewash');
+
+        const agriGrid = document.getElementById('agriGrid');
+        const cartCount = document.getElementById('cartCount');
+        const drawer = document.getElementById('cartDrawer');
+        const productDrawer = document.getElementById('productDrawer');
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+
+        function requireLogin(callback) {
+            if (!isLoggedIn) {
+                loginModal.show();
+                return false;
+            } else {
+                callback();
+            }
+        }
+
+        function loginUser() {
+            const user = {
+                name: document.getElementById('username').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                pincode: document.getElementById('pincode').value,
+                phone: document.getElementById('number').value
+            };
+
+            if (Object.values(user).some(v => !v)) {
+                alert("Please fill all fields to continue.");
+                return;
+            }
+
+            const phonePattern = /^\d{10}$/; 
+            if (!phonePattern.test(user.phone)) {
+                alert("Enter a valid 10-digit phone number");
+                return;
+            }
+
+            localStorage.setItem("user", JSON.stringify(user));
+            location.reload();
+        }
+
+        function renderProducts() {
+            agriGrid.innerHTML = '';
+            products.forEach((p, i) => {
+                const col = document.createElement('div');
+                col.className = 'col-6 col-lg-4 slide-up';
+                const badge = p.bestSeller ? '<span class="badge-premium">Best Seller</span>' : '';
+                col.innerHTML = `
+                    <div class="premium-card" onclick="openProductDrawer(${i})">
+                        ${badge}
+                        <div class="mb-3 overflow-hidden" style="border-radius: 16px; height: 240px;">
+                            <img src="${p.img}" alt="${p.name}" class="product-img">
+                        </div>
+                        <h5 class="fw-bold mb-2" style="font-family: 'Poppins', sans-serif;">${p.name}</h5>
+                        <p class="text-muted small mb-3">${p.about.substring(0, 60)}...</p>
+                        <p class="fw-bold fs-4 mb-4" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₹${p.price}</p>
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary rounded-pill flex-grow-1 fw-semibold" onclick="addToCart(${i});event.stopPropagation();">
+                                <i class="fa fa-cart-plus me-1"></i> Add
+                            </button>
+                            <button class="gradient-btn py-2 flex-grow-1" onclick="buyNow(${i});event.stopPropagation();">
+                                <i class="fa fa-shopping-bag me-1"></i> Buy
+                            </button>
+                        </div>
+                    </div>
+                `;
+                agriGrid.appendChild(col);
+            });
+            
+            // Trigger scroll animations
+            setTimeout(() => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+            }, 100);
+        }
+
+        function addToCart(index) {
+            requireLogin(() => {
+                products[index].qty += 1;
+                updateCart();
+            });
+        }
+
+        function buyNow(index) {
+            requireLogin(() => {
+                products.forEach((p, i) => p.qty = (i === index ? 1 : 0));
+                updateCart();
+                showCheckout();
+            });
+        }
+
+        function updateCart() {
+            const cartBody = document.getElementById('cartBody');
+            const emptyMessage = document.getElementById('emptyCartMessage');
+            
+            // Clear existing items except empty message
+            const items = cartBody.querySelectorAll('.cart-item');
+            items.forEach(item => item.remove());
+            
+            let total = 0;
+            let count = 0;
+
+            products.forEach((p, i) => {
+                if (p.qty > 0) {
+                    count += p.qty;
+                    total += p.price * p.qty;
+                    const item = document.createElement('div');
+                    item.className = 'cart-item';
+                    item.innerHTML = `
+                        <img src="${p.img}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold mb-0 small">${p.name}</h6>
+                            <small class="text-muted">₹${p.price} × ${p.qty}</small>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                             <button class="btn btn-sm btn-outline-primary rounded-circle" onclick="changeQty(${i}, -1)" style="width: 30px; height: 30px; padding: 0;">-</button>
+                             <span class="fw-bold">${p.qty}</span>
+                             <button class="btn btn-sm btn-outline-primary rounded-circle" onclick="changeQty(${i}, 1)" style="width: 30px; height: 30px; padding: 0;">+</button>
+                        </div>
+                    `;
+                    cartBody.appendChild(item);
+                }
+            });
+
+            // Show/hide empty cart message
+            if (count === 0) {
+                emptyMessage.style.display = 'block';
+            } else {
+                emptyMessage.style.display = 'none';
+            }
+
+            cartCount.textContent = count;
+            document.getElementById('total').textContent = `₹${total}`;
+        }
+
+        function changeQty(index, delta) {
+            products[index].qty += delta;
+            if (products[index].qty < 0) products[index].qty = 0;
+            updateCart();
+        }
+
+        function openProductDrawer(index) {
+            const p = products[index];
+            const imgDiv = document.getElementById('drawerImages');
+            imgDiv.innerHTML = `<img src="${p.img}" class="w-100 h-100 object-fit-cover">`;
+            document.getElementById('drawerName').textContent = p.name;
+            document.getElementById('drawerPrice').textContent = `₹${p.price}`;
+            document.getElementById('drawerAbout').textContent = p.about;
+            
+            document.getElementById('drawerAdd').onclick = () => {
+                addToCart(index);
+                productDrawer.style.right = '-550px';
+                hideBackdrop();
+            };
+            document.getElementById('drawerBuy').onclick = () => {
+                buyNow(index);
+                productDrawer.style.right = '-550px';
+                hideBackdrop();
+            };
+            
+            productDrawer.style.right = '0';
+            showBackdrop();
+        }
+
+        function showCheckout() {
+            document.getElementById('productDisplaySection').style.display = 'none';
+            document.getElementById('checkoutPage').style.display = 'block';
+            hideBackdrop();
+            window.scrollTo(0,0);
+        }
+
+        const backdrop = document.getElementById('drawerBackdrop');
+
+        function showBackdrop() {
+            backdrop.style.display = 'block';
+            setTimeout(() => backdrop.style.opacity = '1', 10);
+        }
+
+        function hideBackdrop() {
+            backdrop.style.opacity = '0';
+            setTimeout(() => backdrop.style.display = 'none', 300);
+        }
+
+        function closeAllDrawers() {
+            drawer.classList.remove('active');
+            productDrawer.style.right = '-550px';
+            hideBackdrop();
+        }
+
+        document.getElementById('openCartBtn').onclick = () => {
+            drawer.classList.add('active');
+            showBackdrop();
+        };
+        
+        document.getElementById('closeCartBtn').onclick = () => {
+            drawer.classList.remove('active');
+            hideBackdrop();
+        };
+        
+        document.getElementById('closeProductDrawerBtn').onclick = () => {
+            productDrawer.style.right = '-550px';
+            hideBackdrop();
+        };
+        
+        document.getElementById('clearCartBtn').onclick = () => { 
+            products.forEach(p => p.qty = 0); 
+            updateCart(); 
+        };
+        
+        document.getElementById('submitOrderBtn').onclick = () => {
+             if(products.filter(p => p.qty > 0).length > 0) {
+                 drawer.classList.remove('active');
+                 showCheckout();
+             } else {
+                 alert("Cart is empty!");
+             }
+        };
+
+        document.getElementById('onlinePayBtn').onclick = () => document.getElementById('qrSection').style.display = 'block';
+        document.getElementById('codBtn').onclick = () => processOrder('COD');
+        document.getElementById('sendOrderBtn').onclick = () => processOrder('WhatsApp (Paid)');
+
+        function processOrder(method) {
+            const activeItems = products.filter(p => p.qty > 0);
+            const total = activeItems.reduce((acc, p) => acc + (p.price * p.qty), 0);
+            
+            const orderData = {
+                customerName: user.name,
+                email: user.phone + "@cleanzod.in",
+                phone: user.phone,
+                address: user.address,
+                items: activeItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
+                totalAmount: total,
+                paymentMethod: method,
+                notes: 'Service Page Home Wash'
+            };
+
+            const proc = document.getElementById('processing');
+            proc.style.display = 'block';
+            
+            setTimeout(() => {
+                const res = orderManager.addOrder(orderData);
+                proc.style.display = 'none';
+                if(res) {
+                    showSuccessNotification("Home Hygiene Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
+                    localStorage.removeItem('cart'); // if used
+                    window.location.href = 'index.html';
+                }
+            }, 1500);
+        }
+
+        document.getElementById('openProfileBtnNav').onclick = () => {
+             // Basic redirect to home for profile
+             window.location.href = 'index.html#profile';
+        };
+
+        function showSuccessNotification(t,m){const o=document.createElement('div');o.className='success-overlay';document.body.appendChild(o);const n=document.createElement('div');n.className='success-notification';n.innerHTML=`<div class="success-icon"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none"/><path fill="none" d="M14 27l7.5 7.5L38 18"/></svg></div><h3>${t}</h3><p>${m}</p>`;document.body.appendChild(n);const c=['#667eea','#764ba2','#f093fb','#4facfe','#43e97b'];for(let i=0;i<50;i++){setTimeout(()=>{const cf=document.createElement('div');cf.className='confetti';cf.style.left=Math.random()*100+'%';cf.style.background=c[Math.floor(Math.random()*c.length)];cf.style.animationDelay=Math.random()*0.5+'s';cf.style.animationDuration=(Math.random()*2+2)+'s';document.body.appendChild(cf);setTimeout(()=>cf.remove(),3500)},i*30)}setTimeout(()=>n.classList.add('show'),10);setTimeout(()=>{n.style.animation='successPopIn 0.3s ease-out reverse';o.style.animation='fadeIn 0.3s ease-out reverse';setTimeout(()=>{n.remove();o.remove()},300)},2500)}
+        renderProducts();
+        updateCart();
+    </script>
+</body>
+
+</html>

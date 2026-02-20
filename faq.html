@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMG - Shri Bhavan Cleaners</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    .faq-hero {
+      background: var(--gradient-primary);
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .faq-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: white;
+      clip-path: ellipse(60% 100% at 50% 100%);
+    }
+
+    .accordion-item {
+      border: none;
+      margin-bottom: 1.5rem;
+      border-radius: 20px !important;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .accordion-item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+
+    .accordion-button {
+      padding: 1.5rem 2rem;
+      font-weight: 600;
+      color: var(--dark);
+      background: white !important;
+      box-shadow: none !important;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: var(--primary);
+      background: rgba(17, 153, 142, 0.05) !important;
+    }
+
+    .accordion-button::after {
+      background-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-body {
+      padding: 0 2rem 2rem;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    #mainContent {
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+  <div id="mainContent">
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg glass-nav sticky-top">
+      <div class="container-fluid px-4 px-lg-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/Tmglogo.jpg" alt="TMG Logo" class="rounded-pill border shadow-sm" style="height: 50px;">
+          <div class="ms-3 d-none d-sm-block">
+            <span class="fs-4 fw-bold text-dark d-block lh-1" style="font-family: 'Poppins', sans-serif;">CLEANZOD</span>
+            <small class="text-muted fw-semi-bold ls-1">SRI BHAVAN GROUPS</small>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
+                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
+                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
+                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
+                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
+            <li class="nav-item"><a class="nav-link" href="customers.html">Clients</a></li>
+            <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item rounded-3" href="aboutus.html">Our Story</a></li>
+                <li><a class="dropdown-item rounded-3" href="contactus.html">Support</a></li>
+                <li><a class="dropdown-item active rounded-3" href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm rounded-pill">
+              <i class="fa-solid fa-phone me-1"></i> <span>8110998030</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section class="faq-hero text-center text-white">
+      <div class="container position-relative z-1">
+        <span class="glass-badge mb-4">HELP CENTER</span>
+        <h1 class="display-3 fw-900 mb-4">Frequently Asked <br><span class="text-white">Questions</span></h1>
+        <p class="lead opacity-75 mx-auto mb-0" style="max-width: 600px;">Everything you need to know about Cleanzod products and our hygiene standards.</p>
+      </div>
+    </section>
+
+    <!-- ================= INTRO SECTION ================= -->
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <h2 class="section-title text-start mb-4">Understanding <span>Our Flow</span></h2>
+            <p class="lead text-muted mb-4"><strong>Cleanzod</strong> is a trusted name in high-performance hygiene solutions.</p>
+            <p class="text-muted mb-5">We specialize in the manufacture and supply of high-quality soap oil, phenyl, chlorine, and sanitizer. With a strong focus on safety and customer satisfaction, our products are formulated to deliver effective cleaning and long-lasting freshness.</p>
+            <div class="d-flex gap-3">
+              <button class="gradient-btn px-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+                LEARN MORE <i class="fa fa-info-circle ms-2"></i>
+              </button>
+            </div>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-start border-0 shadow-lg" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop">
+              <div class="offcanvas-header bg-dark text-white p-4">
+                <h5 class="offcanvas-title fw-bold">Company Vision</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+              </div>
+              <div class="offcanvas-body p-4">
+                <p class="text-muted mb-4">TMG is a provider of premium cleaning and hygiene products. Our mission is to promote cleanliness, health, and hygiene in every environment. We prioritize high-quality raw materials and rigorous testing to ensure consistent performance.</p>
+                <div class="p-3 bg-light rounded-3 border-start border-primary border-4">
+                  <p class="small mb-0 fst-italic">"Safety for users and environmental responsibility are central to our manufacturing process."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="position-relative">
+              <img src="img/cleazonbottel.jpg" alt="Cleanzod Bottles" class="img-fluid rounded-4 shadow-2xl" style="max-height: 500px; width: 100%; object-fit: cover;">
+              <div class="position-absolute -top-4 -right-4 bg-white p-1 rounded-4 shadow-lg border border-light">
+                <div class="p-3 text-center">
+                  <div class="fs-2 fw-bold text-primary">10+</div>
+                  <div class="small fw-bold text-muted uppercase">Formulas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACCORDION SECTION ================= -->
+    <section class="py-5 bg-light">
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Cleanzod <span>FAQ</span></h2>
+          <p class="text-muted lead">Quick answers to common inquiries.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="accordion" id="accordionCleanzod">
+              <!-- Item 1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    What is Cleanzod and its purpose?
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionCleanzod">
+                  <div class="accordion-body">
+                    <strong>Cleanzod</strong> is a trusted manufacturer and supplier of premium cleaning and hygiene products. Our mission is to provide effective, high-quality, and safe solutions for homes and industries.
+                  </div>
+                </div>
+              </div>
+              <!-- Item 2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    Which products does Cleanzod manufacture?
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionCleanzod">
+                  <div class="accordion-body">
+                    We specialize in high-quality soap oil, phenyl, hand sanitizers, liquid chlorine, and other specialized cleaning agents designed for domestic and industrial use.
+                  </div>
+                </div>
+              </div>
+              <!-- Item 3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    Are the products safe for skin and surfaces?
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionCleanzod">
+                  <div class="accordion-body">
+                    Yes, safety is our priority. Our products are formulated using dermatologically-tested and surface-safe ingredients. However, we always recommend following the usage instructions provided on the packaging.
+                  </div>
+                </div>
+              </div>
+              <!-- Item 4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                    How do I place a bulk order?
+                  </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionCleanzod">
+                  <div class="accordion-body">
+                    Bulk orders can be placed by contacting our sales team directly at +91 81109 98030 or by visiting our office. We offer competitive pricing for industrial and institutional volume orders.
+                  </div>
+                </div>
+              </div>
+              <!-- Item 5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                    What makes Cleanzod different from others?
+                  </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionCleanzod">
+                  <div class="accordion-body">
+                    Our commitment to <strong>Purity, Performance, and Proximity</strong>. We produce locally using high-grade materials, ensuring a level of freshness and active-ingredient concentration that mass-market brands rarely match.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BRAND SUMMARY ================= -->
+    <section class="py-5 text-center">
+      <div class="container py-5">
+        <h2 class="section-title mb-4">TMG / Sri Bahavan <span>Groups</span></h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="lead text-muted mb-0">
+              Behind every success of <strong>TMG – Sri Bhavan Cleaners</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="tmg-footer">
+      <div class="container text-start">
+        <div class="row g-5">
+          <!-- Brand Column -->
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <a href="index.html" class="text-decoration-none">
+              <h3 class="footer-brand-text">CLEANZOD</h3>
+            </a>
+            <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
+              Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Quick Links</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-2">
+              <li><a href="aboutus.html" class="footer-link"><i class="fa fa-chevron-right"></i>Our Story</a></li>
+              <li><a href="bulkpro.html" class="footer-link"><i class="fa fa-chevron-right"></i>Bulk Buy</a></li>
+              <li><a href="service.html" class="footer-link"><i class="fa fa-chevron-right"></i>Services</a></li>
+              <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Contact Us</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-3">
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
+                <div><span class="d-block text-white mb-1">Email</span>gogularasai82@gmail.com</div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-phone mt-1 me-3 text-primary"></i>
+                <div><span class="d-block text-white mb-1">Phone</span>+91 8110998030</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter Column -->
+          <div class="col-lg-3 col-md-6">
+            <h6 class="footer-heading">Newsletter</h6>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Email address">
+              <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(30px)";
+      section.style.transition = "all 0.8s ease-out";
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>

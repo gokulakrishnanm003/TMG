@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMG - Shri Bhavan Cleaners</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background: #f4f7fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== HEADER ===== */
+        .header-title {
+            background-color: #5EB09F;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            border-radius: 0 0 18px 18px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            padding: 60px 15px;
+            background-color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(94, 176, 159, 0.08);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        .about-section h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #5EB09F;
+            font-weight: 600;
+        }
+
+        .about-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #333;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(94, 176, 159, 0.10);
+            transition: transform 0.6s ease;
+        }
+
+        .about-img img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===== MOTTO SECTION ===== */
+        .motto-section {
+            padding: 80px 15px;
+            background-color: #f1f8f3;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .motto-section h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0d6efd;
+            font-weight: 600;
+        }
+
+        .motto-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #333;
+        }
+
+        /* ===== TEAM CARDS ===== */
+        .team-section {
+            padding: 80px 15px;
+            background-color: #fff;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            color: #5EB09F;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+        }
+
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            color: #5EB09F;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .btn-custom {
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #5EB09F;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 0.95rem;
+            border-radius: 0 0 18px 18px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+
+            .about-section,
+            .motto-section,
+            .team-section {
+                padding: 50px 15px;
+            }
+
+            .about-section h1,
+            .motto-section h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .about-section p,
+            .motto-section p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 18px;
+            max-width: 500px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 24px rgba(94, 176, 159, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #5EB09F;
+            font-weight: 700;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0 16px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #5EB09F;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(94, 176, 159, 0.10);
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #0b62b9;
+        }
+
+        .success-message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(94, 176, 159, 0.08);
+            padding: 2rem 1rem;
+            margin-top: 2.5rem !important;
+            margin-bottom: 2.5rem !important;
+        }
+
+        h2,
+        h3 {
+            color: #5EB09F;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-title" style="border-radius: 2px;">
+             CLEANZO
+        </div>
+    </header>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about-section container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1>Carrer</h1>
+                <p>
+                    cleanzo is a homemade startup dedicated to providing safe and efficient oil
+                    cleaning services. As a growing business, we are always on the lookout for motivated and hardworking
+                    individuals to join our team. No prior experience is required—we provide full training on effective
+                    and safe cleaning techniques.
+
+                    Working with us means being part of a close-knit team where your efforts are valued, your skills are
+                    developed, and your growth is encouraged. If you are dependable, eager to learn, and passionate
+                    about contributing to a cleaner and safer environment, cleanzo is the place for
+                    you.
+
+                    Join us and grow with a startup that cares about its employees, customers, and the community.
+                </p>
+                <a href="#" class="btn btn-outline-success btn-custom mt-3">Explore Products</a>
+            </div>
+            <div class="col-lg-6 about-img">
+                <img src="logo/oil.jpg" alt="TMG Products">
+            </div>
+        </div>
+    </section>
+
+
+    <div class="form-container ">
+        <h2>Business Inquiry Form</h2>
+        <form id="businessForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name.." required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email.." required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number.." required>
+
+            <label for="message">Message / Inquiry</label>
+            <textarea id="message" name="message" placeholder="Write your inquiry.." rows="5" required></textarea>
+
+            <button type="submit" class="btn btn-outline-success">Send Inquiry</button>
+        </form>
+        <p class="success-message" id="successMessage"></p>
+    </div>
+
+
+    <div class="container mt-4">
+        <h2 class="text-center   mb-4" style="color: #5EB09F;">TMG/Shri Bahavan Groups</h2>
+        <p class="text-center text-muted mb-5">
+            Behind every success of <strong>TMG – Sri Bhavan Cleaners</strong> stand four visionary individuals —
+            <strong>Thangavel</strong>, <strong>Muthukumar T</strong>,<strong>Sutha M</strong>, <strong>Gokulakrishnan
+                M</strong>, and
+            <strong>Yazhini M</strong>
+            Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build
+            a
+            brand
+            rooted in quality, trust, and sustainability.
+        </p>
+    </div>
+
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer style="background-color:  #5EB09F;">
+        © 2025 CLEANZOD | TMG Team <br>
+        Contact us: <a href="tel:8110998030">8110998030</a> <br>
+        e-mail us : <a href="gogularasai82@gmail.com">gogularasai82@gmail.com</a>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+<script>
+    document.getElementById('businessForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if (name && email && phone && message) {
+            // Create mailto link to send email
+            const mailtoLink = `mailto:gogularasai82@gmail.com?subject=Business Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(Name: ${ name }\nPhone: ${ phone }\nEmail: ${ email }\nMessage: ${ message })}`;
+            window.location.href = mailtoLink;
+
+            // Display success message
+            document.getElementById('successMessage').textContent = "Your inquiry has been prepared to send. Please check your email.thankyou for visiting ";
+
+            // Optionally, reset form
+            document.getElementById('businessForm').reset();
+        }
+    });
+</script>
+
+</html>//carrer

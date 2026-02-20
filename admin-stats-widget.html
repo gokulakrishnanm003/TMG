@@ -1,0 +1,114 @@
+<!-- OPTIONAL: Admin Stats Widget for Homepage -->
+<!-- Include this section on your homepage to show quick order stats -->
+
+<style>
+    .admin-stats-widget {
+        background: linear-gradient(135deg, #5EB09F 0%, #4a9a8b 100%);
+        border-radius: 12px;
+        padding: 30px;
+        color: white;
+        margin: 20px 0;
+        box-shadow: 0 5px 20px rgba(94, 176, 159, 0.2);
+    }
+
+    .stats-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .stat-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .stats-footer {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-admin-stats {
+        background: white;
+        color: #5EB09F;
+        padding: 10px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    .btn-admin-stats:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<div class="admin-stats-widget">
+    <div class="stats-title">📊 Order Management System</div>
+    
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-value" id="widget-total">0</div>
+            <div class="stat-label">Total Orders</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="widget-pending">0</div>
+            <div class="stat-label">Pending</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="widget-completed">0</div>
+            <div class="stat-label">Completed</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value" id="widget-revenue">₹0</div>
+            <div class="stat-label">Revenue</div>
+        </div>
+    </div>
+    
+    <div class="stats-footer">
+        <a href="admin-login.html" class="btn-admin-stats">Go to Admin Panel →</a>
+    </div>
+</div>
+
+<script>
+    // Load stats widget data
+    document.addEventListener('DOMContentLoaded', () => {
+        const orders = JSON.parse(localStorage.getItem('allOrders') || '[]');
+        
+        const total = orders.length;
+        const pending = orders.filter(o => o.status === 'pending').length;
+        const completed = orders.filter(o => o.status === 'completed').length;
+        const revenue = orders.reduce((sum, o) => sum + parseFloat(o.totalAmount || 0), 0);
+        
+        document.getElementById('widget-total').textContent = total;
+        document.getElementById('widget-pending').textContent = pending;
+        document.getElementById('widget-completed').textContent = completed;
+        document.getElementById('widget-revenue').textContent = '₹' + revenue.toFixed(2);
+    });
+</script>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMG - Shri Bhavan Cleaners</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    .contact-hero {
+      background: var(--gradient-dark);
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: var(--gradient-primary);
+      filter: blur(120px);
+      opacity: 0.2;
+      border-radius: 50%;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s ease;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .icon-box {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .order-step {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .order-step:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    #mainContent {
+      animation: fadeIn 1s ease-out;
+    }
+
+    /* Shopping Animation */
+    .shop-animation-wrapper {
+      height: 450px;
+      width: 100%;
+      background: #fdfdfd;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 8px solid #fff;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .brand-tag {
+      background: #ff9d6c;
+      color: #000;
+      padding: 5px 20px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      z-index: 10;
+    }
+
+    .order-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 4rem;
+      color: #333;
+      line-height: 0.9;
+      text-align: center;
+      margin-bottom: 2rem;
+      z-index: 10;
+    }
+
+    .cart-container {
+      position: relative;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .moving-cart {
+      font-size: 5rem;
+      color: #11998e;
+      position: absolute;
+      animation: cartRun 4s infinite linear;
+    }
+
+    @keyframes cartRun {
+      0% { transform: translateX(-200%) scaleX(1); }
+      45% { transform: translateX(0%) scaleX(1); }
+      50% { transform: translateX(0%) scaleX(-1); }
+      95% { transform: translateX(-200%) scaleX(-1); }
+      100% { transform: translateX(-200%) scaleX(1); }
+    }
+
+    .product-bubble {
+      position: absolute;
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      z-index: 5;
+      animation: bubbleFloat 3s infinite ease-in-out;
+    }
+
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .screen-mockup {
+      position: absolute;
+      bottom: -50px;
+      width: 80%;
+      height: 200px;
+      background: #4facfe;
+      border-radius: 20px 20px 0 0;
+      opacity: 0.1;
+      z-index: 1;
+    }
+  </style>
+  <div id="mainContent">
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg glass-nav sticky-top">
+      <div class="container-fluid px-4 px-lg-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <div class="cleanzo-logo-wrapper">
+              <div class="brand-bag"><span class="bag-letter">C</span></div>
+              <div class="brand-name"><span>L</span>eanZo</div>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
+                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
+                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
+                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
+                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
+            <li class="nav-item"><a class="nav-link" href="customers.html">Clients</a></li>
+            <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item rounded-3" href="aboutus.html">Our Story</a></li>
+                <li><a class="dropdown-item active rounded-3" href="contactus.html">Support</a></li>
+                <li><a class="dropdown-item rounded-3" href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm rounded-pill">
+              <i class="fa-solid fa-phone me-1"></i> <span>8110998030</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section class="contact-hero">
+      <div class="container bg-transparent shadow-none border-0 py-0 text-start">
+        <span class="glass-badge mb-4">GET IN TOUCH</span>
+        <h1 class="display-3 fw-900 mb-4" style="line-height: 1.1;">Connect with <br><span class="text-primary-light">Cleanzod</span></h1>
+        <p class="lead opacity-75 mb-0">Whether you're a household user or an industrial partner, we're here to help.</p>
+      </div>
+    </section>
+
+    <!-- ================= INFO CARDS ================= -->
+    <section class="py-5">
+      <div class="container bg-transparent shadow-none border-0 py-5">
+        <div class="row g-4 text-start">
+          <div class="col-lg-4">
+            <div class="info-card">
+              <div class="icon-box"><i class="bi bi-geo-alt"></i></div>
+              <h4 class="fw-bold mb-3">Our Location</h4>
+              <p class="text-muted">138, Arasarkulam Vadapathi,<br>Arasarkulam South Post,<br>Aranthangi Taluk, Tamil Nadu.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="info-card">
+              <div class="icon-box"><i class="bi bi-telephone"></i></div>
+              <h4 class="fw-bold mb-3">Call Support</h4>
+              <p class="text-muted">General Inquiries:<br><strong>+91 81109 98030</strong><br>Sales Support:<br><strong>+91 99768 93630</strong></p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="info-card">
+              <div class="icon-box"><i class="bi bi-envelope"></i></div>
+              <h4 class="fw-bold mb-3">Email Us</h4>
+              <p class="text-muted">Customer Support:<br><strong>gogularasai82@gmail.com</strong><br>Business Inquiries:<br><strong>tmggroups@info.com</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ORDER GUIDE SECTION ================= -->
+    <section class="py-5 bg-dark text-white overflow-hidden">
+      <div class="container bg-transparent shadow-none border-0 py-5">
+        <div class="row align-items-center g-5 text-start">
+          <div class="col-lg-6">
+            <h2 class="section-title text-start mb-4" style="color: white">How to <span>Order?</span></h2>
+            <div class="d-grid gap-4">
+              <div class="order-step">
+                <div class="d-flex gap-4 align-items-center">
+                  <div class="fs-1 fw-900 opacity-20 text-primary-light">01</div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Browse Products</h5>
+                    <p class="small text-white-50 mb-0">Navigate to our shop section and explore categories like Home, Vehicle, or Bulk buy.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="order-step">
+                <div class="d-flex gap-4 align-items-center">
+                  <div class="fs-1 fw-900 opacity-20 text-primary-light">02</div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Select Items</h5>
+                    <p class="small text-white-50 mb-0">Browse through the premium available items and review their technical details.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="order-step">
+                <div class="d-flex gap-4 align-items-center">
+                  <div class="fs-1 fw-900 opacity-20 text-primary-light">03</div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Contact Sales</h5>
+                    <p class="small text-white-50 mb-0">Send your list via WhatsApp or Call us directly to finalize and confirm your order.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="position-relative text-center">
+            <div class="shop-animation-wrapper">
+              <span class="brand-tag">CLEANZOD</span>
+              <h1 class="order-title">Order<br>now</h1>
+              
+              <div class="cart-container">
+                <i class="bi bi-cart4 moving-cart"></i>
+                
+                <!-- Floating Icons -->
+                <div class="product-bubble" style="top: -20px; left: 20%; animation-delay: 0s;">
+                  <i class="bi bi-droplet-fill text-primary fs-3"></i>
+                </div>
+                <div class="product-bubble" style="top: 20px; right: 25%; animation-delay: 0.5s;">
+                  <i class="bi bi-box-seam text-warning fs-3"></i>
+                </div>
+                <div class="product-bubble" style="bottom: 0px; left: 35%; animation-delay: 1.2s;">
+                  <i class="bi bi-shield-check text-success fs-3"></i>
+                </div>
+              </div>
+              
+              <div class="screen-mockup"></div>
+            </div>
+              <div class="position-absolute top-100 start-50 translate-middle-x mt-4">
+                <a href="service.html" class="gradient-btn">GO TO SHOP</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BRAND SUMMARY ================= -->
+    <section class="py-5 bg-light text-center">
+      <div class="container bg-transparent shadow-none border-0 py-5">
+        <h2 class="section-title mb-4">TMG / Sri Bahavan <span>Groups</span></h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="lead text-muted mb-0">
+              Behind every success of <strong>TMG – Sri Bhavan Cleaners</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="tmg-footer">
+      <div class="container bg-transparent shadow-none border-0 p-0 text-start">
+        <div class="row g-5">
+          <!-- Brand Column -->
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <a href="index.html" class="text-decoration-none">
+              <h3 class="footer-brand-text">CLEANZOD</h3>
+            </a>
+            <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
+              Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Quick Links</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-2">
+              <li><a href="aboutus.html" class="footer-link"><i class="fa fa-chevron-right"></i>Our Story</a></li>
+              <li><a href="bulkpro.html" class="footer-link"><i class="fa fa-chevron-right"></i>Bulk Buy</a></li>
+              <li><a href="service.html" class="footer-link"><i class="fa fa-chevron-right"></i>Services</a></li>
+              <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Contact Us</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-3">
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Email</span>
+                  gogularasai82@gmail.com
+                </div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-phone mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Phone</span>
+                  +91 8110998030
+                </div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-map-marker-alt mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Location</span>
+                  Arasarkulam (North), TN
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter Column -->
+          <div class="col-lg-3 col-md-6">
+            <h6 class="footer-heading">Newsletter</h6>
+            <p class="text-white-50 mb-4">Join 1,000+ cleaning specialists for exclusive updates.</p>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Email address">
+              <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(30px)";
+      section.style.transition = "all 0.8s ease-out";
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>

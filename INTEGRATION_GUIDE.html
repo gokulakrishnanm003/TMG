@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Guide - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #5EB09F 0%, #4a9a8b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #5EB09F;
+            margin: 20px 0 10px 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            border-bottom: 2px solid #5EB09F;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+        }
+
+        .section {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .code-block code {
+            color: #ce9178;
+        }
+
+        .highlight {
+            background: #264f78;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #7ec699;
+        }
+
+        .note {
+            background: #1f4d2f;
+            border-left: 4px solid #5EB09F;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #b4e7c3;
+        }
+
+        .warning {
+            background: #4d1f1f;
+            border-left: 4px solid #ff6b6b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #ffb4b4;
+        }
+
+        .example {
+            background: #1e1e1e;
+            border-left: 4px solid #4a9a8b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #5EB09F;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #252526;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #3e3e42;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Admin Panel Integration Guide</h1>
+            <p>How to integrate the order management system with your website</p>
+        </header>
+
+        <!-- SETUP SECTION -->
+        <div class="section">
+            <h2>1. Setup & Installation</h2>
+            <p>Follow these steps to integrate the order management system:</p>
+
+            <h3>Step 1: Add the Order Manager Script</h3>
+            <p>Include this script in your HTML pages that need order functionality:</p>
+            <div class="code-block">
+<pre>&lt;script src="order-manager.js"&gt;&lt;/script&gt;</pre>
+            </div>
+
+            <h3>Step 2: Create Order Form</h3>
+            <p>Build your order form with the necessary fields:</p>
+            <div class="code-block">
+<pre>&lt;form id="orderForm"&gt;
+    &lt;input type="text" id="customerName" placeholder="Full Name" required&gt;
+    &lt;input type="email" id="email" placeholder="Email" required&gt;
+    &lt;input type="tel" id="phone" placeholder="Phone" required&gt;
+    &lt;textarea id="address" placeholder="Delivery Address" required&gt;&lt;/textarea&gt;
+    &lt;textarea id="notes" placeholder="Special Notes"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Place Order&lt;/button&gt;
+&lt;/form&gt;</pre>
+            </div>
+
+            <h3>Step 3: Handle Form Submission</h3>
+            <p>Add JavaScript to handle the form and save orders:</p>
+            <div class="code-block">
+<pre>document.getElementById('orderForm').addEventListener('submit', (e) =&gt; {
+    e.preventDefault();
+    
+    const orderData = {
+        customerName: document.getElementById('customerName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        items: cartItems, // Your cart array
+        totalAmount: cartTotal, // Your cart total
+        paymentMethod: 'cash', // Or dynamic value
+        notes: document.getElementById('notes').value
+    };
+    
+    // Validate order
+    const validation = orderManager.validateOrderData(orderData);
+    if (!validation.isValid) {
+        alert('Errors: ' + validation.errors.join(', '));
+        return;
+    }
+    
+    // Add order to system
+    const newOrder = orderManager.addOrder(orderData);
+    if (newOrder) {
+        alert('Order placed successfully!');
+        document.getElementById('orderForm').reset();
+    }
+});</pre>
+            </div>
+        </div>
+
+        <!-- COMMON PATTERNS SECTION -->
+        <div class="section">
+            <h2>2. Common Integration Patterns</h2>
+
+            <h3>Pattern 1: Simple Cart Checkout</h3>
+            <div class="code-block">
+<pre>// Get cart from sessionStorage
+const cartItems = JSON.parse(sessionStorage.getItem('cart') || '[]');
+const cartTotal = sessionStorage.getItem('cartTotal') || '0';
+
+// Create order
+const order = {
+    customerName: name,
+    email: email,
+    phone: phone,
+    address: address,
+    items: cartItems,
+    totalAmount: cartTotal,
+    paymentMethod: 'cash'
+};
+
+// Save and process
+const result = orderManager.addOrder(order);
+if (result) {
+    sessionStorage.removeItem('cart');
+    sessionStorage.removeItem('cartTotal');
+}</pre>
+            </div>
+
+            <h3>Pattern 2: Service Booking</h3>
+            <div class="code-block">
+<pre>// For service-based orders
+const serviceOrder = {
+    customerName: name,
+    email: email,
+    phone: phone,
+    address: serviceAddress,
+    items: [{
+        name: 'Home Cleaning Service',
+        quantity: 1,
+        price: 500
+    }],
+    totalAmount: '500',
+    paymentMethod: 'upi',
+    notes: 'Preferred time: Morning',
+    status: 'pending'
+};
+
+orderManager.addOrder(serviceOrder);</pre>
+            </div>
+
+            <h3>Pattern 3: Pre-filled Order Form</h3>
+            <div class="code-block">
+<pre>// Load customer's previous orders to pre-fill form
+const customerEmail = 'customer@example.com';
+const previousOrders = orderManager.getOrdersByEmail(customerEmail);
+
+if (previousOrders.length &gt; 0) {
+    const lastOrder = previousOrders[previousOrders.length - 1];
+    document.getElementById('customerName').value = lastOrder.customerName;
+    document.getElementById('email').value = lastOrder.email;
+    document.getElementById('phone').value = lastOrder.phone;
+    document.getElementById('address').value = lastOrder.address;
+}</pre>
+            </div>
+        </div>
+
+        <!-- API REFERENCE SECTION -->
+        <div class="section">
+            <h2>3. Order Manager API Reference</h2>
+
+            <h3>Adding an Order</h3>
+            <div class="code-block">
+<pre>const order = orderManager.addOrder({
+    customerName: 'John Doe',
+    email: 'john@example.com',
+    phone: '9876543210',
+    address: '123 Main Street',
+    items: [{name: 'Product', quantity: 1, price: 100}],
+    totalAmount: '100',
+    paymentMethod: 'cash',
+    notes: 'Special handling'
+});</pre>
+            </div>
+
+            <h3>Getting All Orders</h3>
+            <div class="code-block">
+<pre>const allOrders = orderManager.getOrders();
+console.log(`Total orders: ${allOrders.length}`);</pre>
+            </div>
+
+            <h3>Getting Orders by Email</h3>
+            <div class="code-block">
+<pre>const customerOrders = orderManager.getOrdersByEmail('john@example.com');
+customerOrders.forEach(order =&gt; {
+    console.log(`Order: ${order.id}, Status: ${order.status}`);
+});</pre>
+            </div>
+
+            <h3>Getting Orders by Status</h3>
+            <div class="code-block">
+<pre>const pendingOrders = orderManager.getOrdersByStatus('pending');
+console.log(`Pending orders: ${pendingOrders.length}`);</pre>
+            </div>
+
+            <h3>Updating an Order</h3>
+            <div class="code-block">
+<pre>const orders = orderManager.getOrders();
+const updated = orderManager.updateOrder(0, {
+    status: 'completed',
+    notes: 'Updated notes'
+});</pre>
+            </div>
+
+            <h3>Deleting an Order</h3>
+            <div class="code-block">
+<pre>const orders = orderManager.getOrders();
+orderManager.deleteOrder(0); // Delete first order</pre>
+            </div>
+
+            <h3>Getting Statistics</h3>
+            <div class="code-block">
+<pre>const stats = orderManager.getStatistics();
+console.log(`
+    Total Orders: ${stats.totalOrders}
+    Pending: ${stats.pendingOrders}
+    Completed: ${stats.completedOrders}
+    Revenue: ₹${stats.totalRevenue}
+`);</pre>
+            </div>
+
+            <h3>Validating Order Data</h3>
+            <div class="code-block">
+<pre>const validation = orderManager.validateOrderData(orderData);
+if (validation.isValid) {
+    // Order is valid, proceed
+} else {
+    // Show errors
+    validation.errors.forEach(error =&gt; {
+        console.error(error);
+    });
+}</pre>
+            </div>
+        </div>
+
+        <!-- PRODUCT PAGE INTEGRATION -->
+        <div class="section">
+            <h2>4. Product Page Integration</h2>
+
+            <p>Here's how to add "Add to Cart" and "Buy Now" functionality:</p>
+
+            <h3>Add to Cart Function</h3>
+            <div class="code-block">
+<pre>function addToCart(productName, price, quantity) {
+    let cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    
+    const item = {
+        name: productName,
+        price: parseFloat(price),
+        quantity: parseInt(quantity)
+    };
+    
+    // Check if item already in cart
+    const existing = cart.find(i =&gt; i.name === productName);
+    if (existing) {
+        existing.quantity += parseInt(quantity);
+    } else {
+        cart.push(item);
+    }
+    
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    updateCartTotal();
+    alert('Added to cart!');
+}
+
+function updateCartTotal() {
+    const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    const total = cart.reduce((sum, item) =&gt; 
+        sum + (item.price * item.quantity), 0
+    );
+    sessionStorage.setItem('cartTotal', total.toString());
+}</pre>
+            </div>
+
+            <h3>Buy Now Function</h3>
+            <div class="code-block">
+<pre>function buyNow(productName, price, quantity) {
+    const cart = [{
+        name: productName,
+        price: parseFloat(price),
+        quantity: parseInt(quantity)
+    }];
+    const total = price * quantity;
+    
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cartTotal', total.toString());
+    
+    // Redirect to checkout
+    window.location.href = 'checkout.html';
+}</pre>
+            </div>
+
+            <h3>HTML Button Example</h3>
+            <div class="code-block">
+<pre>&lt;button onclick="addToCart('Cloth Wash', 100, 1)"&gt;
+    Add to Cart
+&lt;/button&gt;
+
+&lt;button onclick="buyNow('Cloth Wash', 100, 1)"&gt;
+    Buy Now
+&lt;/button&gt;</pre>
+            </div>
+        </div>
+
+        <!-- ADMIN NOTIFICATION SYSTEM -->
+        <div class="section">
+            <h2>5. Admin Notification System</h2>
+
+            <p>Implement notifications when new orders are placed:</p>
+
+            <div class="code-block">
+<pre>// Hook into order creation to send notifications
+function createOrderWithNotification(orderData) {
+    const newOrder = orderManager.addOrder(orderData);
+    
+    if (newOrder) {
+        // Notify admin
+        orderManager.notifyNewOrder(newOrder);
+        
+        // You can extend this to:
+        // - Send email to admin
+        // - Send SMS notification
+        // - Create browser notification
+        
+        sendAdminNotification(newOrder);
+        return newOrder;
+    }
+    return null;
+}
+
+function sendAdminNotification(order) {
+    // Browser notification (if permission granted)
+    if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('New Order!', {
+            body: `New order #${order.id} from ${order.customerName}`,
+            icon: 'logo/logo.png'
+        });
+    }
+    
+    // Log to console
+    console.log('New Order Notification:', order);
+}</pre>
+            </div>
+
+            <div class="note">
+                <strong>Note:</strong> To enable browser notifications, request permission from user when page loads.
+            </div>
+
+            <div class="code-block">
+<pre>// Request notification permission
+if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+}</pre>
+            </div>
+        </div>
+
+        <!-- CUSTOMER ORDER TRACKING -->
+        <div class="section">
+            <h2>6. Customer Order Tracking</h2>
+
+            <p>Allow customers to track their orders:</p>
+
+            <div class="code-block">
+<pre>function trackOrder(email) {
+    const orders = orderManager.getOrdersByEmail(email);
+    
+    if (orders.length === 0) {
+        return { success: false, message: 'No orders found' };
+    }
+    
+    return {
+        success: true,
+        orders: orders.map(o =&gt; ({
+            id: o.id,
+            status: o.status,
+            date: new Date(o.orderDate).toLocaleDateString(),
+            total: o.totalAmount
+        }))
+    };
+}
+
+// Usage in HTML
+function showOrderTracking() {
+    const email = prompt('Enter your email:');
+    if (!email) return;
+    
+    const result = trackOrder(email);
+    
+    if (result.success) {
+        let html = '&lt;h3&gt;Your Orders&lt;/h3&gt;';
+        result.orders.forEach(order =&gt; {
+            html += `&lt;div&gt;
+                Order ${order.id}: ${order.status.toUpperCase()}
+                (${order.date})
+            &lt;/div&gt;`;
+        });
+        document.getElementById('tracking').innerHTML = html;
+    } else {
+        alert(result.message);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- BEST PRACTICES -->
+        <div class="section">
+            <h2>7. Best Practices</h2>
+
+            <h3>Data Validation</h3>
+            <div class="code-block">
+<pre>// Always validate before saving
+function placeOrder(orderData) {
+    const validation = orderManager.validateOrderData(orderData);
+    
+    if (!validation.isValid) {
+        const errorMsg = validation.errors.join('\n');
+        alert('Please fix errors:\n' + errorMsg);
+        return false;
+    }
+    
+    return orderManager.addOrder(orderData);
+}</pre>
+            </div>
+
+            <h3>Error Handling</h3>
+            <div class="code-block">
+<pre>try {
+    const order = orderManager.addOrder(orderData);
+    if (order) {
+        console.log('Order created:', order.id);
+    }
+} catch (error) {
+    console.error('Failed to create order:', error);
+    alert('An error occurred. Please try again.');
+}</pre>
+            </div>
+
+            <h3>Regular Backups</h3>
+            <div class="code-block">
+<pre>// Export data regularly
+function backupOrders() {
+    const orders = orderManager.getOrders();
+    const backup = {
+        timestamp: new Date().toISOString(),
+        orders: orders
+    };
+    
+    const dataStr = JSON.stringify(backup, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    // Save or send to server
+    console.log('Backup created with', orders.length, 'orders');
+}</pre>
+            </div>
+
+            <div class="note">
+                <strong>Important:</strong> Use the "Export CSV" feature in the admin dashboard to create regular backups.
+            </div>
+        </div>
+
+        <!-- MIGRATION & CLEANUP -->
+        <div class="section">
+            <h2>8. Migration & Cleanup</h2>
+
+            <h3>Clear All Orders (Caution!)</h3>
+            <div class="code-block">
+<pre>// Only call with user confirmation
+if (confirm('Delete all orders? This cannot be undone!')) {
+    orderManager.clearAllOrders();
+    alert('All orders have been deleted');
+}</pre>
+            </div>
+
+            <h3>Import Orders from Backup</h3>
+            <div class="code-block">
+<pre>function importOrders(jsonString) {
+    try {
+        const success = orderManager.importFromJSON(jsonString);
+        if (success) {
+            alert('Orders imported successfully!');
+        } else {
+            alert('Invalid JSON format');
+        }
+    } catch (error) {
+        alert('Error importing orders: ' + error.message);
+    }
+}</pre>
+            </div>
+        </div>
+
+        <!-- TROUBLESHOOTING -->
+        <div class="section">
+            <h2>9. Troubleshooting</h2>
+
+            <h3>Orders Not Saving?</h3>
+            <div class="example">
+                <p><strong>Check:</strong></p>
+                <ol>
+                    <li>Browser localStorage is enabled</li>
+                    <li>order-manager.js is loaded</li>
+                    <li>No JavaScript errors in console</li>
+                    <li>Browser storage not full</li>
+                </ol>
+            </div>
+
+            <h3>Form Not Submitting?</h3>
+            <div class="example">
+                <p><strong>Check:</strong></p>
+                <ol>
+                    <li>All required fields are filled</li>
+                    <li>Event listener is properly attached</li>
+                    <li>Form ID matches in HTML and JS</li>
+                    <li>No conflicting JavaScript</li>
+                </ol>
+            </div>
+
+            <h3>Session Lost?</h3>
+            <div class="example">
+                <p><strong>Solution:</strong></p>
+                <ol>
+                    <li>Admin session expires after 24 hours</li>
+                    <li>Clear browser cache if having issues</li>
+                    <li>Log in again to continue</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- SUPPORT & RESOURCES -->
+        <div class="section">
+            <h2>10. Support & Resources</h2>
+
+            <h3>Files Included</h3>
+            <ul>
+                <li><span class="highlight">admin-login.html</span> - Admin login page</li>
+                <li><span class="highlight">admin-dashboard.html</span> - Admin dashboard</li>
+                <li><span class="highlight">admin-panel.js</span> - Dashboard functionality</li>
+                <li><span class="highlight">order-manager.js</span> - Order management API</li>
+                <li><span class="highlight">checkout.html</span> - Customer checkout form</li>
+            </ul>
+
+            <h3>Documentation</h3>
+            <ul>
+                <li><span class="highlight">ADMIN_PANEL_GUIDE.md</span> - Complete user guide</li>
+                <li><span class="highlight">admin-quick-reference.html</span> - Quick reference card</li>
+                <li><span class="highlight">INTEGRATION_GUIDE.html</span> - This file</li>
+            </ul>
+
+            <h3>Contact</h3>
+            <p>For technical support:</p>
+            <ul>
+                <li>Phone: <a href="tel:8110998030">8110998030</a></li>
+                <li>Email: <a href="mailto:gogularasai82@gmail.com">gogularasai82@gmail.com</a></li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Security Warning:</strong> Never expose the admin credentials in client-side code. Keep them secure and change them periodically.
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 CLEANZO | TMG Team</p>
+        <p>Integration Guide v1.0 | Admin Panel System</p>
+    </footer>
+
+</body>
+
+</html>

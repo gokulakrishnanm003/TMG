@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMG - Sri Bhavan Cleaners</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        /* KEEPING YOUR ORIGINAL CSS — UNCHANGED */
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .card {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.6s;
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= LOGIN MODAL ================= -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">User Login</h5>
+                </div>
+                <div class="modal-body">
+                    <input id="username" class="form-control mb-2" placeholder="Username">
+                    <input id="age" type="number" class="form-control mb-2" placeholder="Age">
+                    <select id="gender" class="form-control mb-2">
+                        <option value="">Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                    <input id="address" class="form-control mb-2" placeholder="Address">
+                    <input id="city" class="form-control mb-2" placeholder="City">
+                    <input id="pincode" class="form-control mb-2" placeholder="Pincode">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success w-100" onclick="loginUser()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PROFILE MODAL ================= -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">My Profile</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><b>Name:</b> <span id="pName"></span></p>
+                    <p><b>Age:</b> <span id="pAge"></span></p>
+                    <p><b>Gender:</b> <span id="pGender"></span></p>
+                    <p><b>Address:</b> <span id="pAddress"></span></p>
+                    <p><b>City:</b> <span id="pCity"></span></p>
+                    <p><b>Pincode:</b> <span id="pPincode"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PROTECTED CONTENT ================= -->
+    <div id="mainContent" style="display:none;">
+
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">TMG</a>
+
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+                </ul>
+
+                <button id="openProfileBtn" class="btn btn-light btn-sm me-2">
+                    <i class="fa fa-user"></i> Profile
+                </button>
+
+                <a href="tel:8110998030" class="btn btn-outline-success">
+                    <i class="fa-solid fa-phone"></i> Contact
+                </a>
+            </div>
+        </nav>
+
+
+
+    </div><!-- END mainContent -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        const profileModal = new bootstrap.Modal(document.getElementById('profileModal'));
+        const mainContent = document.getElementById("mainContent");
+
+        function checkLogin() {
+            const user = localStorage.getItem("user");
+            if (!user) {
+                loginModal.show();
+            } else {
+                mainContent.style.display = "block";
+            }
+        }
+
+        function loginUser() {
+            const user = {
+                name: username.value,
+                age: age.value,
+                gender: gender.value,
+                address: address.value,
+                city: city.value,
+                pincode: pincode.value
+            };
+
+            if (Object.values(user).some(v => !v)) {
+                alert("Fill all fields");
+                return;
+            }
+
+            localStorage.setItem("user", JSON.stringify(user));
+            loginModal.hide();
+            mainContent.style.display = "block";
+        }
+
+        document.getElementById("openProfileBtn").onclick = () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) return loginModal.show();
+
+            pName.textContent = user.name;
+            pAge.textContent = user.age;
+            pGender.textContent = user.gender;
+            pAddress.textContent = user.address;
+            pCity.textContent = user.city;
+            pPincode.textContent = user.pincode;
+
+            profileModal.show();
+        };
+
+        function logout() {
+            localStorage.removeItem("user");
+            location.reload();
+        }
+
+
+    </script>
+</body>
+
+</html>

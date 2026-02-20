@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - CLEANZOD</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #11998e;
+      --primary-dark: #004d40;
+      --primary-light: #38ef7d;
+      --gradient-primary: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --glass: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.4);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--gradient-dark);
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    /* Ambient background pulses */
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.2;
+      animation: pulse 10s infinite alternate;
+    }
+
+    body::before {
+      background: var(--primary);
+      top: -100px;
+      left: -100px;
+    }
+
+    body::after {
+      background: var(--primary-light);
+      bottom: -100px;
+      right: -100px;
+      animation-delay: -5s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.1; }
+      100% { transform: scale(1.2) translate(50px, 50px); opacity: 0.2; }
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 440px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      padding: 3rem;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-container img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      padding: 3px;
+      background: white;
+      box-shadow: 0 0 20px rgba(17, 153, 142, 0.2);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .login-header h1 {
+      font-weight: 800;
+      font-size: 2.2rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-header p {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px 12px 45px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(17, 153, 142, 0.1);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 15px -3px rgba(17, 153, 142, 0.3);
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(17, 153, 142, 0.4);
+    }
+
+    .error-alert {
+      background: #fef2f2;
+      color: #b91c1c;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: none;
+      border: 1px solid #fee2e2;
+      text-align: center;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 2rem;
+      color: #94a3b8;
+      font-size: 0.8rem;
+    }
+
+    /* Loading Spinner */
+    .spinner-border {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-width: 0.2em;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <div class="logo-container">
+      <img src="img/Tmglogo.jpg" alt="CLEANZOD">
+    </div>
+
+    <div class="login-header">
+      <h1>Portal Login</h1>
+      <p>Authorized access only</p>
+    </div>
+
+    <div id="errorMessage" class="error-alert"></div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label class="form-label">Username</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user-circle"></i>
+          <input type="text" id="username" class="form-control" placeholder="Admin username" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-login" id="loginBtn">
+        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        <span class="btn-text">Authenticate</span>
+      </button>
+    </form>
+
+    <div class="footer-text">
+       CLEANZOD | Sri Bhavan Groups © 2026
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_USERNAME = "Muthukumar T";
+    const ADMIN_PASSWORD = "Muthu@8110";
+
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const errorMessage = document.getElementById('errorMessage');
+    const loginBtn = document.getElementById('loginBtn');
+    const spinner = loginBtn.querySelector('.spinner-border');
+    const btnText = loginBtn.querySelector('.btn-text');
+
+    // Auto-login check
+    window.addEventListener('load', () => {
+      const adminSession = localStorage.getItem('adminSession');
+      const sessionTime = localStorage.getItem('adminSessionTime');
+      if (adminSession && sessionTime) {
+        const sessionAge = new Date().getTime() - parseInt(sessionTime);
+        if (sessionAge < 24 * 60 * 60 * 1000) {
+          window.location.href = 'admin-dashboard.html';
+        }
+      }
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      errorMessage.style.display = 'none';
+      loginBtn.disabled = true;
+      spinner.style.display = 'inline-block';
+      btnText.textContent = 'Verifying...';
+
+      setTimeout(() => {
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+          localStorage.setItem('adminSession', 'true');
+          localStorage.setItem('adminSessionTime', new Date().getTime().toString());
+          localStorage.setItem('adminUsername', username);
+          window.location.href = 'admin-dashboard.html';
+        } else {
+          errorMessage.textContent = 'Identity check failed. Invalid username or password.';
+          errorMessage.style.display = 'block';
+          passwordInput.value = '';
+          loginBtn.disabled = false;
+          spinner.style.display = 'none';
+          btnText.textContent = 'Authenticate';
+        }
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMG - Shri Bhavan Cleaners</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    .service-hero {
+      background: var(--gradient-dark);
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .service-hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: var(--gradient-primary);
+      filter: blur(120px);
+      opacity: 0.2;
+      border-radius: 50%;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .service-img-wrapper {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .service-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .service-card:hover .service-img-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .care-box {
+      background: var(--gradient-card);
+      padding: 3rem;
+      border-radius: 30px;
+      border: 1px solid rgba(17, 153, 142, 0.1);
+      box-shadow: var(--shadow-md);
+    }
+
+    #mainContent {
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    /* Protection Animation */
+    .protection-wrapper {
+      height: 400px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 8px solid #fff;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .lab-grid {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        radial-gradient(rgba(13, 110, 253, 0.05) 2px, transparent 2px);
+      background-size: 40px 40px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      from { transform: translate(-25%, -25%) rotate(0deg); }
+      to { transform: translate(0, 0) rotate(5deg); }
+    }
+
+    .radar-scan {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, rgba(13, 110, 253, 0.1) 0deg, transparent 90deg);
+      animation: scan 4s linear infinite;
+    }
+
+    .shield-icon-animated {
+      font-size: 7rem;
+      color: #0d6efd;
+      z-index: 10;
+      filter: drop-shadow(0 10px 30px rgba(13, 110, 253, 0.2));
+      animation: shieldPulse 2s ease-in-out infinite;
+    }
+
+    .molecule {
+      position: absolute;
+      color: #0d6efd;
+      opacity: 0.3;
+      font-size: 2rem;
+      z-index: 5;
+    }
+
+    .protection-badge-animated {
+      background: #0d6efd;
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(13, 110, 253, 0.3);
+      z-index: 20;
+      position: absolute;
+      bottom: 2rem;
+      animation: badgePulse 2s infinite ease-in-out;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Support Hub Animation */
+    .support-anim-wrapper {
+      height: 400px;
+      width: 100%;
+      background: #f8fafc;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 8px solid #fff;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    }
+
+    .support-wave {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(40, 167, 69, 0.05) 0%, transparent 70%);
+      animation: supportPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes supportPulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    .floating-support-icon {
+      position: absolute;
+      background: white;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      font-size: 1.5rem;
+      color: #28a745;
+      animation: floatUpSupport 5s infinite ease-in-out;
+    }
+
+    @keyframes floatUpSupport {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="mainContent">
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg glass-nav sticky-top">
+      <div class="container-fluid px-4 px-lg-5">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <div class="cleanzo-logo-wrapper">
+              <div class="brand-bag"><span class="bag-letter">C</span></div>
+              <div class="brand-name"><span>L</span>eanZo</div>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
+                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
+                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
+                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
+                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
+            <li class="nav-item"><a class="nav-link" href="customers.html">Clients</a></li>
+            <li class="nav-item"><a class="nav-link active" href="service.html">Services</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
+                <li><a class="dropdown-item rounded-3" href="aboutus.html">Our Story</a></li>
+                <li><a class="dropdown-item rounded-3" href="contactus.html">Support</a></li>
+                <li><a class="dropdown-item rounded-3" href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-2">
+            <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm rounded-pill">
+              <i class="fa-solid fa-phone me-1"></i> <span>8110998030</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO ================= -->
+    <section class="service-hero">
+      <div class="container">
+        <span class="glass-badge mb-4">EXPERT SOLUTIONS</span>
+        <h1 class="display-3 fw-900 mb-4" style="line-height: 1.1;">Hygiene <br><span class="text-primary-light">Architecture</span></h1>
+        <p class="lead opacity-75 mb-0">High-performance cleaning solutions tailored for professional and domestic excellence.</p>
+      </div>
+    </section>
+
+    <!-- ================= MAIN SERVICE SECTION ================= -->
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <h2 class="section-title text-start mb-4">Cleanzod <span>Promise</span></h2>
+            <p class="lead text-muted mb-4">At <strong>Cleanzod</strong>, we specialize in providing high-quality natural and chemical cleaning solutions tailored for both homes and businesses.</p>
+            <p class="text-muted mb-5">Our services include the production and supply of pure soap oils, floor cleaners, chlorine-based cleaning agents, and hand sanitizers, all formulated to deliver superior cleanliness and hygiene. Each product is crafted with precision to ensure safety, effectiveness, and sustainability. With a commitment to purity and performance, TMG offers cleaning solutions that combine tradition, innovation, and care.</p>
+            <a href="sopeoil.html" class="gradient-btn">EXPLORE PRODUCT LINE</a>
+          </div>
+          <div class="col-lg-6">
+            <div class="protection-wrapper">
+              <div class="lab-grid"></div>
+              <div class="radar-scan"></div>
+              
+              <i class="bi bi-shield-check shield-icon-animated"></i>
+              
+              <!-- Lab Particles -->
+              <div class="molecule" style="top: 15%; left: 15%; animation: floatMolecule 8s infinite;"><i class="bi bi-pipette"></i></div>
+              <div class="molecule" style="top: 20%; right: 20%; animation: floatMolecule 6s infinite reverse;"><i class="bi bi-patch-check"></i></div>
+              <div class="molecule" style="bottom: 25%; left: 25%; animation: floatMolecule 10s infinite;"><i class="bi bi-capsule"></i></div>
+
+              <div class="protection-badge-animated text-center">
+                <h4 class="fw-bold mb-0">99.9% Germ Protection</h4>
+                <p class="small mb-0 opacity-75">Lab-certified formulas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CUSTOMER CARE SECTION ================= -->
+    <section class="py-5 bg-light overflow-hidden">
+      <div class="container py-5">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <div class="care-box position-relative">
+              <div class="bg-primary-light text-dark fw-bold px-4 py-2 rounded-pill position-absolute top-0 start-0 m-4 shadow-sm small">
+                24/7 SUPPORT
+              </div>
+              <div class="support-anim-wrapper mb-4">
+                <div class="support-wave"></div>
+                
+                <!-- Brand Identity in support -->
+                <div class="cleanzo-logo-wrapper" style="transform: scale(1.5);">
+                  <div class="brand-bag"><span class="bag-letter">C</span></div>
+                  <div class="brand-name"><span>L</span>eanZo</div>
+                </div>
+
+                <!-- Icons -->
+                <div class="floating-support-icon" style="top: 20%; left: 15%; animation-delay: 0s;">
+                  <i class="bi bi-headset"></i>
+                </div>
+                <div class="floating-support-icon" style="top: 15%; right: 15%; animation-delay: 1.5s;">
+                  <i class="bi bi-chat-heart"></i>
+                </div>
+                <div class="floating-support-icon" style="bottom: 25%; right: 20%; animation-delay: 0.8s;">
+                  <i class="bi bi-telephone-outbound"></i>
+                </div>
+              </div>
+              <h4 class="fw-bold mb-3">Customer Support</h4>
+              <p class="text-muted small">Our dedicated team is ready to assist with any product inquiries or feedback.</p>
+              <div class="bg-dark text-white p-3 rounded-3 d-flex align-items-center gap-3">
+                <i class="bi bi-headset fs-3 text-primary-light"></i>
+                <div>
+                  <div class="lh-1 mb-1">Direct Line</div>
+                  <div class="fw-bold">+91 81109 98030</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <h2 class="section-title text-start mb-4">Unmatched <span>Assistance</span></h2>
+            <p class="lead text-muted mb-4">Customer satisfaction is at the heart of everything we do. We believe in building relationships, not just transactions.</p>
+            <div class="row g-4 mt-2">
+              <div class="col-md-6">
+                <div class="service-card p-4">
+                  <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 w-fit mb-3"><i class="bi bi-chat-dots fs-4"></i></div>
+                  <h5 class="fw-bold">Clear Communication</h5>
+                  <p class="small text-muted mb-0">We value honest and transparent dialogue with every single client.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-card p-4">
+                  <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3 w-fit mb-3"><i class="bi bi-check-circle fs-4"></i></div>
+                  <h5 class="fw-bold">Quality Standard</h5>
+                  <p class="small text-muted mb-0">Every batch is rigorously tested for the highest level of performance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PILLARS SECTION ================= -->
+    <section class="py-5">
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Service <span>Pillars</span></h2>
+          <p class="text-muted lead">The values that drive our excellence.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="service-card">
+              <div class="service-img-wrapper">
+                <img src="img/ask.jpg" alt="Communication">
+              </div>
+              <div class="p-4 text-center">
+                <h5 class="fw-bold mb-3 text-dark">Communication</h5>
+                <p class="small text-muted mb-4">We listen carefully to your needs and provide reliable responses through all channels.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">READ MORE</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="service-card">
+              <div class="service-img-wrapper">
+                <img src="img/reviews.jpg" alt="Happy Customers">
+              </div>
+              <div class="p-4 text-center">
+                <h5 class="fw-bold mb-3 text-dark">Relationship</h5>
+                <p class="small text-muted mb-4">Building lasting trust through consistent care and positive community feedback.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">READ MORE</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="service-card">
+              <div class="service-img-wrapper">
+                <img src="img/cussays.jpg" alt="Trust">
+              </div>
+              <div class="p-4 text-center">
+                <h5 class="fw-bold mb-3 text-dark">Value Realization</h5>
+                <p class="small text-muted mb-4">Ensuring every product delivers true performance and affordability for your investment.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm rounded-pill px-4">READ MORE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BRAND SUMMARY ================= -->
+    <section class="py-5 bg-dark text-white text-center position-relative overflow-hidden">
+      <div class="container py-5 position-relative z-1">
+        <h2 class="mb-4" style="color: var(--primary-light)">TMG / Sri Bahavan Groups</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="lead text-white-50 mb-0">
+              Behind every success of <strong>TMG – Sri Bhavan Cleaners</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="tmg-footer">
+      <div class="container text-start">
+        <div class="row g-5">
+          <!-- Brand Column -->
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <a href="index.html" class="text-decoration-none">
+              <h3 class="footer-brand-text">CLEANZOD</h3>
+            </a>
+            <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
+              Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Quick Links</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-2">
+              <li><a href="aboutus.html" class="footer-link"><i class="fa fa-chevron-right"></i>Our Story</a></li>
+              <li><a href="bulkpro.html" class="footer-link"><i class="fa fa-chevron-right"></i>Bulk Buy</a></li>
+              <li><a href="service.html" class="footer-link"><i class="fa fa-chevron-right"></i>Services</a></li>
+              <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h6 class="footer-heading">Contact Us</h6>
+            <ul class="list-unstyled mb-0 d-grid gap-3">
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Email</span>
+                  gogularasai82@gmail.com
+                </div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-phone mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Phone</span>
+                  +91 8110998030
+                </div>
+              </li>
+              <li class="d-flex align-items-start text-white-50">
+                <i class="fa fa-map-marker-alt mt-1 me-3 text-primary"></i>
+                <div>
+                  <span class="d-block text-white mb-1">Location</span>
+                  Arasarkulam (North), TN
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter Column -->
+          <div class="col-lg-3 col-md-6">
+            <h6 class="footer-heading">Newsletter</h6>
+            <p class="text-white-50 mb-4">Join 1,000+ cleaning specialists for exclusive updates.</p>
+            <div class="newsletter-box">
+              <input type="email" class="newsletter-input" placeholder="Email address">
+              <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = "0";
+      section.style.transform = "translateY(30px)";
+      section.style.transition = "all 0.8s ease-out";
+      observer.observe(section);
+    });
+  </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html> 

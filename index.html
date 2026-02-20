@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleanzod - Modern Cleaning Solutions</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        /* Marquee pause logic */
+        .cleanzod-ad .marquee.paused {
+            animation-play-state: paused !important;
+        }
+
+        /* Additional Overrides */
+        .premium-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 28px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: var(--gradient-primary);
+            transition: all 0.5s ease;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(17, 153, 142, 0.15);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(17, 153, 142, 0.2);
+        }
+
+        .premium-card:hover::before {
+            height: 100%;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: block;
+            margin-bottom: 3rem;
+        }
+
+        .section-header-wrap {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        #mainContent {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Modern Profile Modal Styles */
+        .profile-glass-content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 32px;
+            overflow: hidden;
+        }
+
+        .profile-header-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        .profile-close-btn {
+            background-color: white;
+            opacity: 1;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            margin-top: -10px;
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 900;
+            box-shadow: 0 15px 35px rgba(17, 153, 142, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-avatar-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 30px;
+            filter: blur(20px);
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .profile-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .info-item {
+            background: rgba(0, 0, 0, 0.03);
+            padding: 12px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(17, 153, 142, 0.05);
+            transform: scale(1.02);
+        }
+
+        .info-item.full-width {
+            grid-column: span 2;
+        }
+
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .info-content label {
+            display: block;
+            margin: 0;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            line-height: 1;
+        }
+
+        .info-content span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .logout-btn-premium {
+            background: #fff;
+            color: #ef4444;
+            border: 2px solid #fee2e2;
+            padding: 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn-premium:hover {
+            background: #fef2f2;
+            border-color: #fca5a5;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.1);
+        }
+
+        /* Modern Form Styles */
+        .modern-form-group {
+            position: relative;
+        }
+
+        .form-input-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 2px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .form-input-wrapper:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(17, 153, 142, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-input-wrapper i {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .form-input-wrapper:focus-within i {
+            color: var(--primary);
+        }
+
+        .form-input-wrapper input, 
+        .form-input-wrapper select {
+            border: none;
+            background: transparent;
+            padding: 12px 0;
+            width: 100%;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark);
+            outline: none;
+        }
+
+        .tiny-text {
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Innovative Account Button */
+        .account-pill-btn {
+            background: white;
+            border: none;
+            padding: 6px 18px 6px 6px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .account-pill-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .account-pill-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(17, 153, 142, 0.2);
+        }
+
+        /* Founder Section Premium Styles */
+        .glow-bg-accent {
+            position: absolute;
+            top: 20%;
+            right: 0%;
+            width: 500px;
+            height: 500px;
+            background: var(--gradient-primary);
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .ls-neg-1 { letter-spacing: -2px; }
+        .fw-900 { font-weight: 950; }
+        .italic { font-style: italic; }
+
+        .founder-quote-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .founder-badge-premium {
+            background: rgba(17, 153, 142, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .founder-badge-premium:hover {
+            background: rgba(17, 153, 142, 0.15);
+            transform: scale(1.02);
+            border-color: rgba(17, 153, 142, 0.3) !important;
+        }
+
+        .founder-visual-stack {
+            position: relative;
+            display: inline-block;
+        }
+
+        .visual-back-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: var(--gradient-primary);
+            filter: blur(60px);
+            opacity: 0.2;
+            z-index: 1;
+            border-radius: 50%;
+        }
+
+        .founder-img-premium {
+            position: relative;
+            z-index: 10;
+            max-width: 80%;
+            transform: rotate(3deg);
+            border: 15px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .founder-img-premium:hover {
+            transform: rotate(0deg) scale(1.05);
+            border-color: rgba(17, 153, 142, 0.2);
+        }
+
+        .founder-logo-glow {
+            position: relative;
+        }
+
+        .founder-logo-glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            filter: blur(15px);
+            opacity: 0.4;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 9999;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            box-shadow: 0 0 15px var(--primary-light);
+            transition: width 0.1s ease-out;
+        }
+
+        /* Global Brand Premium Style */
+        .brand-premium {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 950;
+            font-size: 2.2rem;
+            letter-spacing: -1.5px;
+            color: var(--dark);
+            text-transform: uppercase;
+            line-height: 1;
+            display: inline-block;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+        }
+
+        .brand-premium span {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--dark);
+        }
+
+        /* Footer & Dark Background specific */
+        .footer-brand-premium {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            text-decoration: none !important;
+        }
+
+        .footer-brand-premium span {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar-brand:hover .brand-premium {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+    <!-- Innovative Scroll Progress -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollBar"></div>
+    </div>
+
+    <!-- Cleanzod Advertisement Banner -->
+    <div class="cleanzod-ad text-white">
+        <div class="marquee" id="cleanzodMarquee">
+            <span>✨ ELEVATE YOUR CLEANING EXPERIENCE WITH CLEANZOD ✨</span>
+            <span style="margin: 0 60px;">🌿 ECO-FRIENDLY FORMULAS FOR A SAFER HOME 🌿</span>
+            <span style="margin: 0 60px;">🚀 FAST DELIVERY & UNMATCHED QUALITY 🚀</span>
+            <a href="#productContainer" class="ad-btn py-1">Explore Now</a>
+        </div>
+    </div>    <!-- ================= LOGIN MODAL ================= -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content profile-glass-content border-0 shadow-2xl">
+                <div class="modal-header border-0 pb-0 position-relative">
+                    <div class="profile-header-accent" style="background: var(--gradient-primary); opacity: 0.15;"></div>
+                    <button type="button" class="btn-close profile-close-btn" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-0 text-center">
+                    <div class="profile-avatar-wrapper mb-4">
+                        <div class="profile-avatar-glow" style="background: var(--gradient-primary);"></div>
+                        <div class="profile-avatar" style="background: var(--gradient-primary);">
+                            <i class="bi bi-shield-lock-fill" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    
+                    <h3 class="fw-900 text-dark mb-1">Welcome Back</h3>
+                    <p class="text-muted small mb-4">Please enter your details to access premium features.</p>
+
+                    <div class="modern-form-group mb-3">
+                        <div class="form-input-wrapper">
+                            <i class="bi bi-person text-primary"></i>
+                            <input id="username" type="text" placeholder="Username" required>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <div class="modern-form-group">
+                                <div class="form-input-wrapper">
+                                    <i class="bi bi-calendar-event text-primary"></i>
+                                    <input id="age" type="number" placeholder="Age" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="modern-form-group">
+                                <div class="form-input-wrapper">
+                                    <i class="bi bi-gender-ambiguous text-primary"></i>
+                                    <select id="gender" required>
+                                        <option value="" disabled selected>Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modern-form-group mb-3">
+                        <div class="form-input-wrapper">
+                            <i class="bi bi-phone text-primary"></i>
+                            <input id="number" type="tel" placeholder="Phone Number (10 digits)" required>
+                        </div>
+                    </div>
+
+                    <div class="modern-form-group mb-3">
+                        <div class="form-input-wrapper">
+                            <i class="bi bi-geo-alt text-primary"></i>
+                            <input id="address" type="text" placeholder="Full Address" required>
+                        </div>
+                    </div>
+
+                    <div class="row g-2 mb-4">
+                        <div class="col-8">
+                            <div class="modern-form-group">
+                                <div class="form-input-wrapper">
+                                    <i class="bi bi-building text-primary"></i>
+                                    <input id="city" type="text" placeholder="City" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="modern-form-group">
+                                <div class="form-input-wrapper">
+                                    <i class="bi bi-mailbox text-primary"></i>
+                                    <input id="pincode" type="text" placeholder="Pin" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="gradient-btn w-100 py-3 rounded-pill shadow-lg border-0 fw-bold" onclick="loginUser()">
+                        <span>GET STARTED</span>
+                        <i class="bi bi-arrow-right-short fs-4"></i>
+                    </button>
+                    
+                    <p class="mt-4 mb-0 text-muted tiny-text">By continuing, you agree to our Terms of Service.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================= PROFILE MODAL ================= -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content profile-glass-content border-0 shadow-2xl">
+                <div class="modal-header border-0 pb-0 position-relative">
+                    <div class="profile-header-accent"></div>
+                    <button type="button" class="btn-close profile-close-btn" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-0 text-center">
+                    <!-- User Avatar Section -->
+                    <div class="profile-avatar-wrapper mb-4">
+                        <div class="profile-avatar-glow"></div>
+                        <div class="profile-avatar">
+                            <span id="avatarLetter">U</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="fw-900 text-dark mb-1" id="pNameDisplay">User Name</h3>
+                    <p class="text-primary-emphasis fw-600 small mb-4 opacity-75">CLEANZOD PREMIUM MEMBER</p>
+
+                    <!-- Profile Details Grid -->
+                    <div class="profile-info-grid mb-4">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-person-badge"></i></div>
+                            <div class="info-content">
+                                <label>Age</label>
+                                <span id="pAge">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-gender-ambiguous"></i></div>
+                            <div class="info-content">
+                                <label>Gender</label>
+                                <span id="pGender">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item full-width">
+                            <div class="info-icon"><i class="bi bi-telephone"></i></div>
+                            <div class="info-content">
+                                <label>Contact</label>
+                                <span id="pNumber">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item full-width">
+                            <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
+                            <div class="info-content">
+                                <label>Delivery Address</label>
+                                <span id="pAddress">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-building"></i></div>
+                            <div class="info-content">
+                                <label>City</label>
+                                <span id="pCity">--</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="bi bi-mailbox"></i></div>
+                            <div class="info-content">
+                                <label>Pincode</label>
+                                <span id="pPincode">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions pt-2">
+                        <button class="logout-btn-premium w-100" onclick="logout()">
+                            <span>SIGN OUT</span>
+                            <i class="bi bi-box-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================= CONTENT WRAPPER ================= -->
+    <div id="mainContent">
+        
+        <!-- ================= NAVBAR ================= -->
+        <nav class="navbar navbar-expand-lg glass-nav sticky-top">
+            <div class="container-fluid px-4 px-lg-5">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <span class="brand-premium">CLEAN<span>ZOD</span></span>
+                </a>
+
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
+                            <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
+                                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
+                                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
+                                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
+                                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="customers.html">Clients</a></li>
+                        <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
+                            <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
+                                <li><a class="dropdown-item rounded-3" href="aboutus.html">Our Story</a></li>
+                                <li><a class="dropdown-item rounded-3" href="contactus.html">Support</a></li>
+                                <li><a class="dropdown-item rounded-3" href="faq.html">FAQ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <button id="openProfileBtn" class="account-pill-btn">
+                            <div class="account-pill-icon"><i class="bi bi-person-fill"></i></div>
+                            <span>Account</span>
+                        </button>
+
+                        <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm rounded-pill d-none d-md-flex">
+                            <i class="bi bi-telephone-outbound me-2"></i> <span>8110998030</span>
+                        </a>
+                        <a href="admin-login.html" class="btn btn-link text-danger p-0 ms-3" title="Admin">
+                            <i class="fa fa-lock-open fs-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ================= HERO ================= -->
+        <!-- ================= HERO ================= -->
+        <section class="hero-section">
+            <div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-interval="6000">
+                <div class="carousel-inner h-100">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active h-100">
+                        <div class="hero-bg" style="background-image: url('img/homecleanzomain.jpg');"></div>
+                        <div class="hero-overlay-gradient"></div>
+                        <div class="container hero-content-wrapper position-relative">
+                            <div class="row w-100 align-items-center">
+                                <div class="col-lg-7 text-white">
+                                    <span class="glass-badge">
+                                        <i class="fas fa-certificate text-primary-light"></i>
+                                        PREMIUM HOME CARE
+                                    </span>
+                                    <h1 class="hero-title">
+                                        Powerful <br> <span data-text="Hygiene">Hygiene</span>
+                                    </h1>
+                                    <p class="hero-subtitle">Premium homemade oil products designed for professional cleaning results at your fingertips. Safe, organic, and effective.</p>
+                                    <div class="hero-btn-group">
+                                        <a href="#productContainer" class="gradient-btn hero-btn px-5 py-3 shadow-lg">Browse Shop <i class="fas fa-shopping-bag ms-2"></i></a>
+                                        <a href="aboutus.html" class="btn-hero-glass"><i class="fa fa-play"></i> Our Story</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <div class="hero-showcase">
+                                        <div class="glow-ring"></div>
+                                        <div class="glow-ring glow-ring-2"></div>
+                                        
+                                        <div class="central-brand-badge">
+                                            <div class="cleanzo-logo-wrapper">
+                                               <i class="fa-solid fa-shield-halved" style="font-size: 4rem;color: aqua;"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="feature-tag tag-1">
+                                            <div class="tag-icon"><i class="fas fa-vial"></i></div>
+                                            <span>Low pH Levels</span>
+                                        </div>
+                                        <div class="feature-tag tag-2">
+                                            <div class="tag-icon"><i class="fas fa-shield-virus"></i></div>
+                                            <span>Eco-Safe</span>
+                                        </div>
+                                        <div class="feature-tag tag-3">
+                                            <div class="tag-icon"><i class="fas fa-award"></i></div>
+                                            <span>Premium Grade</span>
+                                        </div>
+                                        <div class="feature-tag tag-4">
+                                            <div class="tag-icon"><i class="fas fa-vial"></i></div>
+                                            <span>Lab Tested</span>
+                                        </div>
+                                        <div class="feature-tag tag-5">
+                                            <div class="tag-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                                            <span>Skin Friendly</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item h-100">
+                        <div class="hero-bg" style="background-image: url('img/cleanzohome.jpeg');"></div>
+                        <div class="hero-overlay-gradient"></div>
+                        <div class="container hero-content-wrapper position-relative">
+                            <div class="row w-100 align-items-center">
+                                <div class="col-lg-7 text-white">
+                                    <span class="glass-badge">
+                                        <i class="fas fa-shield-alt text-primary-light"></i>
+                                        TRUSTED QUALITY
+                                    </span>
+                                    <h1 class="hero-title">
+                                        Pure & <br> <span data-text="Sustainable">Sustainable</span>
+                                    </h1>
+                                    <p class="hero-subtitle">Experience the power of nature combined with industrial-grade efficiency. 100% Organic solutions for a safer home.</p>
+                                    <div class="hero-btn-group">
+                                        <a href="bulkpro.html" class="gradient-btn hero-btn px-5 py-3 shadow-lg">Explore Bulk <i class="fas fa-boxes ms-2"></i></a>
+                                        <a href="service.html" class="btn-hero-glass"><i class="fas fa-tools"></i> Services</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <div class="hero-showcase">
+                                        <div class="glow-ring"></div>
+                                        <div class="glow-ring glow-ring-2"></div>
+
+                                        <div class="central-brand-badge">
+                                            <div class="cleanzo-logo-wrapper">
+                                               <i class="fa-solid fa-rocket" style="font-size: 5rem;color: aqua;"></i>   
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="feature-tag tag-1">
+                                            <div class="tag-icon"><i class="fas fa-tint"></i></div>
+                                            <span>High Pure</span>
+                                        </div>
+                                        <div class="feature-tag tag-2">
+                                            <div class="tag-icon"><i class="fas fa-recycle"></i></div>
+                                            <span>Sustainable</span>
+                                        </div>
+                                        <div class="feature-tag tag-3">
+                                            <div class="tag-icon"><i class="fas fa-check-circle"></i></div>
+                                            <span>Certified</span>
+                                        </div>
+                                        <div class="feature-tag tag-4">
+                                            <div class="tag-icon"><i class="fas fa-bolt"></i></div>
+                                            <span>Instant Action</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <span>Swipe</span>
+                    <div class="mouse"></div>
+                </div>
+
+                <!-- Carousel Indicators/Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style="z-index: 20; width: 5%;">
+                    <span class="carousel-control-prev-icon p-4 rounded-circle bg-white bg-opacity-10 backdrop-blur" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style="z-index: 20; width: 5%;">
+                    <span class="carousel-control-next-icon p-4 rounded-circle bg-white bg-opacity-10 backdrop-blur" aria-hidden="true"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= PRODUCTS ================= -->
+        <section class="py-5" id="productContainer">
+            <div class="container py-5">
+                <div class="section-header-wrap">
+                    <span class="section-subtitle">Our Premium Collection</span>
+                    <h1 class="section-title">Discover Cleanzod</h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <!-- Product 1 -->
+                    <div class="col-md-4 slide-up">
+                        <div class="premium-card">
+                            <span class="badge-premium">Best Seller</span>
+                            <div class="rounded-4 mb-4" style="height: 240px; overflow: hidden;">
+                                <img src="img/homevehicles.jpg" alt="Sope Oil" class="w-100 h-100 object-fit-cover transition-transform">
+                            </div>
+                            <h4 class="fw-bold mb-2">Multi-Purpose Sope Oil</h4>
+                            <p class="text-muted small mb-4">Advanced formula for heavy-duty vehicle and home cleaning. Tough on stains, gentle on surfaces.</p>
+                            <a href="sopeoil.html" class="gradient-btn w-100 py-3 rounded-3 text-center d-block">CHOOSE SIZE</a>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="col-md-4 slide-up">
+                        <div class="premium-card">
+                            <div class="rounded-4 mb-4" style="height: 240px; overflow: hidden;">
+                                <img src="img/toilet.jpg" alt="Phyn Oil" class="w-100 h-100 object-fit-cover transition-transform">
+                            </div>
+                            <h4 class="fw-bold mb-2">Superior Phyn Oil</h4>
+                            <p class="text-muted small mb-4">Professional grade floor and bathroom cleaner with a long-lasting fresh aroma.</p>
+                            <a href="homewash.html" class="gradient-btn w-100 py-3 rounded-3 text-center d-block">BUY NOW</a>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="col-md-4 slide-up">
+                        <div class="premium-card">
+                            <span class="badge-premium">Safety Grade</span>
+                            <div class="rounded-4 mb-4" style="height: 240px; overflow: hidden;">
+                                <img src="img/sanitaizer2.jpg" alt="Sanitizer" class="w-100 h-100 object-fit-cover transition-transform">
+                            </div>
+                            <h4 class="fw-bold mb-2">Ultra Sanitizer</h4>
+                            <p class="text-muted small mb-4">Protect your family with our lab-certified, pH balanced sanitizing solution.</p>
+                            <a href="sopeoil.html" class="gradient-btn w-100 py-3 rounded-3 text-center d-block">ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FOUNDER ================= -->
+        <section class="py-5 bg-dark text-white overflow-hidden position-relative" style="background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%) !important;">
+            <div class="glow-bg-accent"></div>
+            <div class="container py-5">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <span class="section-subtitle text-primary text-start mb-2">Our Visionary</span>
+                        <h2 class="display-3 fw-900 mb-4 ls-neg-1">T. Muthukumar</h2>
+                        <div class="founder-quote-card mb-5">
+                            <i class="bi bi-quote fs-1 text-primary opacity-50 mb-3 d-block"></i>
+                            <p class="lead text-white-50 italic">
+                                "Innovation meets tradition at Cleanzod. We believe in crafting products that are not just effective, but also safe for the community and environment."
+                            </p>
+                        </div>
+                        <div class="founder-badge-premium p-4 rounded-4 border border-white border-opacity-10 d-inline-flex align-items-center">
+                            <div class="founder-logo-glow me-4">
+                                <img src="img/Tmglogo.jpg" alt="Logo" class="rounded-circle shadow-lg" style="width: 70px; height: 70px; border: 3px solid rgba(255,255,255,0.1);">
+                            </div>
+                            <div>
+                                <h5 class="mb-0 text-white fw-bold">Shri Bhavan Groups</h5>
+                                <p class="mb-0 text-primary small fw-semibold ls-1 uppercase">Pioneering in Arasarkulam</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-center position-relative">
+                        <div class="founder-visual-stack">
+                            <div class="visual-back-orb"></div>
+                            <img src="img/Tmglogo.jpg" alt="Brand Image" class="img-fluid rounded-4 shadow-2xl founder-img-premium">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="tmg-footer">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Brand Column -->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                        <a href="index.html" class="text-decoration-none">
+                            <h3 class="footer-brand-premium">CLEAN<span>ZOD</span></h3>
+                        </a>
+                        <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
+                            Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
+                        </p>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Column -->
+                    <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                        <h6 class="footer-heading">Quick Links</h6>
+                        <ul class="list-unstyled mb-0 d-grid gap-2">
+                            <li><a href="aboutus.html" class="footer-link"><i class="fa fa-chevron-right"></i>Our Story</a></li>
+                            <li><a href="bulkpro.html" class="footer-link"><i class="fa fa-chevron-right"></i>Bulk Buy</a></li>
+                            <li><a href="service.html" class="footer-link"><i class="fa fa-chevron-right"></i>Services</a></li>
+                            <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Column -->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h6 class="footer-heading">Contact Us</h6>
+                        <ul class="list-unstyled mb-0 d-grid gap-3">
+                            <li class="d-flex align-items-start text-white-50">
+                                <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
+                                <div>
+                                    <span class="d-block text-white mb-1">Email</span>
+                                    gogularasai82@gmail.com
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start text-white-50">
+                                <i class="fa fa-phone mt-1 me-3 text-primary"></i>
+                                <div>
+                                    <span class="d-block text-white mb-1">Phone</span>
+                                    +91 8110998030
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-start text-white-50">
+                                <i class="fa fa-map-marker-alt mt-1 me-3 text-primary"></i>
+                                <div>
+                                    <span class="d-block text-white mb-1">Location</span>
+                                    Arasarkulam (North), TN
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <h6 class="footer-heading">Newsletter</h6>
+                        <p class="text-white-50 mb-4">Join 1,000+ cleaning specialists for exclusive updates.</p>
+                        <div class="newsletter-box">
+                            <input type="email" class="newsletter-input" placeholder="Email address">
+                            <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                            <a href="#" class="footer-bottom-link">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Marquee pause logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const marquee = document.getElementById('cleanzodMarquee');
+            if (!marquee) return;
+            const duration = 20000; 
+            function loopMarquee() {
+                marquee.classList.remove('paused');
+                setTimeout(() => {
+                    marquee.classList.add('paused');
+                    setTimeout(() => {
+                        marquee.classList.remove('paused');
+                        loopMarquee();
+                    }, 1000);
+                }, duration);
+            }
+            loopMarquee();
+        });
+
+        // 3D Card Effects
+        document.querySelectorAll('.premium-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                const dx = x - xc;
+                const dy = y - yc;
+                card.style.transform = `perspective(1000px) rotateY(${dx/20}deg) rotateX(${-dy/20}deg) translateY(-10px) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+
+
+        // Auth Logic
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+
+        function loginUser() {
+            const user = {
+                name: document.getElementById('username').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                pincode: document.getElementById('pincode').value,
+                phone: document.getElementById('number').value
+            };
+
+            if (Object.values(user).some(v => !v)) {
+                alert("Please fill all fields to continue.");
+                return;
+            }
+
+            const phonePattern = /^\d{10}$/; 
+            if (!phonePattern.test(user.phone)) {
+                alert("Enter a valid 10-digit phone number");
+                return;
+            }
+
+            localStorage.setItem("user", JSON.stringify(user));
+            location.reload();
+        }
+
+        const profileModal = new bootstrap.Modal(document.getElementById('profileModal'));
+
+        document.getElementById("openProfileBtn").onclick = () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) return loginModal.show();
+
+            document.getElementById('pNameDisplay').textContent = user.name;
+            document.getElementById('avatarLetter').textContent = user.name.charAt(0).toUpperCase();
+
+            document.getElementById('pAge').textContent = user.age;
+            document.getElementById('pGender').textContent = user.gender;
+            document.getElementById('pNumber').textContent = user.phone;
+            document.getElementById('pAddress').textContent = user.address;
+            document.getElementById('pCity').textContent = user.city;
+            document.getElementById('pPincode').textContent = user.pincode;
+
+            profileModal.show();
+        };
+
+        function logout() {
+            localStorage.removeItem("user");
+            location.reload();
+        }
+
+        /* Parallax Hero Effect */
+        document.addEventListener('mousemove', (e) => {
+            const elements = document.querySelectorAll('.parallax-el');
+            const x = (window.innerWidth - e.pageX * 2) / 100;
+            const y = (window.innerHeight - e.pageY * 2) / 100;
+
+            elements.forEach(el => {
+                el.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
+
+
+
+        // Scroll Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.slide-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize Hero Carousel
+        const heroCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
+            interval: 6000,
+            ride: 'carousel',
+            pause: 'hover'
+        });
+
+        // Scroll Progress Logic
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollBar").style.width = scrolled + "%";
+        };
+
+    </script>
+</body>
+
+</html>

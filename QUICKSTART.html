@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #5EB09F 0%, #4a9a8b 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #5EB09F;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #5EB09F;
+        }
+        
+        .creds {
+            background: #f0f7f6;
+            border-left: 4px solid #5EB09F;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .creds div {
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .creds strong {
+            color: #5EB09F;
+        }
+        
+        .steps {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .step {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #5EB09F;
+        }
+        
+        .step-num {
+            background: #5EB09F;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .step-content p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .file-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .file-name {
+            color: #5EB09F;
+            font-weight: bold;
+            font-family: monospace;
+            margin-bottom: 5px;
+        }
+        
+        .file-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5EB09F 0%, #4a9a8b 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(94, 176, 159, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #f0f7f6;
+            color: #5EB09F;
+            border: 2px solid #5EB09F;
+        }
+        
+        .btn-secondary:hover {
+            background: #5EB09F;
+            color: white;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            color: #155724;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Admin Panel Quick Start</h1>
+            <p>Get up and running in 5 minutes!</p>
+        </div>
+        
+        <div class="content">
+            <!-- CREDENTIALS -->
+            <div class="section">
+                <h2>🔐 Your Admin Credentials</h2>
+                <div class="creds">
+                    <div><strong>Username:</strong> Muthukumar T</div>
+                    <div><strong>Password:</strong> Muthu@8110</div>
+                </div>
+                <p style="color: #666; margin-top: 15px;">
+                    <strong>⚠️ Keep these credentials secure!</strong> Do not share them via email or messages.
+                </p>
+            </div>
+            
+            <!-- 3-STEP GUIDE -->
+            <div class="section">
+                <h2>⚡ 3 Steps to Get Started</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>Open Admin Login</h3>
+                            <p>Open <strong>admin-login.html</strong> in your web browser</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>Enter Credentials</h3>
+                            <p>Type your username and password from above</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>Start Managing Orders</h3>
+                            <p>Welcome to your admin dashboard! Orders appear here automatically</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SUCCESS MESSAGE -->
+            <div class="success">
+                <strong>✅ System Ready!</strong> Your admin panel is fully set up and ready to use. 
+                All customer orders will appear here automatically.
+            </div>
+            
+            <!-- MAIN FILES -->
+            <div class="section">
+                <h2>📁 Main Files You'll Use</h2>
+                <div class="file-list">
+                    <div class="file-item">
+                        <div class="file-name">admin-login.html</div>
+                        <div class="file-desc">👉 Click here to login to admin panel</div>
+                    </div>
+                    <div class="file-item">
+                        <div class="file-name">checkout.html</div>
+                        <div class="file-desc">Customer order form</div>
+                    </div>
+                    <div class="file-item">
+                        <div class="file-name">admin-quick-reference.html</div>
+                        <div class="file-desc">Printable quick guide</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- QUICK ACTIONS -->
+            <div class="section">
+                <h2>🎯 Dashboard Quick Actions</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">🔍</div>
+                        <div class="step-content">
+                            <h3>Search Orders</h3>
+                            <p>Find orders by customer name, email, phone, or order ID</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-num">✏️</div>
+                        <div class="step-content">
+                            <h3>Update Status</h3>
+                            <p>Mark orders as Pending → Completed → Cancelled</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-num">📊</div>
+                        <div class="step-content">
+                            <h3>View Statistics</h3>
+                            <p>See total orders, revenue, and pending count</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-num">📥</div>
+                        <div class="step-content">
+                            <h3>Export Orders</h3>
+                            <p>Download all orders as Excel CSV file</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- IMPORTANT REMINDER -->
+            <div class="highlight">
+                <strong>💡 Important:</strong> All files must be in the same folder as your website. 
+                Keep them together: admin-login.html, admin-dashboard.html, admin-panel.js, order-manager.js, etc.
+            </div>
+            
+            <!-- ACTION BUTTONS -->
+            <div class="section">
+                <h2>🚀 Get Started Now</h2>
+                <div class="buttons">
+                    <a href="admin-login.html" class="btn btn-primary">Go to Admin Login</a>
+                    <a href="checkout.html" class="btn btn-secondary">View Order Form</a>
+                </div>
+            </div>
+            
+            <!-- SUPPORT -->
+            <div class="section">
+                <h2>📞 Need Help?</h2>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                    <p style="margin-bottom: 10px;"><strong>Quick Reference:</strong></p>
+                    <p>📄 Open <strong>admin-quick-reference.html</strong> for printable guide</p>
+                    <p>📖 Read <strong>ADMIN_PANEL_GUIDE.md</strong> for complete manual</p>
+                    <p style="margin-top: 15px; color: #666;">
+                        <strong>Phone:</strong> 8110998030<br>
+                        <strong>Email:</strong> gogularasai82@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>✅ Admin Panel System v1.0 | TMG - Sri Bhavan Cleaners</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">All files created: January 25, 2026</p>
+        </div>
+    </div>
+</body>
+</html>
