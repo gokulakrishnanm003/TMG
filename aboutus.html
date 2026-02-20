@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TMG - Shri Bhavan Cleaners</title>
+  <title>Our Story â€” LeanZo | Sri Bhavan Groups</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -14,191 +14,238 @@
 
   <!-- Font Awesome & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn   .jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="index.css">
 
   <style>
-    .about-hero {
-      background: var(--gradient-dark);
-      padding: 120px 0 80px;
+    :root {
+      --ab-green: #11998e;
+      --ab-green-light: #38ef7d;
+      --ab-dark: #0a0f1e;
+      --ab-darker: #060b18;
+      --ab-card: rgba(255,255,255,0.04);
+      --ab-border: rgba(255,255,255,0.08);
+      --ab-dim: rgba(255,255,255,0.55);
+    }
+
+    /* â”€â”€ HERO â”€â”€ */
+    .ab-hero {
+      min-height: 100vh;
+      background: var(--ab-darker);
       position: relative;
-      overflow: hidden;
-      color: white;
-    }
-
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: -100px;
-      width: 400px;
-      height: 400px;
-      background: var(--gradient-primary);
-      filter: blur(120px);
-      opacity: 0.2;
-      border-radius: 50%;
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 30px;
-      padding: 3rem;
-      transition: all 0.4s ease;
-    }
-
-    .glass-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .team-card {
-      background: var(--white);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      height: 100%;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .team-card:hover {
-      transform: translateY(-15px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .team-img-wrapper {
-      position: relative;
-      height: 300px;
-      overflow: hidden;
-    }
-
-    .team-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .team-card:hover .team-img-wrapper img {
-      transform: scale(1.1);
-    }
-
-    .team-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      padding: 20px;
-      color: white;
-    }
-
-    .stat-box {
-      background: var(--gradient-card);
-      padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
-      border: 1px solid rgba(17, 153, 142, 0.1);
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Motto Animation Styles */
-    .motto-animation-container {
-      height: 500px;
-      width: 100%;
-      background: #0f172a; /* Dark sleek background */
-      position: relative;
-      overflow: hidden;
       display: flex;
       align-items: center;
-      justify-content: center;
+      overflow: hidden;
     }
-
-    .liquid-orb {
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
-      animation: liquidMorph 12s ease-in-out infinite;
-      filter: blur(2px);
-      box-shadow: 0 0 80px rgba(56, 239, 125, 0.4);
-      opacity: 0.6;
+    .ab-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(17,153,142,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,153,142,.07) 1px, transparent 1px);
+      background-size: 60px 60px;
     }
-
-    @keyframes liquidMorph {
-      0%, 100% { border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%; transform: rotate(0deg) scale(1); }
-      33% { border-radius: 60% 40% 40% 60% / 30% 60% 40% 70%; transform: rotate(120deg) scale(1.1); }
-      66% { border-radius: 50% 50% 20% 80% / 80% 20% 80% 20%; transform: rotate(240deg) scale(0.9); }
+    .ab-glow {
+      position: absolute; border-radius: 50%;
+      filter: blur(120px); pointer-events: none;
     }
+    .ab-glow.g1 { width:600px;height:600px; background:radial-gradient(circle,rgba(17,153,142,.25),transparent 70%); top:-150px;left:-100px; }
+    .ab-glow.g2 { width:400px;height:400px; background:radial-gradient(circle,rgba(56,239,125,.15),transparent 70%); bottom:-100px;right:0; }
 
-    .bubble-particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: floatUp 6s infinite linear;
+    .ab-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(17,153,142,.12); border:1px solid rgba(17,153,142,.3);
+      color:#38ef7d; padding:6px 18px; border-radius:100px;
+      font-size:.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      margin-bottom:1.8rem;
     }
+    .ab-badge .dot { width:6px;height:6px;background:#38ef7d;border-radius:50%;animation:abBlink 1.5s infinite; }
+    @keyframes abBlink { 0%,100%{opacity:1}50%{opacity:0} }
 
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0); opacity: 0; }
-      20% { opacity: 0.4; }
-      80% { opacity: 0.4; }
-      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    .ab-hero h1 {
+      font-size: clamp(2.6rem,6vw,5.2rem);
+      font-weight: 900; line-height: 1.05; color: #fff;
+      font-family: 'Poppins', sans-serif;
     }
-
-    .ls-2 { letter-spacing: 2px; }
-
-    /* Splash Animation */
-    .splash-animate {
-      animation: liquidBreathe 8s ease-in-out infinite;
-      transform-origin: center;
-      mix-blend-mode: darken; /* Better for merging non-pure white backgrounds */
-      filter: brightness(1.05) contrast(1.2); /* Forces almost-white to pure white and clears the background */
+    .ab-hero h1 em {
+      font-style:normal;
+      background:linear-gradient(135deg,#11998e,#38ef7d);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
+    .ab-hero-sub { color:var(--ab-dim); font-size:1.05rem; line-height:1.8; max-width:520px; }
 
-    @keyframes liquidBreathe {
-      0%, 100% { transform: scale(1) translateY(0); }
-      50% { transform: scale(1.05) translateY(-10px); }
+    .ab-btn-primary {
+      background:linear-gradient(135deg,#11998e,#38ef7d); color:#fff;
+      border:none; padding:14px 32px; border-radius:100px;
+      font-weight:700; font-size:.9rem; text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px; transition:all .3s;
     }
+    .ab-btn-primary:hover { transform:translateY(-3px); box-shadow:0 15px 40px rgba(17,153,142,.4); color:#fff; }
+    .ab-btn-ghost {
+      background:transparent; color:rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.2); padding:14px 32px;
+      border-radius:100px; font-weight:600; font-size:.9rem;
+      text-decoration:none; transition:all .3s;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .ab-btn-ghost:hover { background:rgba(255,255,255,.07); color:#fff; border-color:rgba(255,255,255,.4); }
 
+    /* Hero card */
+    .ab-hero-card {
+      background:var(--ab-card); border:1px solid var(--ab-border);
+      backdrop-filter:blur(20px); border-radius:28px; padding:2.5rem;
+      position:relative; overflow:hidden;
+    }
+    .ab-hero-card::before {
+      content:''; position:absolute; top:0;left:0;right:0; height:2px;
+      background:linear-gradient(90deg,transparent,#11998e,#38ef7d,transparent);
+    }
+    .ab-logo-ring {
+      width:120px;height:120px; border-radius:50%;
+      background:linear-gradient(135deg,rgba(17,153,142,.2),rgba(56,239,125,.1));
+      border:1px solid rgba(17,153,142,.3);
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 1.5rem; position:relative;
+    }
+    .ab-logo-ring::before {
+      content:''; position:absolute; inset:-6px; border-radius:50%;
+      border:1px dashed rgba(17,153,142,.25);
+      animation:abSpin 12s linear infinite;
+    }
+    @keyframes abSpin { to{transform:rotate(360deg)} }
+
+    .ab-pill {
+      display:flex; align-items:center; gap:10px;
+      background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
+      border-radius:14px; padding:12px 16px; margin-bottom:10px;
+    }
+    .ab-pill .pi { width:36px;height:36px; background:linear-gradient(135deg,#11998e22,#38ef7d22); border-radius:10px; display:flex;align-items:center;justify-content:center; color:#38ef7d; font-size:.85rem; }
+    .ab-pill .pv { font-size:1.15rem;font-weight:800;color:#fff; }
+    .ab-pill .pl { font-size:.7rem;color:var(--ab-dim);margin-top:-2px; }
+
+    .ab-dot-float {
+      position:absolute; border-radius:50%;
+      background:linear-gradient(135deg,#11998e,#38ef7d);
+      opacity:.45; animation:abFloat 6s ease-in-out infinite;
+    }
+    @keyframes abFloat { 0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)} }
+
+    /* â”€â”€ STATS â”€â”€ */
+    .ab-stats { background:#0d1526; border-top:1px solid var(--ab-border); border-bottom:1px solid var(--ab-border); padding:70px 0; }
+    .ab-stat-num {
+      font-size:clamp(2rem,4vw,3rem); font-weight:900;
+      background:linear-gradient(135deg,#11998e,#38ef7d);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      font-family:'Poppins',sans-serif; line-height:1;
+    }
+    .ab-stat-label { color:var(--ab-dim); font-size:.78rem; font-weight:600; margin-top:6px; letter-spacing:1.5px; text-transform:uppercase; }
+
+    /* â”€â”€ STORY â”€â”€ */
+    .ab-story { background:var(--ab-dark); padding:120px 0; }
+    .ab-label { font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#38ef7d;margin-bottom:.8rem;display:block; }
+    .ab-title { font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1.15;font-family:'Poppins',sans-serif;margin-bottom:1.2rem; }
+    .ab-title span { background:linear-gradient(135deg,#11998e,#38ef7d);-webkit-background-clip:text;-webkit-text-fill-color:transparent; }
+    .ab-body { color:var(--ab-dim);line-height:1.9;font-size:.98rem; }
+
+    .ab-img-wrap { position:relative; }
+    .ab-img-wrap img { width:100%;border-radius:24px;object-fit:cover;display:block;aspect-ratio:4/5; }
+    .ab-img-badge {
+      position:absolute; bottom:-20px; right:-20px;
+      background:linear-gradient(135deg,#11998e,#38ef7d);
+      color:#fff; padding:20px 26px; border-radius:20px; text-align:center;
+      font-weight:800; box-shadow:0 20px 50px rgba(17,153,142,.4);
+    }
+    .ab-img-badge .big { font-size:2rem;line-height:1; }
+    .ab-img-badge .sm { font-size:.68rem;opacity:.85;letter-spacing:1px; }
+
+    .ab-checks { list-style:none;padding:0;margin:0; }
+    .ab-checks li { display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;color:var(--ab-dim);font-size:.93rem;line-height:1.6; }
+    .ab-checks li .ck { flex-shrink:0;width:22px;height:22px;background:linear-gradient(135deg,#11998e22,#38ef7d22);border:1px solid #38ef7d44;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#38ef7d;font-size:.6rem;margin-top:2px; }
+
+    /* â”€â”€ TIMELINE â”€â”€ */
+    .ab-timeline { background:var(--ab-darker); padding:120px 0; }
+    .tl-wrap { position:relative; padding-left:38px; }
+    .tl-wrap::before { content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#11998e,#38ef7d,transparent); }
+    .tl-item { position:relative;margin-bottom:46px;opacity:0;transform:translateX(-20px);transition:all .6s ease; }
+    .tl-item.visible { opacity:1;transform:translateX(0); }
+    .tl-dot { position:absolute;left:-47px;top:4px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#11998e,#38ef7d);box-shadow:0 0 0 4px rgba(17,153,142,.2); }
+    .tl-year { font-size:.7rem;font-weight:700;letter-spacing:2px;color:#38ef7d;text-transform:uppercase;margin-bottom:5px; }
+    .tl-ttl { font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:7px; }
+    .tl-desc { color:var(--ab-dim);font-size:.88rem;line-height:1.7; }
+
+    /* â”€â”€ VALUES â”€â”€ */
+    .ab-values { background:var(--ab-dark); padding:120px 0; }
+    .val-card {
+      background:var(--ab-card); border:1px solid var(--ab-border);
+      border-radius:22px; padding:2.2rem 1.8rem; height:100%;
+      position:relative; overflow:hidden; transition:all .4s;
+    }
+    .val-card::before { content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#11998e,#38ef7d);transform:scaleX(0);transition:transform .4s;transform-origin:left; }
+    .val-card:hover { border-color:rgba(17,153,142,.3);background:rgba(17,153,142,.05);transform:translateY(-8px); }
+    .val-card:hover::before { transform:scaleX(1); }
+    .val-ico { width:58px;height:58px;background:linear-gradient(135deg,rgba(17,153,142,.15),rgba(56,239,125,.1));border:1px solid rgba(17,153,142,.25);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:#38ef7d;margin-bottom:1.3rem; }
+    .val-ttl { color:#fff;font-weight:700;font-size:1rem;margin-bottom:.65rem; }
+    .val-desc { color:var(--ab-dim);font-size:.88rem;line-height:1.7; }
+
+    /* â”€â”€ TEAM â”€â”€ */
+    .ab-team { background:var(--ab-darker); padding:120px 0; }
+    .tm-card { background:var(--ab-card);border:1px solid var(--ab-border);border-radius:26px;overflow:hidden;height:100%;transition:all .5s cubic-bezier(.34,1.56,.64,1);position:relative; }
+    .tm-card:hover { transform:translateY(-12px);border-color:rgba(17,153,142,.35);box-shadow:0 30px 60px rgba(0,0,0,.4); }
+    .tm-img { position:relative;height:270px;overflow:hidden;background:linear-gradient(135deg,#0d2b27,#0a1628); }
+    .tm-img img { width:100%;height:100%;object-fit:cover;transition:transform .6s ease; }
+    .tm-card:hover .tm-img img { transform:scale(1.08); }
+    .tm-img-ov { position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,30,.95) 0%,rgba(10,15,30,.15) 60%,transparent 100%); }
+    .tm-role { position:absolute;top:16px;right:16px;background:rgba(17,153,142,.2);border:1px solid rgba(17,153,142,.4);color:#38ef7d;font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 11px;border-radius:100px; }
+    .tm-body { padding:1.4rem 1.6rem 1.7rem; }
+    .tm-name { color:#fff;font-weight:800;font-size:1.05rem;margin-bottom:3px; }
+    .tm-pos { color:#38ef7d;font-size:.74rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.85rem; }
+    .tm-bio { color:var(--ab-dim);font-size:.86rem;line-height:1.7;margin-bottom:1.1rem; }
+    .tm-socials { display:flex;gap:7px; }
+    .tm-soc { width:33px;height:33px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--ab-dim);font-size:.78rem;text-decoration:none;transition:all .3s; }
+    .tm-soc:hover { background:rgba(17,153,142,.2);border-color:rgba(17,153,142,.4);color:#38ef7d; }
+
+    /* â”€â”€ CTA â”€â”€ */
+    .ab-cta { background:var(--ab-dark); padding:120px 0; }
+    .ab-cta-box {
+      background:linear-gradient(135deg,rgba(17,153,142,.08),rgba(56,239,125,.04));
+      border:1px solid rgba(17,153,142,.2); border-radius:30px;
+      padding:70px 50px; text-align:center; position:relative; overflow:hidden;
+    }
+    .ab-cta-box::before { content:'';position:absolute;top:-1px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,#11998e,#38ef7d,transparent); }
+    .ab-cta-box::after { content:'';position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(17,153,142,.1),transparent 70%);border-radius:50%; }
+    .ab-cta-ttl { font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:#fff;font-family:'Poppins',sans-serif;margin-bottom:.9rem; }
+    .ab-cta-ttl span { background:linear-gradient(135deg,#11998e,#38ef7d);-webkit-background-clip:text;-webkit-text-fill-color:transparent; }
+    .ab-cta-sub { color:var(--ab-dim);font-size:.98rem;line-height:1.8;max-width:480px;margin:0 auto 2rem; }
+
+    /* â”€â”€ REVEAL â”€â”€ */
+    .reveal { opacity:0;transform:translateY(38px);transition:all .8s ease; }
+    .reveal.visible { opacity:1;transform:translateY(0); }
   </style>
 </head>
 
-<body>
+<body style="background:var(--ab-darker)">
 
   <div id="mainContent">
-    <!-- ================= NAVBAR ================= -->
+
+    <!-- â•â•â• NAVBAR â•â•â• -->
     <nav class="navbar navbar-expand-lg glass-nav sticky-top">
       <div class="container-fluid px-4 px-lg-5">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
           <div class="cleanzo-logo-wrapper">
-              <div class="brand-bag"><span class="bag-letter">C</span></div>
-              <div class="brand-name"><span>L</span>eanZo</div>
+            <div class="brand-bag"><span class="bag-letter">C</span></div>
+            <div class="brand-name"><span>L</span>eanZo</div>
           </div>
         </a>
-
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarContent">
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
-              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3">
                 <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
                 <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
                 <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
@@ -209,8 +256,8 @@
             <li class="nav-item"><a class="nav-link" href="customers.html">Clients</a></li>
             <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link active dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
-              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
+              <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown">About</a>
+              <ul class="dropdown-menu border-0 shadow-lg p-3">
                 <li><a class="dropdown-item active rounded-3" href="aboutus.html">Our Story</a></li>
                 <li><a class="dropdown-item rounded-3" href="contactus.html">Support</a></li>
                 <li><a class="dropdown-item rounded-3" href="faq.html">FAQ</a></li>
@@ -226,226 +273,262 @@
       </div>
     </nav>
 
-    <!-- ================= HERO ================= -->
-    <section class="about-hero">
+    <!-- â•â•â• HERO â•â•â• -->
+    <section class="ab-hero">
+      <div class="ab-hero-grid"></div>
+      <div class="ab-glow g1"></div>
+      <div class="ab-glow g2"></div>
+      <div class="ab-dot-float" style="width:8px;height:8px;top:22%;left:7%;animation-delay:0s"></div>
+      <div class="ab-dot-float" style="width:5px;height:5px;top:62%;left:4%;animation-delay:2s"></div>
+      <div class="ab-dot-float" style="width:10px;height:10px;top:78%;left:16%;animation-delay:1s"></div>
+      <div class="ab-dot-float" style="width:6px;height:6px;top:35%;right:9%;animation-delay:3s"></div>
+      <div class="container position-relative" style="z-index:2">
+        <div class="row align-items-center g-5 py-5">
+          <div class="col-lg-6">
+            <div class="ab-badge"><span class="dot"></span> EST. 1998 Â· SRI BHAVAN GROUPS</div>
+            <h1>Crafting<br><em>Purity</em> Since<br>1998</h1>
+            <p class="ab-hero-sub mt-4 mb-5">From a single workshop in Tamil Nadu to a trusted cleaning brand across South India â€” CLEANZOD is where tradition meets modern chemistry.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#story" class="ab-btn-primary"><i class="fa fa-book-open"></i> Our Story</a>
+              <a href="service.html" class="ab-btn-ghost"><i class="fa fa-arrow-right"></i> Explore Services</a>
+            </div>
+          </div>
+          <div class="col-lg-6 d-none d-lg-block">
+            <div class="ab-hero-card">
+              <div class="ab-logo-ring">
+                <div class="cleanzo-logo-wrapper" style="transform:scale(.82)">
+                  <div class="brand-bag"><span class="bag-letter">C</span></div>
+                  <div class="brand-name" style="color:#fff!important"><span>L</span>eanZo</div>
+                </div>
+              </div>
+              <div class="text-center mb-4">
+                <h4 class="text-white fw-800 mb-1">Sri Bhavan Groups</h4>
+                <p style="color:var(--ab-dim);font-size:.78rem;letter-spacing:2px;text-transform:uppercase">Established 1998</p>
+              </div>
+              <div>
+                <div class="ab-pill">
+                  <div class="pi"><i class="fa fa-users"></i></div>
+                  <div><div class="pv">10,000+</div><div class="pl">Happy Clients Served</div></div>
+                </div>
+                <div class="ab-pill">
+                  <div class="pi"><i class="fa fa-flask"></i></div>
+                  <div><div class="pv">20+ Products</div><div class="pl">Cleaning Product Range</div></div>
+                </div>
+                <div class="ab-pill">
+                  <div class="pi"><i class="fa fa-map-marker-alt"></i></div>
+                  <div><div class="pv">Pan South India</div><div class="pl">Distribution Network</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• STATS â•â•â• -->
+    <section class="ab-stats">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
-            <span class="glass-badge mb-4">OUR JOURNEY</span>
-            <h1 class="display-3 fw-900 mb-4" style="line-height: 1.1;">Revolutionizing <br><span class="text-primary-light">Cleaning Standards</span></h1>
-            <p class="lead opacity-75 mb-5">From humble beginnings to a trusted global name, Cleanzod is redefining purity through innovation and tradition.</p>
-            <div class="d-flex gap-3">
-              <a href="#story" class="gradient-btn">READ OUR STORY</a>
-              <a href="service.html" class="btn btn-outline-light rounded-pill px-4 py-2">OUR SERVICES</a>
-            </div>
+        <div class="row justify-content-center row-cols-2 row-cols-md-4 gy-4">
+          <div class="col text-center">
+            <div class="ab-stat-num counter" data-target="25" data-suffix="+">0</div>
+            <div class="ab-stat-label">Years of Excellence</div>
           </div>
-          <div class="col-lg-5 d-none d-lg-block">
-            <div class="glass-card text-center">
-              <div class="cleanzo-logo-wrapper mb-4" style="transform: scale(1.5);">
-                <div class="brand-bag"><span class="bag-letter">C</span></div>
-                <div class="brand-name" style="color: white !important;"><span>L</span>eanZo</div>
-              </div>
-              <h4 class="mt-5">Sri Bhavan Groups</h4>
-              <p class="small opacity-50 mb-0">Established 1998</p>
-            </div>
+          <div class="col text-center">
+            <div class="ab-stat-num counter" data-target="10" data-suffix="K+">0</div>
+            <div class="ab-stat-label">Happy Customers</div>
+          </div>
+          <div class="col text-center">
+            <div class="ab-stat-num counter" data-target="20" data-suffix="+">0</div>
+            <div class="ab-stat-label">Product Variants</div>
+          </div>
+          <div class="col text-center">
+            <div class="ab-stat-num counter" data-target="5" data-suffix="+">0</div>
+            <div class="ab-stat-label">States Covered</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= STORY SECTION ================= -->
-    <section class="py-5" id="story">
-      <div class="container py-5">
+    <!-- â•â•â• STORY â•â•â• -->
+    <section class="ab-story" id="story">
+      <div class="container">
         <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <div class="position-relative">
-              <img src="logo/oil2.webp" alt="Cleanzod Products" class="img-fluid rounded-4 splash-animate">
+          <div class="col-lg-5 reveal">
+            <div class="ab-img-wrap">
+              <img src="logo/oil2.webp" alt="Cleanzod Products">
+              <div class="ab-img-badge">
+                <div class="big">25+</div>
+                <div class="sm">YEARS OF PURITY</div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <h2 class="section-title text-start mb-4">About <span>Cleanzod</span></h2>
-            <p class="lead text-muted mb-4"><strong>CLEANZOD</strong> is a trusted name in natural cleaning, oil production, and agricultural products. With years of dedication and a passion for purity, we bring nature’s finest creations into every home and business.</p>
-            <p class="text-muted mb-5">Our range includes handmade soaps, pure oils, and farm-fresh produce — all crafted with care to ensure health, quality, and sustainability. At TMG, tradition meets innovation, creating products that reflect our values of honesty and excellence. We believe in transparency and the power of nature to provide superior cleaning results.</p>
-            <div class="row g-4">
-              <div class="col-6">
-                <div class="stat-box">
-                  <div class="stat-number">25+</div>
-                  <div class="small text-muted">Years Experience</div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="stat-box">
-                  <div class="stat-number">10k+</div>
-                  <div class="small text-muted">Happy Clients</div>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-7 reveal">
+            <span class="ab-label">Who We Are</span>
+            <h2 class="ab-title">Built on <span>Trust</span>,<br>Powered by Nature</h2>
+            <p class="ab-body mb-4"><strong style="color:#fff">CLEANZOD</strong> is a trusted name in natural cleaning, oil production, and agricultural products. With years of dedication and a passion for purity, we bring nature's finest creations into every home and business across South India.</p>
+            <p class="ab-body mb-5">Our range includes handmade soaps, pure oils, and farm-fresh produce â€” all crafted with care to ensure health, quality, and sustainability. Tradition meets innovation, creating products that reflect our values of honesty and excellence.</p>
+            <ul class="ab-checks">
+              <li><span class="ck"><i class="fa fa-check"></i></span>ISO-aligned quality control on every batch produced</li>
+              <li><span class="ck"><i class="fa fa-check"></i></span>100% natural ingredients sourced from trusted local farms</li>
+              <li><span class="ck"><i class="fa fa-check"></i></span>Eco-friendly packaging with minimal environmental footprint</li>
+              <li><span class="ck"><i class="fa fa-check"></i></span>Wholesale & bulk supply available for dealers and retailers</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= MOTTO SECTION ================= -->
-    <section class="py-5 bg-light overflow-hidden">
-      <div class="container py-5">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6 order-lg-2">
-            <div class="motto-animation-container rounded-4 shadow-lg position-relative">
-              <div class="liquid-orb"></div>
-              
-              <!-- Floating Particles -->
-              <div class="bubble-particle" style="width: 20px; height: 20px; left: 10%; animation-delay: 0s;"></div>
-              <div class="bubble-particle" style="width: 15px; height: 15px; left: 30%; animation-delay: 2s;"></div>
-              <div class="bubble-particle" style="width: 25px; height: 25px; left: 60%; animation-delay: 1s;"></div>
-              <div class="bubble-particle" style="width: 30px; height: 30px; left: 85%; animation-delay: 3.5s;"></div>
-              <div class="bubble-particle" style="width: 18px; height: 18px; left: 45%; animation-delay: 5s;"></div>
-
-              <div class="position-absolute top-50 start-50 translate-middle text-center w-100 px-4" style="z-index: 10;">
-                <div class="bg-white p-2 rounded-circle shadow-lg mb-4 mx-auto" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; animation: pulseGlow 2s infinite;">
-                  <i class="fa fa-quote-left text-primary fs-3"></i>
-                </div>
-                <h3 class="text-white fw-900 ls-2 mb-3" style="font-family: 'Poppins', sans-serif;">TO BUILD A STRONG COMMUNITY</h3>
-                <p class="text-white-50 small mb-0 fw-bold">CLEANZO ALWAYS WELCOMES DEALERS FOR WHOLESALE PARTNERSHIPS AND VALUES</p>
-              </div>
-              
-              <style>
-                @keyframes pulseGlow {
-                  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-                  70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
-                  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-                }
-              </style>
-            </div>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <h2 class="section-title text-start mb-4">Our <span>Motto</span></h2>
-            <p class="lead text-muted mb-4">At CLEANZOD, our mission is simple — to deliver purity, quality, and trust through every product. We bridge the gap between farm freshness and industrial efficiency.</p>
-            <div class="d-grid gap-4 mt-5">
-              <div class="d-flex gap-4">
-                <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-3 p-3 text-primary h-100">
-                  <i class="fa fa-leaf fs-3"></i>
-                </div>
-                <div>
-                  <h5 class="fw-bold">Sustainability First</h5>
-                  <p class="text-muted small mb-0">Eco-friendly processes that respect the environment and ensure a greener future.</p>
-                </div>
-              </div>
-              <div class="d-flex gap-4">
-                <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-3 p-3 text-primary h-100">
-                  <i class="fa fa-heart fs-3"></i>
-                </div>
-                <div>
-                  <h5 class="fw-bold">Customer Purity</h5>
-                  <p class="text-muted small mb-0">Uncompromising quality in every drop, ensuring safety for families and businesses alike.</p>
-                </div>
-              </div>
-              <div class="d-flex gap-4">
-                <div class="flex-shrink-0 bg-primary bg-opacity-10 rounded-3 p-3 text-primary h-100">
-                  <i class="fa fa-shield-alt fs-3"></i>
-                </div>
-                <div>
-                  <h5 class="fw-bold">Trusted Foundation</h5>
-                  <p class="text-muted small mb-0">Building long-lasting relationships through honesty and transparent business practices.</p>
-                </div>
-              </div>
-            </div>
+    <!-- â•â•â• TIMELINE â•â•â• -->
+    <section class="ab-timeline">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-6 text-center reveal">
+            <span class="ab-label">Our Journey</span>
+            <h2 class="ab-title">Milestones That <span>Shaped Us</span></h2>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ================= TEAM SECTION ================= -->
-    <section class="py-5">
-      <div class="container py-5">
-        <div class="text-center mb-5">
-          <h2 class="section-title">Meet Our <span>Team</span></h2>
-          <p class="text-muted lead">The visionaries behind Sri Bhavan Groups.</p>
-        </div>
-        <div class="row g-4 justify-content-center">
-          <!-- Founder 1 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="team-card">
-              <div class="team-img-wrapper">
-                <img src="logo/tmg logo.png" alt="Thangavel">
-                <div class="team-overlay">
-                  <h4 class="mb-0">Thangavel</h4>
-                  <p class="small mb-0">Managing Director</p>
-                </div>
-              </div>
-              <div class="p-4">
-                <p class="text-muted small mb-4">Founding seed of TMG’s soap and oil business, nurturing its growth with vision, dedication, and integrity.</p>
-                <div class="d-flex gap-2">
-                  <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Founder 2 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="team-card">
-              <div class="team-img-wrapper">
-                <img src="img/tm.png" alt="Muthukumar T">
-                <div class="team-overlay">
-                  <h4 class="mb-0">Muthukumar T & Sutha M</h4>
-                  <p class="small mb-0">Visionary Founders</p>
-                </div>
-              </div>
-              <div class="p-4">
-                <p class="text-muted small mb-4">Guiding the company with innovation and integrity. Their leadership built TMG into a trusted household name.</p>
-                <div class="d-flex gap-2">
-                  <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#" class="social-glass"><i class="fab fa-twitter"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Founder 3 -->
-          <div class="col-lg-4 col-md-6">
-            <div class="team-card">
-              <div class="team-img-wrapper">
-                <img src="img/gk1.png" alt="Gokulakrishnan M">
-                <div class="team-overlay">
-                  <h4 class="mb-0">Gokulakrishnan M</h4>
-                  <p class="small mb-0">Business Analyst</p>
-                </div>
-              </div>
-              <div class="p-4">
-                <p class="text-muted small mb-4">Driving data-based strategies and contributing to the company’s sustainable growth through market insights.</p>
-                <div class="d-flex gap-2">
-                  <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
-                  <a href="#" class="social-glass"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= BRAND SUMMARY ================= -->
-    <section class="py-5 position-relative overflow-hidden" style="background: var(--gradient-dark);">
-      <!-- Decorative background elements -->
-      <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.2) 1px, transparent 0); background-size: 40px 40px;"></div>
-      
-      <div class="container py-5 position-relative z-1">
         <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <div class="glass-card text-center p-5 border-0" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1) !important;">
-              <div class="mb-4">
-                <span class="glass-badge mb-3">SINCE 1998</span>
-                <h2 class="display-4 fw-800 text-white mb-4">A Legacy of <span class="text-primary-light">Trust & Purity</span></h2>
+          <div class="col-lg-7">
+            <div class="tl-wrap">
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">1998</div>
+                <div class="tl-ttl">Founded in Tamil Nadu</div>
+                <div class="tl-desc">Sri Bhavan Groups began as a small soap and oil workshop in Arasarkulam, driven by a vision to bring affordable, natural cleaning products to every household.</div>
               </div>
-              
-              <div class="row g-4 align-items-center mt-2">
-                <div class="col-md-4 border-end border-white border-opacity-10 d-none d-md-block">
-                  <img src="img/Tmglogo.jpg" alt="TMG Logo" class="rounded-pill shadow-lg border border-white border-opacity-20" style="width: 120px;">
-                  <h5 class="text-white mt-3 mb-0">Sri Bhavan Groups</h5>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2005</div>
+                <div class="tl-ttl">Expanded Product Line</div>
+                <div class="tl-desc">Launched industrial-grade bleaching powder and floor cleaning range, entering the B2B market with competitive wholesale pricing.</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2012</div>
+                <div class="tl-ttl">Regional Distribution Network</div>
+                <div class="tl-desc">Established dealer partnerships across Tamil Nadu and Karnataka, scaling production to meet growing regional demand.</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2019</div>
+                <div class="tl-ttl">CLEANZOD Brand Launch</div>
+                <div class="tl-desc">Rebranded under the CLEANZOD identity, unifying all product lines with modern packaging and quality certifications.</div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2024</div>
+                <div class="tl-ttl">10,000+ Customers Milestone</div>
+                <div class="tl-desc">Crossed 10,000 satisfied customers and launched the LeanZo platform, enabling direct-to-consumer sales across India.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• VALUES â•â•â• -->
+    <section class="ab-values">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-6 text-center reveal">
+            <span class="ab-label">What We Stand For</span>
+            <h2 class="ab-title">Our Core <span>Values</span></h2>
+          </div>
+        </div>
+        <div class="row g-4 reveal">
+          <div class="col-md-6 col-lg-3">
+            <div class="val-card">
+              <div class="val-ico"><i class="fa fa-leaf"></i></div>
+              <div class="val-ttl">Sustainability</div>
+              <div class="val-desc">Eco-friendly manufacturing processes that protect the environment for future generations.</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="val-card">
+              <div class="val-ico"><i class="fa fa-flask"></i></div>
+              <div class="val-ttl">Pure Quality</div>
+              <div class="val-desc">Every product is tested and formulated to the highest standards of cleanliness and safety.</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="val-card">
+              <div class="val-ico"><i class="fa fa-handshake"></i></div>
+              <div class="val-ttl">Community</div>
+              <div class="val-desc">We invest in local farming communities and dealer networks, building shared prosperity.</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="val-card">
+              <div class="val-ico"><i class="fa fa-shield-alt"></i></div>
+              <div class="val-ttl">Trust</div>
+              <div class="val-desc">Transparent pricing, honest labeling, and consistent quality you can rely on every time.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• TEAM â•â•â• -->
+    <section class="ab-team">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-6 text-center reveal">
+            <span class="ab-label">The People Behind It</span>
+            <h2 class="ab-title">Meet Our <span>Leadership</span></h2>
+            <p class="ab-body">The visionaries who built Sri Bhavan Groups from the ground up.</p>
+          </div>
+        </div>
+        <div class="row g-4 justify-content-center reveal">
+          <div class="col-lg-4 col-md-6">
+            <div class="tm-card">
+              <div class="tm-img">
+                <img src="logo/tmg logo.png" alt="Thangavel">
+                <div class="tm-img-ov"></div>
+                <div class="tm-role">Managing Director</div>
+              </div>
+              <div class="tm-body">
+                <div class="tm-name">Thangavel</div>
+                <div class="tm-pos">Founding Director</div>
+                <p class="tm-bio">The founding seed of TMG's soap and oil business, nurturing growth with vision, dedication, and unwavering integrity since 1998.</p>
+                <div class="tm-socials">
+                  <a href="#" class="tm-soc"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" class="tm-soc"><i class="fab fa-facebook-f"></i></a>
                 </div>
-                <div class="col-md-8 text-md-start ps-md-5">
-                  <p class="lead text-white-50 mb-0" style="line-height: 1.8;">
-                    Behind every success of <strong>TMG – Sri Bhavan Cleaners</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
-                  </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tm-card">
+              <div class="tm-img">
+                <img src="img/tm.png" alt="Muthukumar T & Sutha M">
+                <div class="tm-img-ov"></div>
+                <div class="tm-role">Visionary Founders</div>
+              </div>
+              <div class="tm-body">
+                <div class="tm-name">Muthukumar T & Sutha M</div>
+                <div class="tm-pos">Co-Founders</div>
+                <p class="tm-bio">Guiding the company with innovation and integrity. Their leadership transformed TMG into a trusted household name across South India.</p>
+                <div class="tm-socials">
+                  <a href="#" class="tm-soc"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" class="tm-soc"><i class="fab fa-twitter"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tm-card">
+              <div class="tm-img">
+                <img src="img/gk1.png" alt="Gokulakrishnan M">
+                <div class="tm-img-ov"></div>
+                <div class="tm-role">Business Analyst</div>
+              </div>
+              <div class="tm-body">
+                <div class="tm-name">Gokulakrishnan M</div>
+                <div class="tm-pos">Business Analyst & Digital Lead</div>
+                <p class="tm-bio">Driving data-based strategies and sustainable growth through market insights, brand modernization, and digital expansion.</p>
+                <div class="tm-socials">
+                  <a href="#" class="tm-soc"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" class="tm-soc"><i class="fab fa-github"></i></a>
                 </div>
               </div>
             </div>
@@ -454,26 +537,34 @@
       </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
+    <!-- â•â•â• CTA â•â•â• -->
+    <section class="ab-cta">
+      <div class="container">
+        <div class="ab-cta-box reveal">
+          <span class="ab-label" style="display:block;margin-bottom:.8rem">Partner With Us</span>
+          <h2 class="ab-cta-ttl">Ready to Experience<br><span>Genuine Purity?</span></h2>
+          <p class="ab-cta-sub">Whether you're a retailer, dealer, or individual buyer â€” we have the right product for you.</p>
+          <div class="d-flex flex-wrap justify-content-center gap-3" style="position:relative;z-index:1">
+            <a href="bulkpro.html" class="ab-btn-primary"><i class="fa fa-boxes"></i> Bulk Orders</a>
+            <a href="contactus.html" class="ab-btn-ghost"><i class="fa fa-envelope"></i> Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â• FOOTER â•â•â• -->
     <footer class="tmg-footer">
       <div class="container">
         <div class="row g-5">
-          <!-- Brand Column -->
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <a href="index.html" class="text-decoration-none">
-              <h3 class="footer-brand-text">CLEANZOD</h3>
-            </a>
-            <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
-              Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
-            </p>
+            <a href="index.html" class="text-decoration-none"><h3 class="footer-brand-text">CLEANZOD</h3></a>
+            <p class="text-white-50 mb-4 pe-lg-5" style="line-height:1.8">Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.</p>
             <div class="d-flex gap-3">
               <a href="#" class="social-glass"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="social-glass"><i class="fab fa-instagram"></i></a>
               <a href="#" class="social-glass"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
-
-          <!-- Quick Links Column -->
           <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
             <h6 class="footer-heading">Quick Links</h6>
             <ul class="list-unstyled mb-0 d-grid gap-2">
@@ -483,36 +574,23 @@
               <li><a href="faq.html" class="footer-link"><i class="fa fa-chevron-right"></i>Help Desk</a></li>
             </ul>
           </div>
-
-          <!-- Contact Column -->
           <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <h6 class="footer-heading">Contact Us</h6>
             <ul class="list-unstyled mb-0 d-grid gap-3">
               <li class="d-flex align-items-start text-white-50">
                 <i class="fa fa-envelope mt-1 me-3 text-primary"></i>
-                <div>
-                  <span class="d-block text-white mb-1">Email</span>
-                  gogularasai82@gmail.com
-                </div>
+                <div><span class="d-block text-white mb-1">Email</span>gogularasai82@gmail.com</div>
               </li>
               <li class="d-flex align-items-start text-white-50">
                 <i class="fa fa-phone mt-1 me-3 text-primary"></i>
-                <div>
-                  <span class="d-block text-white mb-1">Phone</span>
-                  +91 8110998030
-                </div>
+                <div><span class="d-block text-white mb-1">Phone</span>+91 8110998030</div>
               </li>
               <li class="d-flex align-items-start text-white-50">
                 <i class="fa fa-map-marker-alt mt-1 me-3 text-primary"></i>
-                <div>
-                  <span class="d-block text-white mb-1">Location</span>
-                  Arasarkulam (North), TN
-                </div>
+                <div><span class="d-block text-white mb-1">Location</span>Arasarkulam (North), TN</div>
               </li>
             </ul>
           </div>
-
-          <!-- Newsletter Column -->
           <div class="col-lg-3 col-md-6">
             <h6 class="footer-heading">Newsletter</h6>
             <p class="text-white-50 mb-4">Join 1,000+ cleaning specialists for exclusive updates.</p>
@@ -522,8 +600,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Footer Bottom -->
         <div class="footer-bottom">
           <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-start">
@@ -537,47 +613,62 @@
         </div>
       </div>
     </footer>
+
   </div>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    // 3D Card Effects for Team
-    document.querySelectorAll('.team-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const xc = rect.width / 2;
-            const yc = rect.height / 2;
-            const dx = x - xc;
-            const dy = y - yc;
-            card.style.transform = `perspective(1000px) rotateY(${dx/30}deg) rotateX(${-dy/30}deg) translateY(-10px) scale(1.02)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
+    // Animated counters
+    function runCounter(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '+';
+      let cur = 0;
+      const step = target / (1800 / 16);
+      const t = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(t); }
+        el.textContent = Math.floor(cur) + suffix;
+      }, 16);
+    }
 
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
+    // Scroll reveal + counter trigger
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          if (e.target.classList.contains('counter')) { runCounter(e.target); ro.unobserve(e.target); }
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .counter').forEach(el => ro.observe(el));
 
-    document.querySelectorAll('section').forEach(section => {
-      section.style.opacity = "0";
-      section.style.transform = "translateY(30px)";
-      section.style.transition = "all 0.8s ease-out";
-      observer.observe(section);
+    // Timeline stagger reveal
+    const tlo = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 140);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.tl-item').forEach(el => tlo.observe(el));
+
+    // 3D tilt on team cards
+    document.querySelectorAll('.tm-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width / 2) / 28;
+        const dy = (e.clientY - r.top - r.height / 2) / 28;
+        card.style.transform = `perspective(900px) rotateY(${dx}deg) rotateX(${-dy}deg) translateY(-12px)`;
+      });
+      card.addEventListener('mouseleave', () => card.style.transform = '');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
     });
   </script>
 
 </body>
-
 </html>
