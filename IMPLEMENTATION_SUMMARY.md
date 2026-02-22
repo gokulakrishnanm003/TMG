@@ -349,5 +349,5 @@ Your admin panel is now ready to use! All orders will be stored securely and can
 
 **Version:** 1.0  
 **Created:** January 2025  
-**For:** TMG - Sri Bhavan Cleaners  
+**For:** TMG - TMG Shri Bahavan Groups  
 **System:** Admin Panel with Order Management

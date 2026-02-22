@@ -582,7 +582,7 @@ Happy order management! 🚀
 
 **Version:** 1.0  
 **Created:** January 2025  
-**For:** TMG - Sri Bhavan Cleaners  
+**For:** TMG - TMG Shri Bahavan Groups  
 **System:** Professional Admin Panel & Order Management
 
 ---

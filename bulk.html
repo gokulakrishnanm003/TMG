@@ -308,6 +308,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="order-manager.js"></script>
     <script src="product-manager.js"></script>
+    <script src="cart-system.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -372,79 +373,41 @@
 
         function addToCart(index) {
             requireLogin(() => {
-                products[index].qty += 1;
-                updateCart();
+                const p = products[index];
+                CartSystem.addItem({
+                    id:       `bulk_${index}`,
+                    name:     p.name,
+                    img:      p.img,
+                    price:    p.price,
+                    category: 'Bulk Oil'
+                });
             });
         }
 
-        function updateCart() {
-            let totalItems = products.reduce((acc, p) => acc + p.qty, 0);
-            cartCount.textContent = totalItems;
+        function updateCart() { CartSystem.refreshUI(); }
+        function changeQty(id, delta) { CartSystem.changeQty(id, delta); }
 
-            const cartBody = document.getElementById('cartBody');
-            cartBody.innerHTML = '';
-
-            let total = 0;
-
-            products.forEach((p, i) => {
-                if (p.qty > 0) {
-                    const div = document.createElement('div');
-                    div.className = 'd-flex justify-content-between align-items-center mb-2';
-                    div.innerHTML = `
-                    <div>
-                        <strong>${p.name}</strong><br>
-                        ₹${p.price} x ${p.qty} = ₹${p.price * p.qty}
-                    </div>
-                    <div class="qty-controls">
-                        <button class="btn btn-sm btn-danger" onclick="changeQty(${i}, -1)">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        <button class="btn btn-sm btn-success" onclick="changeQty(${i}, 1)">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                `;
-                    cartBody.appendChild(div);
-                    total += p.price * p.qty;
-                }
-            });
-
-            document.getElementById('total').innerHTML = `₹${total}`;
-        }
-
-        function changeQty(index, delta) {
-            products[index].qty += delta;
-            if (products[index].qty < 0) products[index].qty = 0;
-            updateCart();
-        }
-
-        document.getElementById('openCartBtn').addEventListener('click', () => drawer.classList.add('open'));
-        document.getElementById('closeCartBtn').addEventListener('click', () => drawer.classList.remove('open'));
-        document.getElementById('clearCartBtn').addEventListener('click', () => {
-            products.forEach(p => p.qty = 0);
-            updateCart();
+        document.getElementById('openCartBtn').addEventListener('click', () => {
+            CartSystem.refreshUI();
+            drawer.classList.add('open');
         });
+        document.getElementById('closeCartBtn').addEventListener('click', () => drawer.classList.remove('open'));
+        document.getElementById('clearCartBtn').addEventListener('click', () => CartSystem.clearCart());
 
         // BUY NOW
         function buyNow(index) {
             requireLogin(() => {
-                products.forEach(p => p.qty = 0);
-                products[index].qty = 1;
-                updateCart();
-
+                const p = products[index];
+                CartSystem.buyNow({
+                    id:       `bulk_${index}`,
+                    name:     p.name,
+                    img:      p.img,
+                    price:    p.price,
+                    category: 'Bulk Oil'
+                });
                 const checkoutPage = document.getElementById('checkoutPage');
                 checkoutPage.classList.add('show');
                 window.scrollTo({ top: checkoutPage.offsetTop, behavior: 'smooth' });
-
-                const p = products[index];
-
-                const message =
-                    `Hello! I want to place an order (Cash On Delivery) from CLEANZO/TMG Shri Bahavan Groups.%0A%0A` +
-                    `${p.name} x ${p.qty} = ₹${p.price * p.qty}%0A%0A` +
-                    `Total: ₹${p.price * p.qty}%0A%0A` +
-                    `Name: ${user.name}%0AAddress: ${user.address}%0APhone: ${user.phone}`;
-
-                const whatsappURL = `https://wa.me/918110998030?text=${message}`;
             });
         }
 
@@ -494,31 +457,21 @@
 
         document.getElementById('codBtn').addEventListener('click', () => {
             requireLogin(() => {
-                const orderedItems = products.filter(p => p.qty > 0);
+                const orderedItems = CartSystem.getItems();
 
                 if (orderedItems.length === 0) {
                     alert("Your cart is empty!");
                     return;
                 }
 
-                let total = 0;
-                const items = [];
-                
-                orderedItems.forEach(p => {
-                    items.push({
-                        name: p.name,
-                        quantity: p.qty,
-                        price: p.price
-                    });
-                    total += p.price * p.qty;
-                });
+                const total = CartSystem.getTotalPrice();
 
                 const orderData = {
                     customerName: user.name,
                     email: user.phone + '@bulk-order',
                     phone: user.phone,
                     address: user.address,
-                    items: items,
+                    items: orderedItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
                     totalAmount: total,
                     paymentMethod: 'Cash On Delivery',
                     notes: 'Order placed from Bulk Service Page'
@@ -527,8 +480,7 @@
                 const newOrder = orderManager.addOrder(orderData);
                 if (newOrder) {
                     showSuccessNotification("Order Placed Successfully!", "Admin will contact you soon to confirm your order.");
-                    products.forEach(p => p.qty = 0);
-                    updateCart();
+                    CartSystem.clearCart();
                     drawer.classList.remove('open');
                     window.location.href = 'index.html';
                 } else {
@@ -539,7 +491,7 @@
 
         function showSuccessNotification(t,m){const o=document.createElement('div');o.className='success-overlay';document.body.appendChild(o);const n=document.createElement('div');n.className='success-notification';n.innerHTML=`<div class="success-icon"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="none"/><path fill="none" d="M14 27l7.5 7.5L38 18"/></svg></div><h3>${t}</h3><p>${m}</p>`;document.body.appendChild(n);const c=['#667eea','#764ba2','#f093fb','#4facfe','#43e97b'];for(let i=0;i<50;i++){setTimeout(()=>{const cf=document.createElement('div');cf.className='confetti';cf.style.left=Math.random()*100+'%';cf.style.background=c[Math.floor(Math.random()*c.length)];cf.style.animationDelay=Math.random()*0.5+'s';cf.style.animationDuration=(Math.random()*2+2)+'s';document.body.appendChild(cf);setTimeout(()=>cf.remove(),3500)},i*30)}setTimeout(()=>n.classList.add('show'),10);setTimeout(()=>{n.style.animation='successPopIn 0.3s ease-out reverse';o.style.animation='fadeIn 0.3s ease-out reverse';setTimeout(()=>{n.remove();o.remove()},300)},2500)}
         renderProducts();
-        updateCart();
+        CartSystem.refreshUI();
     </script>
 
 </body>

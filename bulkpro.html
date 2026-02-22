@@ -459,7 +459,7 @@
                 <img src="img/Tmglogo.jpg" alt="TMG Logo" class="rounded-pill border shadow-sm" style="height: 50px;">
                 <div class="ms-3 d-none d-sm-block">
                     <span class="fs-4 fw-bold text-dark d-block lh-1" style="font-family: 'Poppins', sans-serif;">CLEANZOD</span>
-                    <small class="text-muted fw-semi-bold ls-1">SRI BHAVAN GROUPS</small>
+                    <small class="text-muted fw-semi-bold ls-1">TMG TMG SRI BAHAVAN GROUPS</small>
                 </div>
             </a>
 
@@ -659,7 +659,7 @@
             <div class="footer-bottom">
                 <div class="row align-items-center">
                     <div class="col-md-6 text-center text-md-start">
-                        <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bhavan Groups. All Rights Reserved.</p>
+                        <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bahavan Groups. All Rights Reserved.</p>
                     </div>
                     <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
                         <a href="#" class="footer-bottom-link">Privacy Policy</a>
@@ -721,6 +721,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="order-manager.js"></script>
     <script src="product-manager.js"></script>
+    <script src="cart-system.js"></script>
     <script>
         let user = JSON.parse(localStorage.getItem('user')) || null;
         let isLoggedIn = !!user;
@@ -815,68 +816,33 @@
 
         function addToCart(index) {
             requireLogin(() => {
-                products[index].qty += 1;
-                updateCart();
+                const p = products[index];
+                CartSystem.addItem({
+                    id:       `bulkpro_${index}`,
+                    name:     p.name,
+                    img:      p.img,
+                    price:    p.price,
+                    category: 'Bulk Pro'
+                });
             });
         }
 
         function buyNow(index) {
             requireLogin(() => {
-                products.forEach((p, i) => p.qty = (i === index ? 1 : 0));
-                updateCart();
+                const p = products[index];
+                CartSystem.buyNow({
+                    id:       `bulkpro_${index}`,
+                    name:     p.name,
+                    img:      p.img,
+                    price:    p.price,
+                    category: 'Bulk Pro'
+                });
                 showCheckout();
             });
         }
 
-        function updateCart() {
-            const cartBody = document.getElementById('cartBody');
-            const emptyMessage = document.getElementById('emptyCartMessage');
-            
-            // Clear existing items except empty message
-            const items = cartBody.querySelectorAll('.cart-item');
-            items.forEach(item => item.remove());
-            
-            let total = 0;
-            let count = 0;
-
-            products.forEach((p, i) => {
-                if (p.qty > 0) {
-                    count += p.qty;
-                    total += p.price * p.qty;
-                    const item = document.createElement('div');
-                    item.className = 'cart-item';
-                    item.innerHTML = `
-                        <img src="${p.img}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <div class="flex-grow-1">
-                            <h6 class="fw-bold mb-0 small">${p.name}</h6>
-                            <small class="text-muted">₹${p.price} × ${p.qty}</small>
-                        </div>
-                        <div class="d-flex align-items-center gap-2">
-                             <button class="btn btn-sm btn-outline-primary rounded-circle" onclick="changeQty(${i}, -1)" style="width: 30px; height: 30px; padding: 0;">-</button>
-                             <span class="fw-bold">${p.qty}</span>
-                             <button class="btn btn-sm btn-outline-primary rounded-circle" onclick="changeQty(${i}, 1)" style="width: 30px; height: 30px; padding: 0;">+</button>
-                        </div>
-                    `;
-                    cartBody.appendChild(item);
-                }
-            });
-
-            // Show/hide empty cart message
-            if (count === 0) {
-                emptyMessage.style.display = 'block';
-            } else {
-                emptyMessage.style.display = 'none';
-            }
-
-            cartCount.textContent = count;
-            document.getElementById('total').textContent = `₹${total}`;
-        }
-
-        function changeQty(index, delta) {
-            products[index].qty += delta;
-            if (products[index].qty < 0) products[index].qty = 0;
-            updateCart();
-        }
+        function updateCart() { CartSystem.refreshUI(); }
+        function changeQty(id, delta) { CartSystem.changeQty(id, delta); }
 
         function openProductDrawer(index) {
             const p = products[index];
@@ -941,14 +907,12 @@
             hideBackdrop();
         };
         
-        document.getElementById('clearCartBtn').onclick = () => { 
-            products.forEach(p => p.qty = 0); 
-            updateCart(); 
-        };
+        document.getElementById('clearCartBtn').onclick = () => CartSystem.clearCart();
         
         document.getElementById('submitOrderBtn').onclick = () => {
-             if(products.filter(p => p.qty > 0).length > 0) {
+             if(CartSystem.getTotalCount() > 0) {
                  drawer.classList.remove('active');
+                 hideBackdrop();
                  showCheckout();
              } else {
                  alert("Cart is empty!");
@@ -960,8 +924,8 @@
         document.getElementById('sendOrderBtn').onclick = () => processOrder('WhatsApp (Paid)');
 
         function processOrder(method) {
-            const activeItems = products.filter(p => p.qty > 0);
-            const total = activeItems.reduce((acc, p) => acc + (p.price * p.qty), 0);
+            const activeItems = CartSystem.getItems();
+            const total = CartSystem.getTotalPrice();
             
             const orderData = {
                 customerName: user.name,
@@ -971,7 +935,7 @@
                 items: activeItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
                 totalAmount: total,
                 paymentMethod: method,
-                notes: 'Service Page Bulk Pro'
+                notes: 'Bulk Pro Order'
             };
 
             const proc = document.getElementById('processing');
@@ -981,8 +945,8 @@
                 const res = orderManager.addOrder(orderData);
                 proc.style.display = 'none';
                 if(res) {
+                    CartSystem.clearCart();
                     showSuccessNotification("Bulk Order Placed Successfully!", "Your bulk order has been confirmed and will be processed shortly.");
-                    localStorage.removeItem('cart'); // if used
                     window.location.href = 'index.html';
                 }
             }, 1500);
@@ -1039,8 +1003,8 @@
             }, 2500);
         }
 
+        CartSystem.initDrawer();
         renderProducts();
-        updateCart();
     </script>
 </body>
 

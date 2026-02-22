@@ -1,4 +1,4 @@
-# Admin Panel Setup Guide - TMG Sri Bhavan Cleaners
+# Admin Panel Setup Guide - TMG TMG Shri Bahavan Groups
 
 ## Overview
 This admin panel system allows you to manage all customer orders in one centralized location instead of relying on WhatsApp. All orders are stored securely in the browser's localStorage and can be viewed, filtered, searched, and exported.
@@ -300,4 +300,4 @@ For technical issues or questions:
 
 **Version:** 1.0  
 **Last Updated:** January 2025  
-**Created for:** TMG - Sri Bhavan Cleaners
+**Created for:** TMG - TMG Shri Bahavan Groups

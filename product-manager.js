@@ -368,27 +368,40 @@ function renderFeaturedProducts() {
 
     displayProducts.forEach(p => {
         let link = 'sopeoil.html';
-        if (p.categoryKey === 'homewash') link = 'homewash.html';
-        if (p.categoryKey === 'clothwash') link = 'clothwash.html';
-        if (p.categoryKey === 'sopeoil') link = 'sopeoil.html';
-        if (p.categoryKey === 'bulkpro') link = 'bulkpro.html';
-        if (p.categoryKey === 'bulk') link = 'bulk.html';
-        if (p.categoryKey === 'bleching') link = 'bleching.html';
+        let categoryLabel = 'Multi-Purpose';
+
+        if (p.categoryKey === 'homewash') { link = 'homewash.html'; categoryLabel = 'Floor & Bath'; }
+        else if (p.categoryKey === 'clothwash') { link = 'clothwash.html'; categoryLabel = 'Cloth Care'; }
+        else if (p.categoryKey === 'sopeoil') { link = 'sopeoil.html'; categoryLabel = 'Vehicle & Home'; }
+        else if (p.categoryKey === 'bulkpro') { link = 'bulkpro.html'; categoryLabel = 'Industrial Pro'; }
+        else if (p.categoryKey === 'bulk') { link = 'bulk.html'; categoryLabel = 'Wholesale Bulk'; }
+        else if (p.categoryKey === 'bleching') { link = 'bleching.html'; categoryLabel = 'Disinfection'; }
 
         const col = document.createElement('div');
-        col.className = 'col-md-4 slide-up';
+        col.className = 'col-lg-4 col-md-6 slide-up';
         col.innerHTML = `
-            <div class="premium-card h-100">
-                <span class="badge-premium">Best Seller</span>
-                <div class="rounded-4 mb-4" style="height: 240px; overflow: hidden;">
-                    <img src="${p.img}" alt="${p.name}" class="w-100 h-100 object-fit-cover transition-transform">
+            <div class="product-card-modern">
+                <div class="product-card-img">
+                    <img src="${p.img}" alt="${p.name}">
+                    <span class="product-badge">Best Seller</span>
+                    <div class="product-img-overlay">
+                        <a href="${link}" class="product-quick-view"><i class="fas fa-eye"></i></a>
+                    </div>
                 </div>
-                <h4 class="fw-bold mb-2">${p.name}</h4>
-                <p class="text-muted small mb-4" style="min-height: 48px; max-height: 48px; overflow: hidden;">${p.about}</p>
-                <a href="${link}" class="gradient-btn w-100 py-3 rounded-3 text-center d-block">VIEW DETAILS</a>
+                <div class="product-card-body">
+                    <span class="product-category">${categoryLabel}</span>
+                    <h4 class="product-name">${p.name}</h4>
+                    <p class="product-desc">${p.about.substring(0, 100)}${p.about.length > 100 ? '...' : ''}</p>
+                    <a href="${link}" class="product-cta">VIEW OPTIONS <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         `;
         container.appendChild(col);
+
+        // Connect to the global scroll observer for on-scroll animations
+        if (window.scrollObserver) {
+            window.scrollObserver.observe(col);
+        }
     });
 }
 
