@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Wash - Cleanzod Premium</title>
+    <title>Home Wash - Genzo Premium</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -31,8 +31,7 @@
         }
 
         .service-hero {
-              background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)), 
-                        url('img/homecleanzomain.jpg') fixed center/cover;
+            background: #0f172a; /* Deep navy base */
             height: 35vh;
             display: flex;
             align-items: center;
@@ -43,19 +42,61 @@
             overflow: hidden;
         }
 
+        /* MAGICAL MESH GRADIENT */
+        .service-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.45) 0px, transparent 50%),
+                radial-gradient(at 50% 10% , rgba(118, 75, 162, 0.45) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(56, 239, 125, 0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(118, 75, 162, 0.45) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(102, 126, 234, 0.45) 0px, transparent 50%);
+            filter: blur(80px);
+            opacity: 0.8;
+            animation: meshAnimation 15s ease infinite alternate;
+        }
+
+        @keyframes meshAnimation {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(-2%, 2%); }
+            100% { transform: scale(1.2) translate(1%, -1%); }
+        }
+
         .service-hero::before {
             content: '';
             position: absolute;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: moveGrid 30s linear infinite;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* FLOATING MAGICAL BOXES */
+        .magic-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            z-index: 0;
+            animation: floatShape 8s ease-in-out infinite;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
 
         @keyframes moveGrid {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            100% { transform: translate(60px, 60px); }
         }
 
         .service-hero h1 {
@@ -340,8 +381,8 @@
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="img/Tmglogo.jpg" alt="TMG Logo" class="rounded-pill border shadow-sm" style="height: 50px;">
                 <div class="ms-3 d-none d-sm-block">
-                    <span class="fs-4 fw-bold text-dark d-block lh-1" style="font-family: 'Poppins', sans-serif;">CLEANZOD</span>
-                    <small class="text-muted fw-semi-bold ls-1">TMG TMG SRI BAHAVAN GROUPS</small>
+                    <span class="fs-4 fw-bold text-dark d-block lh-1" style="font-family: 'Poppins', sans-serif;">GENZO</span>
+                    <small class="text-muted fw-semi-bold ls-1">TMG Shri Bahavan Groups</small>
                 </div>
             </a>
 
@@ -361,14 +402,19 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ================= HERO ================= -->
     <section class="service-hero">
-        <div class="container" style="position: relative; z-index: 1;">
-            <h1 class="display-2 fw-bold mb-3">Home Hygiene Solutions</h1>
-            <p class="fs-4 opacity-90 mb-4">Clean floors, fresh aromas, and perfect sanitation for your sanctuary.</p>
-            <a href="#productDisplaySection" class="gradient-btn px-5 py-3 fs-5 shadow-lg">
-                <i class="fa fa-arrow-down me-2"></i> Explore Products
-            </a>
+        <div class="service-hero-bg"></div>
+        <div class="magic-shape" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
+        <div class="magic-shape" style="width: 150px; height: 150px; bottom: 5%; right: 10%; animation-delay: -2s;"></div>
+        <div class="container position-relative" style="z-index: 2;">
+            <h1 class="display-3 mb-2">Home Wash Solutions</h1>
+            <p class="lead opacity-75">Advanced formulas for deep clean and lasting freshness.</p>
+            <div class="mt-4">
+                <a href="#agriSection" class="gradient-btn px-4 py-2 rounded-pill shadow-lg text-decoration-none">
+                    <i class="bi bi-arrow-down-circle me-2"></i> Explore Products
+                </a>
+            </div>
         </div>
     </section>
 
@@ -475,7 +521,7 @@
                 <!-- Brand Column -->
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                     <a href="index.html" class="text-decoration-none">
-                        <h3 class="footer-brand-text">CLEANZOD</h3>
+                        <h3 class="footer-brand-text">GENZO</h3>
                     </a>
                     <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
                         Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
@@ -810,7 +856,7 @@
             
             const orderData = {
                 customerName: user.name,
-                email: user.phone + "@cleanzod.in",
+                email: user.phone + "@genzo.in",
                 phone: user.phone,
                 address: user.address,
                 items: activeItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),

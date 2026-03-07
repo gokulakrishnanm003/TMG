@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMG - TMG Shri Bahavan Groups</title>
+    <title>Genzo | TMG Shri Bahavan Groups</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -175,60 +175,45 @@
       opacity: 0.1;
       z-index: 1;
     }
+
+    /* GO BACK ARROW */
+    .go-back-arrow {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      z-index: 10000;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+    }
+    .go-back-arrow:hover {
+      transform: translateX(-5px) scale(1.1);
+      background: #11998e;
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(17, 153, 142, 0.3);
+    }
   </style>
   <div id="mainContent">
-    <!-- ================= NAVBAR ================= -->
-    <nav class="navbar navbar-expand-lg glass-nav sticky-top">
-      <div class="container-fluid px-4 px-lg-5">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <div class="cleanzo-logo-wrapper">
-              <div class="brand-bag"><span class="bag-letter">C</span></div>
-              <div class="brand-name"><span>L</span>eanZo</div>
-          </div>
-        </a>
-
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
-              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
-                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
-                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
-                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
-                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
-            <li class="nav-item"><a class="nav-link" href="customers.html">Clients</a></li>
-            <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link active dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">About</a>
-              <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="aboutDropdown">
-                <li><a class="dropdown-item rounded-3" href="aboutus.html">Our Story</a></li>
-                <li><a class="dropdown-item active rounded-3" href="contactus.html">Support</a></li>
-                <li><a class="dropdown-item rounded-3" href="faq.html">FAQ</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div class="d-flex align-items-center gap-2">
-            <a href="tel:8110998030" class="gradient-btn px-4 py-2 shadow-sm rounded-pill">
-              <i class="fa-solid fa-phone me-1"></i> <span>8110998030</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <a href="index.html" class="go-back-arrow" title="Back to Home">
+      <i class="fa fa-arrow-left"></i>
+    </a>
 
     <!-- ================= HERO ================= -->
     <section class="contact-hero">
       <div class="container bg-transparent shadow-none border-0 py-0 text-start">
         <span class="glass-badge mb-4">GET IN TOUCH</span>
-        <h1 class="display-3 fw-900 mb-4" style="line-height: 1.1;">Connect with <br><span class="text-primary-light">Cleanzod</span></h1>
+        <h1 class="display-3 fw-900 mb-4" style="line-height: 1.1;">Connect with <br><span class="text-primary-light">Genzo</span></h1>
         <p class="lead opacity-75 mb-0">Whether you're a household user or an industrial partner, we're here to help.</p>
       </div>
     </section>
@@ -301,7 +286,7 @@
           <div class="col-lg-6">
             <div class="position-relative text-center">
             <div class="shop-animation-wrapper">
-              <span class="brand-tag">CLEANZOD</span>
+              <span class="brand-tag">GENZO</span>
               <h1 class="order-title">Order<br>now</h1>
               
               <div class="cart-container">
@@ -337,7 +322,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <p class="lead text-muted mb-0">
-              Behind every success of <strong>TMG – TMG Shri Bahavan Groups</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
+              Behind every success of <strong>TMG Shri Bahavan Groups</strong> stand our dedicated visionaries. Together, they form the strong foundation of TMG, combining wisdom, innovation, and dedication to build a brand rooted in quality, trust, and sustainability.
             </p>
           </div>
         </div>
@@ -351,7 +336,7 @@
           <!-- Brand Column -->
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
             <a href="index.html" class="text-decoration-none">
-              <h3 class="footer-brand-text">CLEANZOD</h3>
+              <h3 class="footer-brand-text">GENZO</h3>
             </a>
             <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
               Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleanzod - Modern Cleaning Solutions</title>
-    <meta name="description" content="Cleanzod provides professional home and office cleaning services. Reliable, affordable and modern cleaning solutions for homes and businesses.">
-    <meta name="keywords" content="Cleanzod, cleaning services, home cleaning, office cleaning, Tamil Nadu cleaning service">
-    <meta name="author" content="Cleanzod">
+    <title>Genzo - Modern Cleaning Solutions</title>
+    <meta name="description" content="Genzo provides professional home and office cleaning services. Reliable, affordable and modern cleaning solutions for homes and businesses.">
+    <meta name="keywords" content="Genzo, cleaning services, home cleaning, office cleaning, Tamil Nadu cleaning service">
+    <meta name="author" content="Genzo">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -21,9 +21,88 @@
 
     <style>
         /* Marquee pause logic */
-        .cleanzod-ad .marquee.paused {
+        .genzo-ad .marquee.paused {
             animation-play-state: paused !important;
         }
+
+        /* ===== HERO IMAGE BACKGROUND POLISH ===== */
+        .hero-img-bg {
+            position: absolute !important;
+            inset: 0;
+            background-repeat: no-repeat !important;
+            filter: brightness(1.18) saturate(1.3) contrast(1.05);
+        }
+
+        /* Diagonal shine sweep */
+        .hero-shine-sweep {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,0.07) 50%, transparent 80%);
+            animation: heroShineSweep 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .hero-shine-sweep-2 {
+            animation-delay: 1.5s;
+            animation-duration: 6s;
+            background: linear-gradient(110deg, transparent 20%, rgba(200,150,255,0.06) 50%, transparent 80%);
+        }
+        @keyframes heroShineSweep {
+            0%   { left: -100%; opacity: 0; }
+            20%  { opacity: 1; }
+            80%  { opacity: 1; }
+            100% { left: 150%; opacity: 0; }
+        }
+
+        /* Floating sparkle dots */
+        .hero-sparkle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: heroSparkle 4s ease-in-out infinite;
+        }
+        .hero-sparkle-1 { width: 10px; height: 10px; top: 20%; left: 75%; background: rgba(255,255,200,0.85); box-shadow: 0 0 12px 4px rgba(255,255,150,0.6); animation-delay: 0s; }
+        .hero-sparkle-2 { width: 7px;  height: 7px;  top: 65%; left: 82%; background: rgba(100,220,255,0.9); box-shadow: 0 0 10px 3px rgba(100,220,255,0.5); animation-delay: 1s; }
+        .hero-sparkle-3 { width: 12px; height: 12px; top: 40%; left: 88%; background: rgba(255,255,255,0.8); box-shadow: 0 0 16px 5px rgba(255,255,255,0.4); animation-delay: 2s; }
+        .hero-sparkle-4 { width: 9px;  height: 9px;  top: 25%; left: 72%; background: rgba(255,100,240,0.9); box-shadow: 0 0 12px 4px rgba(255,80,200,0.5); animation-delay: 0.5s; }
+        .hero-sparkle-5 { width: 11px; height: 11px; top: 55%; left: 85%; background: rgba(80,200,255,0.85); box-shadow: 0 0 14px 5px rgba(80,200,255,0.4); animation-delay: 1.8s; }
+        @keyframes heroSparkle {
+            0%, 100% { transform: scale(1) translateY(0); opacity: 1; }
+            50%       { transform: scale(1.5) translateY(-8px); opacity: 0.7; }
+        }
+
+        /* Floating product badge (top-right corner) */
+        .hero-float-badge {
+            position: absolute;
+            top: 28px;
+            right: 90px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: heroFloatBadge 3s ease-in-out infinite;
+        }
+        .hero-float-badge-2 {
+            border-color: rgba(100,180,255,0.3);
+            background: rgba(20,10,60,0.35);
+        }
+        @keyframes heroFloatBadge {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-6px); }
+        }
+
 
         /* Additional Overrides */
         .premium-card {
@@ -96,6 +175,47 @@
 
         #mainContent {
             animation: fadeIn 1s ease-out;
+        }
+
+        /* MAGICAL MESH GRADIENT */
+        .service-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(102, 126, 234, 0.45) 0px, transparent 50%),
+                radial-gradient(at 50% 10% , rgba(118, 75, 162, 0.45) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(56, 239, 125, 0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(118, 75, 162, 0.45) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(102, 126, 234, 0.45) 0px, transparent 50%);
+            filter: blur(80px);
+            opacity: 0.8;
+            animation: meshAnimation 15s ease infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes meshAnimation {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(-2%, 2%); }
+            100% { transform: scale(1.2) translate(1%, -1%); }
+        }
+
+        /* FLOATING MAGICAL BOXES */
+        .magic-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            z-index: 0;
+            animation: floatShape 8s ease-in-out infinite;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
 
         @keyframes fadeIn {
@@ -713,7 +833,7 @@
                     </div>
                     
                     <h3 class="fw-900 text-dark mb-1" id="pNameDisplay">User Name</h3>
-                    <p class="text-primary-emphasis fw-600 small mb-4 opacity-75">CLEANZOD PREMIUM MEMBER</p>
+                    <p class="text-primary-emphasis fw-600 small mb-4 opacity-75">GENZO PREMIUM MEMBER</p>
 
                     <!-- Profile Details Grid -->
                     <div class="profile-info-grid mb-4">
@@ -778,7 +898,7 @@
         <nav class="navbar navbar-expand-lg glass-nav sticky-top">
             <div class="container-fluid px-4 px-lg-5">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <span class="brand-premium">CLEAN<span>ZOD</span></span>
+                    <span class="brand-premium">GEN<span>ZO</span></span>
                 </a>
 
                 <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -837,8 +957,22 @@
                 <div class="carousel-inner h-100">
                     <!-- Slide 1 -->
                     <div class="carousel-item active h-100">
-                        <div class="hero-bg" style="background-image: url('img/impcleanzod.jpg');"></div>
-                        <div class="hero-overlay-gradient"></div>
+                        <div class="hero-bg hero-img-bg" style="background-image: url('img/genzo-hero-slide1.jpg'); background-size: cover; background-position: center center; background-color: #0a1a2e;">
+                            <!-- Vivid color overlay for brightness & depth -->
+                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,20,50,0.72) 0%,rgba(0,60,120,0.45) 40%,rgba(0,180,220,0.15) 100%);z-index:1;"></div>
+                            <!-- Shine sweep animation -->
+                            <div class="hero-shine-sweep" style="z-index:2;"></div>
+                            <!-- Floating sparkle dots -->
+                            <div class="hero-sparkle hero-sparkle-1" style="z-index:2;"></div>
+                            <div class="hero-sparkle hero-sparkle-2" style="z-index:2;"></div>
+                            <div class="hero-sparkle hero-sparkle-3" style="z-index:2;"></div>
+                            <!-- Floating product badge top-right -->
+                            <div class="hero-float-badge" style="z-index:5;">
+                                <i class="fas fa-star" style="color:#FFD700;"></i>
+                                <span>Premium Quality</span>
+                            </div>
+                        </div>
+                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(5,15,40,0.85) 0%, rgba(5,15,40,0.55) 55%, transparent 100%);"></div>
                         <div class="hero-content-wrapper">
                             <div class="hero-center-content">
                                 <span class="glass-badge anim-1">
@@ -869,11 +1003,27 @@
                     </div>
                     <!-- Slide 2 -->
                     <div class="carousel-item h-100">
-                        <div class="hero-bg" style="background-image: url('img/implceanzod1.png');"></div>
-                        <div class="hero-overlay-gradient"></div>
+                        <div class="hero-bg hero-img-bg" style="background-image: url('img/hero-genzo-categories.jpg'); background-size: cover; background-position: center center; background-color: #1a0535;">
+                            <!-- Colourful vibrant overlay to boost brightness & saturation -->
+                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,0,40,0.7) 0%,rgba(80,0,130,0.4) 40%,rgba(0,0,20,0.2) 100%);z-index:1;"></div>
+                            <!-- Neon glow accents -->
+                            <div style="position:absolute;bottom:-60px;left:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,80,200,0.25),transparent 70%);filter:blur(60px);z-index:2;"></div>
+                            <div style="position:absolute;top:-60px;right:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(80,120,255,0.3),transparent 70%);filter:blur(60px);z-index:2;"></div>
+                            <!-- Shine sweep -->
+                            <div class="hero-shine-sweep hero-shine-sweep-2" style="z-index:3;"></div>
+                            <!-- Sparkles -->
+                            <div class="hero-sparkle hero-sparkle-4" style="z-index:3;"></div>
+                            <div class="hero-sparkle hero-sparkle-5" style="z-index:3;"></div>
+                            <!-- Floating badge -->
+                            <div class="hero-float-badge hero-float-badge-2" style="z-index:5;">
+                                <i class="fas fa-shield-virus" style="color:#00e5ff;"></i>
+                                <span>99.9% Germ Kill</span>
+                            </div>
+                        </div>
+                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(10,0,40,0.88) 0%, rgba(10,0,40,0.55) 55%, transparent 100%);"></div>
                         <div class="hero-content-wrapper">
                             <div class="hero-center-content">
-                                <span class="glass-badge anim-1">
+                                <span class="glass-badge anim-1" style="border-color:rgba(200,100,255,0.4);">
                                     <i class="fas fa-shield-alt"></i>
                                     INDUSTRIAL & HOME GRADE
                                 </span>
@@ -881,7 +1031,7 @@
                                     Pure & <br> <span data-text="Powerful">Powerful</span>
                                 </h1>
 
-                                <div class="hero-divider anim-4"></div>
+                                <div class="hero-divider anim-4" style="background:linear-gradient(90deg,#ff5ecb,#7b2fff,transparent);"></div>
 
                                 <!-- Product Category Pills -->
                                 <div class="hero-product-strip anim-5">
@@ -916,7 +1066,7 @@
             <div class="container">
                 <div class="section-header-wrap">
                     <span class="section-subtitle">Our Premium Collection</span>
-                    <h1 class="section-title">Discover Cleanzod</h1>
+                    <h1 class="section-title">Discover Genzo</h1>
                 </div>
                 <div class="row g-4 justify-content-center" id="featured-products-container">
                     <!-- Product 1 -->
@@ -1011,7 +1161,7 @@
                         
                         <div class="luxury-quote-card mx-auto" style="border-radius: 40px;">
                             <p class="mb-0 text-white" style="font-size: 1.6rem; line-height: 1.5; font-weight: 300;">
-                                "Innovation meets tradition at Cleanzod. We believe in crafting products that are not just effective, but also safe for the community and environment."
+                                "Innovation meets tradition at Genzo. We believe in crafting products that are not just effective, but also safe for the community and environment."
                             </p>
                             <div class="mt-5 d-flex align-items-center justify-content-center gap-3">
                                 <div style="width: 40px; height: 1px; background: #11998e;"></div>
@@ -1050,7 +1200,7 @@
                     <!-- Brand Column -->
                     <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                         <a href="index.html" class="text-decoration-none">
-                            <h3 class="footer-brand-premium">CLEAN<span>ZOD</span></h3>
+                            <h3 class="footer-brand-premium">GEN<span>ZO</span></h3>
                         </a>
                         <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
                             Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
@@ -1136,7 +1286,7 @@
     <script>
         // Marquee pause logic
         document.addEventListener('DOMContentLoaded', function() {
-            const marquee = document.getElementById('cleanzodMarquee');
+            const marquee = document.getElementById('genzoMarquee');
             if (!marquee) return;
             const duration = 20000; 
             function loopMarquee() {

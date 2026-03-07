@@ -1,4 +1,4 @@
-# Admin Panel Setup Guide - TMG TMG Shri Bahavan Groups
+# Admin Panel Setup Guide - TMG Shri Bahavan Groups
 
 ## Overview
 This admin panel system allows you to manage all customer orders in one centralized location instead of relying on WhatsApp. All orders are stored securely in the browser's localStorage and can be viewed, filtered, searched, and exported.

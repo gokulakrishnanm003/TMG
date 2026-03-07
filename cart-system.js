@@ -1,5 +1,5 @@
 /**
- * Cart System for CLEANZOD
+ * Cart System for GENZO
  * Manages shopping cart state and UI across product pages
  */
 
@@ -8,14 +8,14 @@ const CartSystem = {
 
     // Initialize cart from localStorage
     init() {
-        const stored = localStorage.getItem('cleanzod_cart');
+        const stored = localStorage.getItem('genzo_cart');
         this.items = stored ? JSON.parse(stored) : [];
         this.refreshUI();
     },
 
     // Save cart to localStorage
     save() {
-        localStorage.setItem('cleanzod_cart', JSON.stringify(this.items));
+        localStorage.setItem('genzo_cart', JSON.stringify(this.items));
     },
 
     // Add item to cart

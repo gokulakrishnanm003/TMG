@@ -1,4 +1,4 @@
-// Product Management System for CLEANZOD Admin Dashboard
+// Product Management System for GENZO Admin Dashboard
 // Manages products for multiple pages/categories
 
 const productCategories = {
@@ -43,7 +43,7 @@ const productCategories = {
         label: 'Bulk Pro Products',
         defaults: [
             { name: "Bulk Sope Oil - 100L", price: 2300, qty: 0, img: "img/bulk.jpg", about: "100‑litre commercial sope oil for industrial usage.", bestSeller: true },
-            { name: "Bulk Cleaning Oil - 100L", price: 2100, qty: 0, img: "img/homecleanzoman.jpg", about: "100‑litre industrial cleaning oil for facilities management." },
+            { name: "Bulk Cleaning Oil - 100L", price: 2100, qty: 0, img: "img/homegenzoman.jpg", about: "100‑litre industrial cleaning oil for facilities management." },
             { name: "Bulk Sanitizer - 50L", price: 4500, qty: 0, img: "img/sanitaizer1.jpg", about: "50-litre bulk sanitizer for large public areas.", bestSeller: true },
             { name: "Bulk Floor Washer - 100L", price: 3500, qty: 0, img: "img/chlorine1.jpg", about: "100‑litre industrial floor cleaning liquid." },
             { name: "Bulk Bleaching Liquid - 50L", price: 2800, qty: 0, img: "img/bleach1.png", about: "50-litre concentrated bleaching solution." },
