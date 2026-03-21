@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bleaching Solutions - Genzo Premium</title>
+    <title>Bulk Oils - Genzo Premium</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -162,6 +162,81 @@
             padding: 0.75rem 2rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* NEW INNOVATIVE SHOWCASE STYLES */
+        .vibrant-showcase {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,1);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        .bottle-portal {
+            background: white;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid #f8f9fa;
+        }
+
+        .bottle-portal::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .floating-bottle {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            animation: floatBottle 6s ease-in-out infinite;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transform: scale(1.6); /* Large scale to fill the width */
+        }
+
+        @keyframes floatBottle {
+            0%, 100% { transform: scale(1.6) translateY(0) rotate(0deg); }
+            50% { transform: scale(1.7) translateY(-20px) rotate(2deg); }
+        }
+
+        .vibrant-showcase:hover .floating-bottle {
+            transform: scale(1.8) rotate(-2deg);
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.2));
+        }
+
+        .showcase-details {
+            padding: 2.5rem;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-premium {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--gradient-success);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            z-index: 10;
+            box-shadow: 0 10px 20px rgba(56, 239, 125, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .gradient-btn:hover {
@@ -408,8 +483,8 @@
         <div class="magic-shape" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
         <div class="magic-shape" style="width: 150px; height: 150px; bottom: 5%; right: 10%; animation-delay: -2s;"></div>
         <div class="container position-relative" style="z-index: 2;">
-            <h1 class="display-3 mb-2">Bleaching Solutions</h1>
-            <p class="lead opacity-75">Industrial strength whitening and disinfection for a pristine environment.</p>
+            <h1 class="display-3 mb-2">Dish Wash Solutions</h1>
+            <p class="lead opacity-75">Genzoo Dish Wash Liquid — Tough on grease, gentle on hands.</p>
             <div class="mt-4">
                 <a href="#agriSection" class="gradient-btn px-4 py-2 rounded-pill shadow-lg text-decoration-none">
                     <i class="bi bi-arrow-down-circle me-2"></i> Explore Products
@@ -421,8 +496,8 @@
     <!-- Products Grid -->
     <section id="productDisplaySection" class="container py-5">
         <div class="text-center mb-5 pt-4">
-            <h2 class="section-title display-5 mb-3">Industrial Disinfection</h2>
-            <p class="text-muted lead">Powerful bleaching and sanitation agents for professional use</p>
+            <h2 class="section-title display-5 mb-3">Premium Dish Wash Selection</h2>
+            <p class="text-muted lead">Powerful grease-cutting agents for a sparkling finish</p>
         </div>
         <div class="row g-4" id="agriGrid"></div>
     </section>
@@ -654,8 +729,12 @@
         let user = JSON.parse(localStorage.getItem('user')) || null;
         let isLoggedIn = !!user;
 
+        // Clear old storage once to refresh to new dishwash defaults
+        if(localStorage.getItem('sopeoil_products')) localStorage.removeItem('sopeoil_products');
+        if(localStorage.getItem('dishwash_products')) localStorage.removeItem('dishwash_products');
+        
         // Load products dynamically
-        let products = initializeCategory('bleching');
+        let products = initializeCategory('sopeoil');
 
         const agriGrid = document.getElementById('agriGrid');
         const cartCount = document.getElementById('cartCount');
@@ -702,33 +781,34 @@
             agriGrid.innerHTML = '';
             products.forEach((p, i) => {
                 const col = document.createElement('div');
-                // Use col-6 for mobile (2 columns), col-md-4 for tablets, col-lg-4 for desktop
-                col.className = 'col-6 col-lg-4 slide-up';
-                // Use the bestSeller property from the product object
+                col.className = 'col-lg-6 slide-up'; 
                 const badge = p.bestSeller ? '<span class="badge-premium">Best Seller</span>' : '';
                 col.innerHTML = `
-                    <div class="premium-card h-100" onclick="openProductDrawer(${i})">
+                    <div class="vibrant-showcase h-100" onclick="openProductDrawer(${i})">
                         ${badge}
-                        <!-- Using a wrapper for the image allows us to control height via CSS easily -->
-                        <div class="mb-3 overflow-hidden position-relative">
-                            <img src="${p.img}" alt="${p.name}" class="product-img w-100 h-100" style="object-fit: cover;">
+                        <div class="bottle-portal">
+                            <img src="${p.img}" alt="${p.name}" class="floating-bottle">
                         </div>
-                        <h5 class="fw-bold mb-2 text-dark" style="font-family: 'Poppins', sans-serif;">${p.name}</h5>
-                        <p class="text-muted small mb-3 flex-grow-1">${p.about}</p>
-                        <p class="fw-bold fs-4 mb-3" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₹${p.price}</p>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-outline-primary rounded-pill flex-grow-1 fw-semibold small-btn" onclick="addToCart(${i});event.stopPropagation();">
-                                <i class="fa fa-cart-plus me-1"></i> Add
-                            </button>
-                            <button class="gradient-btn py-2 flex-grow-1 small-btn" onclick="buyNow(${i});event.stopPropagation();">
-                                <i class="fa fa-shopping-bag me-1"></i> Buy
-                            </button>
+                        <div class="showcase-details">
+                            <h3 class="fw-bold mb-3" style="font-family: 'Poppins', sans-serif; color: #1a202c;">${p.name}</h3>
+                            <p class="text-muted lead mb-4" style="font-size: 1.1rem; line-height: 1.6;">${p.about}</p>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="fw-bold display-6" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₹${p.price}</span>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary rounded-pill px-4 py-3 fw-bold" onclick="addToCart(${i});event.stopPropagation();">
+                                        <i class="fa fa-cart-plus me-2"></i>ADD
+                                    </button>
+                                    <button class="gradient-btn px-5 py-3" onclick="buyNow(${i});event.stopPropagation();">
+                                        <i class="fa fa-shopping-bag me-2"></i>BUY NOW
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
                 agriGrid.appendChild(col);
             });
-
+            
             // Trigger scroll animations
             setTimeout(() => {
                 const observer = new IntersectionObserver((entries) => {
@@ -748,11 +828,11 @@
             requireLogin(() => {
                 const p = products[index];
                 CartSystem.addItem({
-                    id:       `bleching_${index}`,
+                    id:       `dishwash_${index}`,
                     name:     p.name,
                     img:      p.img,
                     price:    p.price,
-                    category: 'Bleching'
+                    category: 'Dish Wash'
                 });
             });
         }
@@ -761,18 +841,23 @@
             requireLogin(() => {
                 const p = products[index];
                 CartSystem.buyNow({
-                    id:       `bleching_${index}`,
+                    id:       `dishwash_${index}`,
                     name:     p.name,
                     img:      p.img,
                     price:    p.price,
-                    category: 'Bleching'
+                    category: 'Dish Wash'
                 });
                 showCheckout();
             });
         }
 
-        function updateCart() { CartSystem.refreshUI(); }
-        function changeQty(id, delta) { CartSystem.changeQty(id, delta); }
+        function updateCart() {
+            CartSystem.refreshUI();
+        }
+
+        function changeQty(id, delta) {
+            CartSystem.changeQty(id, delta);
+        }
 
         function openProductDrawer(index) {
             const p = products[index];
@@ -865,7 +950,7 @@
                 items: activeItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
                 totalAmount: total,
                 paymentMethod: method,
-                notes: 'Bleching Order'
+                notes: 'Sope Oil Order'
             };
 
             const proc = document.getElementById('processing');
@@ -876,7 +961,7 @@
                 proc.style.display = 'none';
                 if(res) {
                     CartSystem.clearCart();
-                    showSuccessNotification("Sanitation Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
+                    showSuccessNotification("Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
                     window.location.href = 'index.html';
                 }
             }, 1500);

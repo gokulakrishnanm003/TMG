@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bulk Oils - Genzo Premium</title>
+    <title>Home Wash - Genzo Premium</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -408,8 +408,8 @@
         <div class="magic-shape" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
         <div class="magic-shape" style="width: 150px; height: 150px; bottom: 5%; right: 10%; animation-delay: -2s;"></div>
         <div class="container position-relative" style="z-index: 2;">
-            <h1 class="display-3 mb-2">Home & Vehicle Cleaning</h1>
-            <p class="lead opacity-75">Premium cleaning oils for every surface of your home and ride.</p>
+                        <h1 class="display-3 mb-2">Home Wash Solutions</h1>
+            <p class="lead opacity-75">Advanced formulas for deep clean and lasting freshness.</p>
             <div class="mt-4">
                 <a href="#agriSection" class="gradient-btn px-4 py-2 rounded-pill shadow-lg text-decoration-none">
                     <i class="bi bi-arrow-down-circle me-2"></i> Explore Products
@@ -421,8 +421,8 @@
     <!-- Products Grid -->
     <section id="productDisplaySection" class="container py-5">
         <div class="text-center mb-5 pt-4">
-            <h2 class="section-title display-5 mb-3">Premium Bulk Solutions</h2>
-            <p class="text-muted lead">Industrial-grade cleaning oils for large-scale operations</p>
+            <h2 class="section-title display-5 mb-3">Complete Home Care Range</h2>
+            <p class="text-muted lead">From floors to toilets - comprehensive hygiene solutions</p>
         </div>
         <div class="row g-4" id="agriGrid"></div>
     </section>
@@ -655,7 +655,7 @@
         let isLoggedIn = !!user;
 
         // Load products dynamically
-        let products = initializeCategory('sopeoil');
+        const products = initializeCategory('homewash');
 
         const agriGrid = document.getElementById('agriGrid');
         const cartCount = document.getElementById('cartCount');
@@ -703,7 +703,6 @@
             products.forEach((p, i) => {
                 const col = document.createElement('div');
                 col.className = 'col-6 col-lg-4 slide-up';
-                // Use the bestSeller property from the product object
                 const badge = p.bestSeller ? '<span class="badge-premium">Best Seller</span>' : '';
                 col.innerHTML = `
                     <div class="premium-card" onclick="openProductDrawer(${i})">
@@ -746,11 +745,11 @@
             requireLogin(() => {
                 const p = products[index];
                 CartSystem.addItem({
-                    id:       `sopeoil_${index}`,
+                    id:       `homewash_${index}`,
                     name:     p.name,
                     img:      p.img,
                     price:    p.price,
-                    category: 'Sope Oil'
+                    category: 'Home Wash'
                 });
             });
         }
@@ -759,11 +758,11 @@
             requireLogin(() => {
                 const p = products[index];
                 CartSystem.buyNow({
-                    id:       `sopeoil_${index}`,
+                    id:       `homewash_${index}`,
                     name:     p.name,
                     img:      p.img,
                     price:    p.price,
-                    category: 'Sope Oil'
+                    category: 'Home Wash'
                 });
                 showCheckout();
             });
@@ -771,10 +770,6 @@
 
         function updateCart() {
             CartSystem.refreshUI();
-        }
-
-        function changeQty(id, delta) {
-            CartSystem.changeQty(id, delta);
         }
 
         function openProductDrawer(index) {
@@ -845,12 +840,11 @@
         document.getElementById('submitOrderBtn').onclick = () => {
              if(CartSystem.getTotalCount() > 0) {
                  drawer.classList.remove('active');
-                 hideBackdrop();
                  showCheckout();
              } else {
                  alert("Cart is empty!");
              }
-        };
+         };
 
         document.getElementById('onlinePayBtn').onclick = () => document.getElementById('qrSection').style.display = 'block';
         document.getElementById('codBtn').onclick = () => processOrder('COD');
@@ -868,7 +862,7 @@
                 items: activeItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
                 totalAmount: total,
                 paymentMethod: method,
-                notes: 'Sope Oil Order'
+                notes: 'Service Page Home Wash'
             };
 
             const proc = document.getElementById('processing');
@@ -879,7 +873,7 @@
                 proc.style.display = 'none';
                 if(res) {
                     CartSystem.clearCart();
-                    showSuccessNotification("Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
+                    showSuccessNotification("Home Hygiene Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
                     window.location.href = 'index.html';
                 }
             }, 1500);

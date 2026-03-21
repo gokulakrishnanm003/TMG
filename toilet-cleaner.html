@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Wash - Genzo Premium</title>
+    <title>Bleaching Solutions - Genzo Premium</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -408,8 +408,8 @@
         <div class="magic-shape" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
         <div class="magic-shape" style="width: 150px; height: 150px; bottom: 5%; right: 10%; animation-delay: -2s;"></div>
         <div class="container position-relative" style="z-index: 2;">
-            <h1 class="display-3 mb-2">Home Wash Solutions</h1>
-            <p class="lead opacity-75">Advanced formulas for deep clean and lasting freshness.</p>
+            <h1 class="display-3 mb-2">Toilet Cleaner Solutions</h1>
+            <p class="lead opacity-75">Industrial strength whitening and disinfection for a pristine environment.</p>
             <div class="mt-4">
                 <a href="#agriSection" class="gradient-btn px-4 py-2 rounded-pill shadow-lg text-decoration-none">
                     <i class="bi bi-arrow-down-circle me-2"></i> Explore Products
@@ -421,8 +421,8 @@
     <!-- Products Grid -->
     <section id="productDisplaySection" class="container py-5">
         <div class="text-center mb-5 pt-4">
-            <h2 class="section-title display-5 mb-3">Complete Home Care Range</h2>
-            <p class="text-muted lead">From floors to toilets - comprehensive hygiene solutions</p>
+            <h2 class="section-title display-5 mb-3">Industrial Disinfection</h2>
+            <p class="text-muted lead">Powerful bleaching and sanitation agents for professional use</p>
         </div>
         <div class="row g-4" id="agriGrid"></div>
     </section>
@@ -655,7 +655,7 @@
         let isLoggedIn = !!user;
 
         // Load products dynamically
-        const products = initializeCategory('homewash');
+        let products = initializeCategory('bleching');
 
         const agriGrid = document.getElementById('agriGrid');
         const cartCount = document.getElementById('cartCount');
@@ -702,22 +702,25 @@
             agriGrid.innerHTML = '';
             products.forEach((p, i) => {
                 const col = document.createElement('div');
+                // Use col-6 for mobile (2 columns), col-md-4 for tablets, col-lg-4 for desktop
                 col.className = 'col-6 col-lg-4 slide-up';
+                // Use the bestSeller property from the product object
                 const badge = p.bestSeller ? '<span class="badge-premium">Best Seller</span>' : '';
                 col.innerHTML = `
-                    <div class="premium-card" onclick="openProductDrawer(${i})">
+                    <div class="premium-card h-100" onclick="openProductDrawer(${i})">
                         ${badge}
-                        <div class="mb-3 overflow-hidden" style="border-radius: 16px; height: 240px;">
-                            <img src="${p.img}" alt="${p.name}" class="product-img">
+                        <!-- Using a wrapper for the image allows us to control height via CSS easily -->
+                        <div class="mb-3 overflow-hidden position-relative">
+                            <img src="${p.img}" alt="${p.name}" class="product-img w-100 h-100" style="object-fit: cover;">
                         </div>
-                        <h5 class="fw-bold mb-2" style="font-family: 'Poppins', sans-serif;">${p.name}</h5>
-                        <p class="text-muted small mb-3">${p.about.substring(0, 60)}...</p>
-                        <p class="fw-bold fs-4 mb-4" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₹${p.price}</p>
-                        <div class="d-flex gap-2 mt-auto">
-                            <button class="btn btn-outline-primary rounded-pill flex-grow-1 fw-semibold" onclick="addToCart(${i});event.stopPropagation();">
+                        <h5 class="fw-bold mb-2 text-dark" style="font-family: 'Poppins', sans-serif;">${p.name}</h5>
+                        <p class="text-muted small mb-3 flex-grow-1">${p.about}</p>
+                        <p class="fw-bold fs-4 mb-3" style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₹${p.price}</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary rounded-pill flex-grow-1 fw-semibold small-btn" onclick="addToCart(${i});event.stopPropagation();">
                                 <i class="fa fa-cart-plus me-1"></i> Add
                             </button>
-                            <button class="gradient-btn py-2 flex-grow-1" onclick="buyNow(${i});event.stopPropagation();">
+                            <button class="gradient-btn py-2 flex-grow-1 small-btn" onclick="buyNow(${i});event.stopPropagation();">
                                 <i class="fa fa-shopping-bag me-1"></i> Buy
                             </button>
                         </div>
@@ -725,7 +728,7 @@
                 `;
                 agriGrid.appendChild(col);
             });
-            
+
             // Trigger scroll animations
             setTimeout(() => {
                 const observer = new IntersectionObserver((entries) => {
@@ -745,11 +748,11 @@
             requireLogin(() => {
                 const p = products[index];
                 CartSystem.addItem({
-                    id:       `homewash_${index}`,
+                    id:       `bleching_${index}`,
                     name:     p.name,
                     img:      p.img,
                     price:    p.price,
-                    category: 'Home Wash'
+                    category: 'Bleching'
                 });
             });
         }
@@ -758,19 +761,18 @@
             requireLogin(() => {
                 const p = products[index];
                 CartSystem.buyNow({
-                    id:       `homewash_${index}`,
+                    id:       `bleching_${index}`,
                     name:     p.name,
                     img:      p.img,
                     price:    p.price,
-                    category: 'Home Wash'
+                    category: 'Bleching'
                 });
                 showCheckout();
             });
         }
 
-        function updateCart() {
-            CartSystem.refreshUI();
-        }
+        function updateCart() { CartSystem.refreshUI(); }
+        function changeQty(id, delta) { CartSystem.changeQty(id, delta); }
 
         function openProductDrawer(index) {
             const p = products[index];
@@ -840,11 +842,12 @@
         document.getElementById('submitOrderBtn').onclick = () => {
              if(CartSystem.getTotalCount() > 0) {
                  drawer.classList.remove('active');
+                 hideBackdrop();
                  showCheckout();
              } else {
                  alert("Cart is empty!");
              }
-         };
+        };
 
         document.getElementById('onlinePayBtn').onclick = () => document.getElementById('qrSection').style.display = 'block';
         document.getElementById('codBtn').onclick = () => processOrder('COD');
@@ -862,7 +865,7 @@
                 items: activeItems.map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
                 totalAmount: total,
                 paymentMethod: method,
-                notes: 'Service Page Home Wash'
+                notes: 'Bleching Order'
             };
 
             const proc = document.getElementById('processing');
@@ -873,7 +876,7 @@
                 proc.style.display = 'none';
                 if(res) {
                     CartSystem.clearCart();
-                    showSuccessNotification("Home Hygiene Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
+                    showSuccessNotification("Sanitation Order Placed Successfully!", "Your order has been confirmed and will be processed shortly.");
                     window.location.href = 'index.html';
                 }
             }, 1500);

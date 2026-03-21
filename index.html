@@ -898,7 +898,7 @@
         <nav class="navbar navbar-expand-lg glass-nav sticky-top">
             <div class="container-fluid px-4 px-lg-5">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <span class="brand-premium">GEN<span>ZO</span></span>
+                    <img src="img/genzo-logo.png" alt="Genzo Logo" style="height: 52px; width: auto; object-fit: contain;">
                 </a>
 
                 <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -911,10 +911,10 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
                             <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
-                                <li><a class="dropdown-item rounded-3" href="sopeoil.html">Home & Vehicle</a></li>
-                                <li><a class="dropdown-item rounded-3" href="clothwash.html">Cloth Washer</a></li>
-                                <li><a class="dropdown-item rounded-3" href="homewash.html">Toilet & Ala</a></li>
-                                <li><a class="dropdown-item rounded-3" href="bleching.html">Bleaching Powder</a></li>
+                                <li><a class="dropdown-item rounded-3" href="home-wash.html">Home Wash</a></li>
+                                <li><a class="dropdown-item rounded-3" href="detergent-liquid.html">Detergent Liquid</a></li>
+                                <li><a class="dropdown-item rounded-3" href="dish-wash.html">Dish Wash</a></li>
+                                <li><a class="dropdown-item rounded-3" href="toilet-cleaner.html">Toilet Cleaner</a></li>
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="bulkpro.html">Bulk</a></li>
@@ -959,7 +959,7 @@
                     <div class="carousel-item active h-100">
                         <div class="hero-bg hero-img-bg" style="background-image: url('img/genzo-hero-slide1.jpg'); background-size: cover; background-position: center center; background-color: #0a1a2e;">
                             <!-- Vivid color overlay for brightness & depth -->
-                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,20,50,0.72) 0%,rgba(0,60,120,0.45) 40%,rgba(0,180,220,0.15) 100%);z-index:1;"></div>
+                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,20,50,0.38) 0%,rgba(0,60,120,0.22) 40%,rgba(0,180,220,0.08) 100%);z-index:1;"></div>
                             <!-- Shine sweep animation -->
                             <div class="hero-shine-sweep" style="z-index:2;"></div>
                             <!-- Floating sparkle dots -->
@@ -972,12 +972,12 @@
                                 <span>Premium Quality</span>
                             </div>
                         </div>
-                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(5,15,40,0.85) 0%, rgba(5,15,40,0.55) 55%, transparent 100%);"></div>
+                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(5,15,40,0.45) 0%, rgba(5,15,40,0.25) 55%, transparent 100%);"></div>
                         <div class="hero-content-wrapper">
                             <div class="hero-center-content">
                                 <span class="glass-badge anim-1">
                                     <i class="fas fa-flask"></i>
-                                    9+ CLEANING PRODUCTS
+                                    10+ CLEANING PRODUCTS
                                 </span>
                                 <h1 class="hero-title anim-2">
                                     Complete <br> <span data-text="Cleaning Solutions">Cleaning Solutions</span>
@@ -1005,7 +1005,7 @@
                     <div class="carousel-item h-100">
                         <div class="hero-bg hero-img-bg" style="background-image: url('img/hero-genzo-categories.jpg'); background-size: cover; background-position: center center; background-color: #1a0535;">
                             <!-- Colourful vibrant overlay to boost brightness & saturation -->
-                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,0,40,0.7) 0%,rgba(80,0,130,0.4) 40%,rgba(0,0,20,0.2) 100%);z-index:1;"></div>
+                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,0,40,0.35) 0%,rgba(80,0,130,0.2) 40%,rgba(0,0,20,0.1) 100%);z-index:1;"></div>
                             <!-- Neon glow accents -->
                             <div style="position:absolute;bottom:-60px;left:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,80,200,0.25),transparent 70%);filter:blur(60px);z-index:2;"></div>
                             <div style="position:absolute;top:-60px;right:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(80,120,255,0.3),transparent 70%);filter:blur(60px);z-index:2;"></div>
@@ -1020,7 +1020,7 @@
                                 <span>99.9% Germ Kill</span>
                             </div>
                         </div>
-                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(10,0,40,0.88) 0%, rgba(10,0,40,0.55) 55%, transparent 100%);"></div>
+                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(10,0,40,0.48) 0%, rgba(10,0,40,0.28) 55%, transparent 100%);"></div>
                         <div class="hero-content-wrapper">
                             <div class="hero-center-content">
                                 <span class="glass-badge anim-1" style="border-color:rgba(200,100,255,0.4);">
@@ -1061,87 +1061,113 @@
             </div>
         </section>
 
-        <!-- ================= PRODUCTS ================= -->
-        <section class="products-section" id="productContainer">
-            <div class="container">
-                <div class="section-header-wrap">
-                    <span class="section-subtitle">Our Premium Collection</span>
-                    <h1 class="section-title">Discover Genzo</h1>
+        <!-- ================= PRODUCTS SHOWCASE ================= -->
+        <section class="product-showcase-section" id="productContainer">
+            <!-- Ambient background glows -->
+            <div class="showcase-bg-glow showcase-glow-1"></div>
+            <div class="showcase-bg-glow showcase-glow-2"></div>
+            <div class="showcase-bg-glow showcase-glow-3"></div>
+            <!-- Shimmer sweep -->
+            <div class="showcase-shimmer-sweep"></div>
+
+            <div class="container position-relative" style="z-index:2;">
+                <!-- Section Header -->
+                <div class="showcase-header">
+                    <span class="showcase-eyebrow">
+                        <i class="fas fa-star-of-life me-2" style="font-size:0.6rem;"></i>Our Premium Range<i class="fas fa-star-of-life ms-2" style="font-size:0.6rem;"></i>
+                    </span>
+                    <h2 class="showcase-title">Pure <span class="showcase-title-accent">Power Line</span></h2>
+                    <p class="showcase-subtitle">Professional-grade cleaning solutions crafted for every surface</p>
                 </div>
-                <div class="row g-4 justify-content-center" id="featured-products-container">
-                    <!-- Product 1 -->
-                    <div class="col-lg-3 col-md-6 slide-up">
-                        <div class="product-card-modern">
-                            <div class="product-card-img">
-                                <img src="img/homevehicles.jpg" alt="Sope Oil">
-                                <span class="product-badge">Best Seller</span>
-                                <div class="product-img-overlay">
-                                    <a href="sopeoil.html" class="product-quick-view"><i class="fas fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-card-body">
-                                <span class="product-category">Multi-Purpose</span>
-                                <h4 class="product-name">Sope Oil</h4>
-                                <p class="product-desc">Heavy-duty vehicle & home cleaning. Tough on stains, gentle on surfaces.</p>
-                                <a href="sopeoil.html" class="product-cta">Choose Size <i class="fas fa-arrow-right"></i></a>
-                            </div>
+
+                <!-- 4 Bottles Row -->
+                <div class="bottles-row">
+
+                    <!-- Bottle 1: Dish Wash -->
+                    <div class="bottle-item bottle-reveal" id="bottle-1">
+                        <div class="bottle-number">1</div>
+                        <div class="bottle-glow-ring glow-orange"></div>
+                        <div class="bottle-shine"></div>
+                        <div class="bottle-img-wrap">
+                            <img src="img/dish wash.jpeg" alt="Genzo Dish Wash Liquid" class="bottle-img">
                         </div>
-                    </div>
-                    <!-- Product 2 -->
-                    <div class="col-lg-3 col-md-6 slide-up">
-                        <div class="product-card-modern">
-                            <div class="product-card-img">
-                                <img src="img/toilet.jpg" alt="Phyn Oil">
-                                <div class="product-img-overlay">
-                                    <a href="homewash.html" class="product-quick-view"><i class="fas fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-card-body">
-                                <span class="product-category">Floor & Bath</span>
-                                <h4 class="product-name">Phyn Oil</h4>
-                                <p class="product-desc">Professional grade floor & bathroom cleaner with long-lasting fresh aroma.</p>
-                                <a href="homewash.html" class="product-cta">Buy Now <i class="fas fa-arrow-right"></i></a>
-                            </div>
+                        <div class="bottle-label">
+                            <span class="bottle-cat">Kitchen Care</span>
+                            <h4 class="bottle-name">Dish Wash Liquid</h4>
+                            <span class="bottle-tag">100+ Colours &amp; Grime+</span>
                         </div>
+                        <a href="sopeoil.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <!-- Product 3 -->
-                    <div class="col-lg-3 col-md-6 slide-up">
-                        <div class="product-card-modern">
-                            <div class="product-card-img">
-                                <img src="img/sanitaizer2.jpg" alt="Sanitizer">
-                                <span class="product-badge accent">Safety Grade</span>
-                                <div class="product-img-overlay">
-                                    <a href="sopeoil.html" class="product-quick-view"><i class="fas fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-card-body">
-                                <span class="product-category">Hygiene</span>
-                                <h4 class="product-name">Ultra Sanitizer</h4>
-                                <p class="product-desc">Lab-certified, pH balanced sanitizing solution for family protection.</p>
-                                <a href="sopeoil.html" class="product-cta">Add to Cart <i class="fas fa-arrow-right"></i></a>
-                            </div>
+
+                    <!-- Bottle 2: Detergent -->
+                    <div class="bottle-item bottle-reveal" id="bottle-2">
+                        <div class="bottle-number">2</div>
+                        <div class="bottle-glow-ring glow-blue"></div>
+                        <div class="bottle-shine"></div>
+                        <div class="bottle-img-wrap">
+                            <img src="img/detergent wash.jpeg" alt="Genzo Liquid Detergent" class="bottle-img">
                         </div>
-                    </div>
-                    <!-- Product 4 -->
-                    <div class="col-lg-3 col-md-6 slide-up">
-                        <div class="product-card-modern">
-                            <div class="product-card-img">
-                                <img src="img/homevehicles.jpg" alt="Home Wash">
-                                <span class="product-badge new">New</span>
-                                <div class="product-img-overlay">
-                                    <a href="homewash.html" class="product-quick-view"><i class="fas fa-eye"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-card-body">
-                                <span class="product-category">Home Care</span>
-                                <h4 class="product-name">Home Wash Liquid</h4>
-                                <p class="product-desc">All-in-one home cleaning formula for floors, walls, and kitchen surfaces.</p>
-                                <a href="homewash.html" class="product-cta">Shop Now <i class="fas fa-arrow-right"></i></a>
-                            </div>
+                        <div class="bottle-label">
+                            <span class="bottle-cat">Laundry Care</span>
+                            <h4 class="bottle-name">Liquid Detergent</h4>
+                            <span class="bottle-tag">100 Dried Stains · 1 Wash</span>
                         </div>
+                        <a href="clothwash.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
+
+                    <!-- Bottle 3: Home Cleaner -->
+                    <div class="bottle-item bottle-reveal" id="bottle-3">
+                        <div class="bottle-number">3</div>
+                        <div class="bottle-glow-ring glow-pink"></div>
+                        <div class="bottle-shine"></div>
+                        <div class="bottle-img-wrap">
+                            <img src="img/home cleaner.jpeg" alt="Genzo Home Cleaner" class="bottle-img">
+                        </div>
+                        <div class="bottle-label">
+                            <span class="bottle-cat">Home Care</span>
+                            <h4 class="bottle-name">Surface Cleaner</h4>
+                            <span class="bottle-tag">99.9% Germ Kill</span>
+                        </div>
+                        <a href="homewash.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <!-- Bottle 4: Toilet Cleaner -->
+                    <div class="bottle-item bottle-reveal" id="bottle-4">
+                        <div class="bottle-number">4</div>
+                        <div class="bottle-glow-ring glow-navy"></div>
+                        <div class="bottle-shine"></div>
+                        <div class="bottle-img-wrap">
+                            <img src="img/toilet cleaner.jpeg" alt="Genzo Toilet Cleaner" class="bottle-img">
+                        </div>
+                        <div class="bottle-label">
+                            <span class="bottle-cat">Bathroom</span>
+                            <h4 class="bottle-name">Toilet Cleaner</h4>
+                            <span class="bottle-tag">20X Power Cleaning</span>
+                        </div>
+                        <a href="homewash.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                </div><!-- /.bottles-row -->
+
             </div>
+
+            <script>
+            (function(){
+                var bottles = document.querySelectorAll('.bottle-reveal');
+                var delays  = [0, 160, 320, 480];
+                var obs = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        if(entry.isIntersecting){
+                            var el  = entry.target;
+                            var idx = Array.from(bottles).indexOf(el);
+                            setTimeout(function(){ el.classList.add('revealed'); }, delays[idx] || 0);
+                            obs.unobserve(el);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                bottles.forEach(function(b){ obs.observe(b); });
+            })();
+            </script>
         </section>
 
         <!-- ================= FOUNDER: KINETIC LUXURY ================= -->

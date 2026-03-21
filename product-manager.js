@@ -27,15 +27,11 @@ const productCategories = {
         ]
     },
     'sopeoil': {
-        key: 'sopeoil_products',
-        label: 'Sope Oil Products',
+        key: 'dishwash_final_products',
+        label: 'Dish Wash Products',
         defaults: [
-            { name: "Sope Oil - 50L", price: 1200, qty: 0, img: "img/sanitaizer1.jpg", about: "50‑litre bulk sope oil, commercial grade quality for large scale cleaning.", bestSeller: true },
-            { name: "Sope Oil - 60L", price: 1600, qty: 0, img: "img/sanitaizer2.jpg", about: "60‑litre drum specifically designed for industrial vehicle fleets." },
-            { name: "Sope Oil - Bulk 100L+", price: 2500, qty: 0, img: "img/bleach1.png", about: "Enterprise volume solution. Best price guarantee for bulk buyers.", bestSeller: true },
-            { name: "Cleaning Oil - 50L", price: 1100, qty: 0, img: "img/chlorine1.jpg", about: "Standard 50L cleaning oil for diverse floor types." },
-            { name: "Cleaning Oil - 60L", price: 1400, qty: 0, img: "https://images.pexels.com/photos/6048400/pexels-photo-6048400.jpeg", about: "Premium 60L variant with enhanced surfactants." },
-            { name: "Cleaning Oil - Bulk 100L+", price: 2200, qty: 0, img: "https://images.pexels.com/photos/5682922/pexels-photo-5682922.jpeg", about: "Bulk orders for facilities management and large offices." }
+            { name: "Dish Wash Liquid - 500ml", price: 150, qty: 0, img: "img/dish-wash-1.png", about: "Powerful grease-cutting formula with fresh orange extracts. Deep cleans like never before.", bestSeller: true, innovative: true },
+            { name: "Dish Wash Liquid - Premium", price: 180, qty: 0, img: "img/dish wash.jpeg", about: "Gentle on hands, tough on grime. Our most advanced dishwashing liquid with lasting protection.", innovative: true }
         ]
     },
     'bulkpro': {
@@ -307,17 +303,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const path = window.location.pathname;
 
-    if (path.includes('homewash.html')) {
+    if (path.includes('home-wash.html')) {
         initializeCategory('homewash');
-    } else if (path.includes('clothwash.html')) {
+    } else if (path.includes('detergent-liquid.html')) {
         initializeCategory('clothwash');
-    } else if (path.includes('sopeoil.html')) {
+    } else if (path.includes('dish-wash.html')) {
         initializeCategory('sopeoil');
     } else if (path.includes('bulkpro.html')) {
         initializeCategory('bulkpro');
     } else if (path.includes('bulk.html')) {
         initializeCategory('bulk');
-    } else if (path.includes('bleching.html')) {
+    } else if (path.includes('toilet-cleaner.html')) {
         initializeCategory('bleching');
     } else {
         // Admin dashboard or index, initialize all just in case
@@ -370,12 +366,12 @@ function renderFeaturedProducts() {
         let link = 'sopeoil.html';
         let categoryLabel = 'Multi-Purpose';
 
-        if (p.categoryKey === 'homewash') { link = 'homewash.html'; categoryLabel = 'Floor & Bath'; }
-        else if (p.categoryKey === 'clothwash') { link = 'clothwash.html'; categoryLabel = 'Cloth Care'; }
-        else if (p.categoryKey === 'sopeoil') { link = 'sopeoil.html'; categoryLabel = 'Vehicle & Home'; }
+        if (p.categoryKey === 'homewash') { link = 'home-wash.html'; categoryLabel = 'Floor & Bath'; }
+        else if (p.categoryKey === 'clothwash') { link = 'detergent-liquid.html'; categoryLabel = 'Cloth Care'; }
+        else if (p.categoryKey === 'sopeoil') { link = 'dish-wash.html'; categoryLabel = 'Vehicle & Home'; }
         else if (p.categoryKey === 'bulkpro') { link = 'bulkpro.html'; categoryLabel = 'Industrial Pro'; }
         else if (p.categoryKey === 'bulk') { link = 'bulk.html'; categoryLabel = 'Wholesale Bulk'; }
-        else if (p.categoryKey === 'bleching') { link = 'bleching.html'; categoryLabel = 'Disinfection'; }
+        else if (p.categoryKey === 'bleching') { link = 'toilet-cleaner.html'; categoryLabel = 'Disinfection'; }
 
         const col = document.createElement('div');
         col.className = 'col-lg-4 col-md-6 slide-up';
