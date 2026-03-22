@@ -36,16 +36,43 @@ const CartSystem = {
         this.save();
         this.refreshUI();
 
-        // Show the cart drawer
-        const drawer = document.getElementById('cartDrawer');
-        if (drawer) {
-            drawer.classList.add('active');
-            const backdrop = document.getElementById('drawerBackdrop');
-            if (backdrop) {
-                backdrop.style.display = 'block';
-                setTimeout(() => backdrop.style.opacity = '1', 10);
-            }
-        }
+        // Show a small notification instead of the drawer
+        this.showToast(product.name);
+    },
+
+    // Show a floating toast notification
+    showToast(name) {
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #11998e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        `;
+        toast.innerHTML = `<i class="fa fa-check-circle fs-5"></i> <span>"${name}" Added to Cart</span>`;
+        document.body.appendChild(toast);
+
+        // Animate in
+        setTimeout(() => toast.style.transform = 'translateX(0)', 10);
+
+        // Animate out and remove
+        setTimeout(() => {
+            toast.style.transform = 'translateX(120%)';
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
     },
 
     // Buy Now - clear cart and add one item
@@ -117,40 +144,31 @@ const CartSystem = {
         const emptyMessage = document.getElementById('emptyCartMessage');
 
         if (cartBody) {
-            // Keep the empty message element if it exists
-            const msgHtml = emptyMessage ? emptyMessage.outerHTML : '';
-
-            // Rebuild the items list
-            // Note: We avoid clearing total innerHTML to keep the message element functional
-            // We'll manually manage the item rows
-
             // Remove existing items (divs with class cart-item)
             const existingItems = cartBody.querySelectorAll('.cart-item');
             existingItems.forEach(el => el.remove());
 
             if (this.items.length === 0) {
-                const msg = document.getElementById('emptyCartMessage');
-                if (msg) msg.style.display = 'block';
+                if (emptyMessage) emptyMessage.style.display = 'block';
             } else {
-                const msg = document.getElementById('emptyCartMessage');
-                if (msg) msg.style.display = 'none';
+                if (emptyMessage) emptyMessage.style.display = 'none';
 
                 this.items.forEach(item => {
                     const itemDiv = document.createElement('div');
-                    itemDiv.className = 'cart-item';
+                    itemDiv.className = 'cart-item slide-up visible';
                     itemDiv.innerHTML = `
-                        <img src="${item.img}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <div class="flex-grow-1">
-                            <h6 class="fw-bold mb-0 small">${item.name}</h6>
-                            <small class="text-muted">₹${item.price} × ${item.qty}</small>
+                        <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info flex-grow-1">
+                            <h6 class="mb-1">${item.name}</h6>
+                            <small>₹${item.price} per unit</small>
                         </div>
-                        <div class="d-flex align-items-center gap-2">
-                             <button class="btn btn-sm btn-outline-primary rounded-circle" onclick="changeQty('${item.id}', -1)" style="width: 30px; height: 30px; padding: 0; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-minus small"></i>
+                        <div class="qty-control">
+                             <button class="qty-btn" onclick="changeQty('${item.id}', -1)">
+                                <i class="fas fa-minus"></i>
                              </button>
-                             <span class="fw-bold">${item.qty}</span>
-                             <button class="btn btn-sm btn-outline-primary rounded-circle" onclick="changeQty('${item.id}', 1)" style="width: 30px; height: 30px; padding: 0; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-plus small"></i>
+                             <span class="fw-bold small">${item.qty}</span>
+                             <button class="qty-btn" onclick="changeQty('${item.id}', 1)">
+                                <i class="fas fa-plus"></i>
                              </button>
                         </div>
                     `;

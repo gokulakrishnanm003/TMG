@@ -2,28 +2,37 @@
 // Manages products for multiple pages/categories
 
 const productCategories = {
+    'allliquid': {
+        key: 'all_liquid_products_v2',
+        label: 'All Liquid Products',
+        defaults: [
+            { name: "Home Wash - 1L", price: 120, qty: 0, img: "img/home cleaner.jpeg", about: "Premium 1L home wash for daily cleaning and hygiene. Powerful on stains, gentle on surfaces.", bestSeller: true, innovative: true },
+            { name: "Home Wash - 500ml", price: 70, qty: 0, img: "img/Home-wash-500ml.jpeg", about: "Effective 500ml home wash solution for spotless surfaces and long-lasting freshness.", bestSeller: true, innovative: true },
+            { name: "Home Wash - 250ml", price: 40, qty: 0, img: "img/Home-wash-250ml.jpeg", about: "Compact 250ml home wash, perfect for small cleaning tasks and travel convenience.", innovative: true },
+            { name: "Liquid Detergent - 1L", price: 160, qty: 0, img: "img/detergent wash.jpeg", about: "Premium 1L liquid detergent formulated for deep cleaning and long-lasting fabric protection.", bestSeller: true, innovative: true },
+            { name: "Liquid Detergent - 500ml", price: 90, qty: 0, img: "img/Detergent-liquid-500ml.png", about: "Powerful 500ml detergent liquid that removes tough stains without damaging fabric colors.", bestSeller: true, innovative: true },
+            { name: "Dish Wash Liquid - 500ml", price: 150, qty: 0, img: "img/dish-wash-1.png", about: "Powerful grease-cutting formula with fresh orange extracts. Deep cleans like never before.", bestSeller: true, innovative: true },
+            { name: "Dish Wash Liquid - Premium", price: 180, qty: 0, img: "img/dish wash.jpeg", about: "Gentle on hands, tough on grime. Our most advanced dishwashing liquid with lasting protection.", innovative: true },
+            { name: "Toilet Cleaner - 1L", price: 110, qty: 0, img: "img/toilet cleaner.jpeg", about: "Premium 1L toilet cleaner for a sparkling clean and hygienic bathroom. Powerful stain removal.", bestSeller: true, innovative: true },
+            { name: "Toilet Cleaner - 500ml", price: 65, qty: 0, img: "img/Toilet-wah-500ml.jpeg", about: "Powerful 500ml toilet wash that removes tough stains and leaves a fresh scent for hours.", bestSeller: true, innovative: true },
+            { name: "Toilet Cleaner - 250ml", price: 35, qty: 0, img: "img/Toilet-wah-250ml.jpeg", about: "Convenient 250ml size toilet cleaner, perfect for specific cleaning needs and small bathrooms.", innovative: true }
+        ]
+    },
     'homewash': {
-        key: 'homewash_products',
+        key: 'homewash_v3_products',
         label: 'Home Wash Products',
         defaults: [
-            { name: "Floor Cleaner - 10L", price: 800, qty: 0, img: "img/sanitaizer1.jpg", about: "High-fragrance floor wash for ultimate home freshness.", bestSeller: true },
-            { name: "Floor Cleaner - 50L", price: 3500, qty: 0, img: "img/sanitaizer2.jpg", about: "Bulk 50L pack for large homes and offices." },
-            { name: "Toilet Cleaner - 10L", price: 600, qty: 0, img: "img/bleach1.png", about: "Strong stain removal formula for sparkling clean toilets.", bestSeller: true },
-            { name: "Dish Wash Liquid - 5L", price: 450, qty: 0, img: "img/chlorine1.jpg", about: "Grease-cutting formula gentle on hands." },
-            { name: "Glass Cleaner - 5L", price: 500, qty: 0, img: "https://images.pexels.com/photos/6048400/pexels-photo-6048400.jpeg", about: "Streak-free shine for windows and mirrors." },
-            { name: "Air Freshener - 5L", price: 1200, qty: 0, img: "https://images.pexels.com/photos/5682922/pexels-photo-5682922.jpeg", about: "Long-lasting floral scent for pleasant interiors." }
+            { name: "Home Wash - 1L", price: 120, qty: 0, img: "img/home cleaner.jpeg", about: "Premium 1L home wash for daily cleaning and hygiene. Powerful on stains, gentle on surfaces.", bestSeller: true, innovative: true },
+            { name: "Home Wash - 500ml", price: 70, qty: 0, img: "img/Home-wash-500ml.jpeg", about: "Effective 500ml home wash solution for spotless surfaces and long-lasting freshness.", bestSeller: true, innovative: true },
+            { name: "Home Wash - 250ml", price: 40, qty: 0, img: "img/Home-wash-250ml.jpeg", about: "Compact 250ml home wash, perfect for small cleaning tasks and travel convenience.", innovative: true }
         ]
     },
     'clothwash': {
-        key: 'clothwash_products',
-        label: 'Cloth Wash Products',
+        key: 'clothwash_v1_products',
+        label: 'Liquid Detergent Products',
         defaults: [
-            { name: "Cloth Washer - 50L", price: 1200, qty: 0, img: "img/sanitaizer1.jpg", about: "50‑litre bulk cloth washer, commercial grade for hospitality and hospitals.", bestSeller: true },
-            { name: "Cloth Washer - 60L", price: 1600, qty: 0, img: "img/sanitaizer2.jpg", about: "60‑litre drum solution for heavy laundry duty." },
-            { name: "Cloth Washer - Bulk 100L+", price: 2500, qty: 0, img: "img/bleach1.png", about: "Enterprise laundry volume. High concentration formula.", bestSeller: true },
-            { name: "Fabric Softener - 50L", price: 1300, qty: 0, img: "img/chlorine1.jpg", about: "Industrial scale fabric conditioner for ultra softness." },
-            { name: "Stain Remover - 25L", price: 1800, qty: 0, img: "https://images.pexels.com/photos/6048400/pexels-photo-6048400.jpeg", about: "Professional strength stain lifting solution." },
-            { name: "Liquid Detergent - 50L", price: 1500, qty: 0, img: "https://images.pexels.com/photos/5682922/pexels-photo-5682922.jpeg", about: "High-suds professional detergent for pristine white clothes." }
+            { name: "Liquid Detergent - 1L", price: 160, qty: 0, img: "img/detergent wash.jpeg", about: "Premium 1L liquid detergent formulated for deep cleaning and long-lasting fabric protection.", bestSeller: true, innovative: true },
+            { name: "Liquid Detergent - 500ml", price: 90, qty: 0, img: "img/Detergent-liquid-500ml.png", about: "Powerful 500ml detergent liquid that removes tough stains without damaging fabric colors.", bestSeller: true, innovative: true }
         ]
     },
     'sopeoil': {
@@ -68,15 +77,12 @@ const productCategories = {
         ]
     },
     'bleching': {
-        key: 'bleching_products',
-        label: 'Bleaching Products',
+        key: 'toilet_cleaner_v2_products',
+        label: 'Toilet Cleaner Products',
         defaults: [
-            { name: "Bleaching Powder - 25kg", price: 2000, qty: 0, img: "img/chpowder.jpg", about: "High-grade industrial bleaching powder for water treatment and surface disinfection.", bestSeller: true },
-            { name: "Bleaching Liquid - 20L", price: 1500, qty: 0, img: "img/bleach1.png", about: "Concentrated sodium hypochlorite solution for heavy-duty cleaning." },
-            { name: "Chlorine Tablets - 5kg", price: 1200, qty: 0, img: "img/chlorine1.jpg", about: "Slow-dissolve chlorine pellets for consistent pool and tank sanitation.", bestSeller: true },
-            { name: "Disinfectant Spray - 5L", price: 900, qty: 0, img: "img/sanitaizer1.jpg", about: "Surface-safe microbial disinfectant for professional environments." },
-            { name: "Sope Oil - 50L", price: 1200, qty: 0, img: "img/sanitaizer2.jpg", about: "Multi-purpose industrial cleaning oil." },
-            { name: "Industrial Phenyl - 20L", price: 1800, qty: 0, img: "https://images.pexels.com/photos/5682922/pexels-photo-5682922.jpeg", about: "Concentrated black phenyl for large scale sanitation." }
+            { name: "Toilet Cleaner - 1L", price: 110, qty: 0, img: "img/toilet cleaner.jpeg", about: "Premium 1L toilet cleaner for a sparkling clean and hygienic bathroom. Powerful stain removal.", bestSeller: true, innovative: true },
+            { name: "Toilet Cleaner - 500ml", price: 65, qty: 0, img: "img/Toilet-wah-500ml.jpeg", about: "Powerful 500ml toilet wash that removes tough stains and leaves a fresh scent for hours.", bestSeller: true, innovative: true },
+            { name: "Toilet Cleaner - 250ml", price: 35, qty: 0, img: "img/Toilet-wah-250ml.jpeg", about: "Convenient 250ml size toilet cleaner, perfect for specific cleaning needs and small bathrooms.", innovative: true }
         ]
     }
 };
@@ -303,7 +309,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const path = window.location.pathname;
 
-    if (path.includes('home-wash.html')) {
+    if (path.includes('all-liquid.html')) {
+        initializeCategory('allliquid');
+    } else if (path.includes('home-wash.html')) {
         initializeCategory('homewash');
     } else if (path.includes('detergent-liquid.html')) {
         initializeCategory('clothwash');
