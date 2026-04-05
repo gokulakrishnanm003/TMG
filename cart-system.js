@@ -103,8 +103,8 @@ const CartSystem = {
     },
 
     // Clear all items
-    clearCart() {
-        if (confirm('Are you sure you want to clear your cart?')) {
+    clearCart(silent = false) {
+        if (silent || confirm('Are you sure you want to clear your cart?')) {
             this.items = [];
             this.save();
             this.refreshUI();

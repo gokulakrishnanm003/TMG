@@ -299,7 +299,8 @@ body {
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
-    cursor: default;
+    cursor: pointer;
+    text-decoration: none !important;
 }
 
 .hero-pill i {
@@ -983,7 +984,7 @@ body {
 }
 
 /* ===== PREMIUM FOOTER STYLES ===== */
-.tmg-footer {
+.tmg-footer, .genzo-footer {
     background: var(--gradient-dark) !important;
     position: relative;
     overflow: hidden;
@@ -992,7 +993,7 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.tmg-footer::before {
+.tmg-footer::before, .genzo-footer::before {
     content: '';
     position: absolute;
     top: -100px;
@@ -1747,11 +1748,44 @@ body {
 /* --- Bottles grid --- */
 .bottles-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 22px;
     align-items: stretch;
     position: relative;
     z-index: 2;
+}
+
+@media (max-width: 1200px) {
+    .bottles-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bottles-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .bottle-item {
+        padding: 25px 15px 20px;
+        border-radius: 30px;
+    }
+    .bottle-number {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bottles-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .bottle-item {
+        padding: 18px 12px 14px;
+    }
+    .bottle-name {
+        font-size: 0.8rem;
+    }
 }
 
 /* --- Individual bottle card --- */
@@ -2077,5 +2111,158 @@ body {
     .drawer {
         width: calc(100% - 30px);
         right: -110%;
+    }
+}
+
+/* ========================================
+   HERO SLIDES — MOBILE RESPONSIVE
+   ======================================== */
+
+/* Tablet & below (≤ 768px) */
+@media (max-width: 768px) {
+
+    /* ── General Hero ── */
+    .hero-section {
+        height: 100svh !important;
+        min-height: 100svh;
+    }
+
+    .hero-content-wrapper {
+        padding: 80px 16px 50px !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+
+    .hero-float-badge {
+        top: 12px !important;
+        right: 12px !important;
+        padding: 6px 12px !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* ── SLIDE 1: two-column → single column ── */
+    .hero-slide1-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    /* ── SLIDE 1: headline ── */
+    .hero-slide1-headline {
+        font-size: clamp(2rem, 9vw, 2.8rem) !important;
+        letter-spacing: -1px !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* ── SLIDE 1: subtitle ── */
+    .hero-slide1-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+
+    /* ── SLIDE 1: stats row ── */
+    .hero-slide1-stats {
+        gap: 14px !important;
+        margin-bottom: 1.4rem !important;
+    }
+
+    .hero-slide1-stats > div > div:first-child {
+        font-size: 1.2rem !important;
+    }
+
+    /* ── SLIDE 1: category card grid → 2 cols ── */
+    .hero-slide1-cards {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+    }
+
+    /* ── SLIDE 1: full-span toilet cleaner card ── */
+    .hero-slide1-toilet {
+        grid-column: span 2 !important;
+    }
+
+    /* ── SLIDE 1 & 2: CTA buttons stack ── */
+    .hero-slide1-ctas,
+    .hero-slide2-ctas {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+
+    .hero-slide1-ctas a,
+    .hero-slide2-ctas a {
+        text-align: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    /* ── SLIDE 2: headline ── */
+    .hero-slide2-headline {
+        font-size: clamp(2rem, 9vw, 3rem) !important;
+        margin: 0.8rem 0 !important;
+    }
+
+    /* ── SLIDE 2: subtitle ── */
+    .hero-slide2-subtitle {
+        font-size: 0.88rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+
+    /* ── SLIDE 2: 5-col → 3-col pill grid ── */
+    .hero-slide2-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        margin-bottom: 1.4rem !important;
+    }
+
+    .glass-badge {
+        font-size: 0.65rem !important;
+        padding: 7px 14px !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .hero-btn-group {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100%;
+    }
+
+    .hero-btn-group a {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    .gradient-btn.hero-btn {
+        padding: 14px 20px !important;
+        font-size: 0.92rem !important;
+        width: 100% !important;
+    }
+
+    .btn-hero-glass {
+        justify-content: center !important;
+    }
+}
+
+/* Phone only (≤ 480px) */
+@media (max-width: 480px) {
+
+    /* ── SLIDE 2: 3-col → 2+1 wrap ── */
+    .hero-slide2-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Last pill (5th) spans both columns on 2-col layout */
+    .hero-slide2-grid a:last-child {
+        grid-column: span 2 !important;
+        flex-direction: row !important;
+        gap: 12px !important;
+        justify-content: flex-start !important;
+        padding: 10px 14px !important;
+    }
+
+    /* ── hero stats: tighter on very small phones ── */
+    .hero-slide1-stats {
+        gap: 10px !important;
     }
 }

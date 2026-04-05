@@ -45,6 +45,35 @@ class OrderManager {
         }
     }
 
+    // Send order details to WhatsApp
+    sendToWhatsApp(order) {
+        const adminPhone = "918110998030";
+        let message = `*📦 NEW ORDER - ${order.paymentMethod.toUpperCase()}*\n`;
+        message += `------------------------------\n`;
+        message += `*🆔 Order ID:* ${order.id}\n`;
+        message += `*👤 Customer:* ${order.customerName}\n`;
+        message += `*📞 Phone:* ${order.phone}\n`;
+        message += `*📍 Address:* ${order.address}\n`;
+        message += `------------------------------\n`;
+        message += `*🛒 Items:*\n`;
+        
+        order.items.forEach(item => {
+            message += `• ${item.name} x ${item.quantity} - ₹${item.price * item.quantity}\n`;
+        });
+        
+        message += `------------------------------\n`;
+        message += `*💰 Total Amount:* ₹${order.totalAmount}\n`;
+        message += `*✅ Status:* Order Placed via Website\n`;
+        message += `------------------------------\n`;
+        message += `*GENZO - TMG Shri Bahavan Groups*`;
+
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
+        
+        // Open WhatsApp in a new tab or same tab
+        window.location.href = whatsappUrl;
+    }
+
     // Get all orders
     getOrders() {
         try {

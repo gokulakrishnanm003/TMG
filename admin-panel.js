@@ -377,9 +377,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
 // ===== KEYBOARD SHORTCUTS =====
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeOrderModal();
     }
 });
+
+// ===== BUSINESS INSIGHT GENERATOR =====
+function generateBusinessInsight() {
+    const orders = getOrders();
+    const totalOrders = orders.length;
+    const completedOrders = orders.filter(o => o.status === 'completed').length;
+    const totalRevenue = orders.reduce((sum, o) => sum + parseFloat(o.totalAmount || 0), 0);
+    const avgOrderValue = totalOrders > 0 ? (totalRevenue / totalOrders).toFixed(2) : 0;
+    const completionRate = totalOrders > 0 ? ((completedOrders / totalOrders) * 100).toFixed(1) : 0;
+
+    let insightText = '';
+    
+    if (totalOrders === 0) {
+        insightText = "The dashboard is currently awaiting its first records. To generate meaningful insights, please ensure customer orders are being captured correctly through the GENZO storefront.";
+    } else {
+        insightText = `As of ${new Date().toLocaleDateString('en-IN')}, GENZO is demonstrating a strong market presence with **${totalOrders} active orders** processed. The current financial momentum has reached a **total revenue of ₹${totalRevenue.toFixed(2)}**, maintaining a healthy **Average Order Value (AOV) of ₹${avgOrderValue}**. \n\nOur operational efficiency is highlighted by a **${completionRate}% fulfillment rate**, indicating that the logistics pipeline is successfully converting inquiries into completed deliveries. However, with ${totalOrders - completedOrders} orders still in the pipeline, there is a strategic opportunity to accelerate processing times and further enhance customer satisfaction. Overall, the business is scaling steadily, reflecting the trust modern South Indian households place in TMG Shri Bahavan Groups' legacy of purity and innovation.`;
+    }
+
+    // Show in a premium alert/modal
+    const modalBody = document.getElementById('orderModalBody');
+    const modalHeader = document.querySelector('#orderModal .modal-header h4');
+    
+    if (modalBody && modalHeader) {
+        modalHeader.innerHTML = '<i class="fas fa-magic"></i> GENZO Business Intelligence';
+        modalBody.innerHTML = `
+            <div style="background: #f8fafc; padding: 2rem; border-radius: 20px; border-left: 5px solid #11998e;">
+                <h5 class="fw-bold mb-3" style="color: #11998e;">Strategic Performance Summary</h5>
+                <p style="line-height: 2; color: #334155; font-size: 1.05rem;">${insightText.replace(/\\n/g, '<br>')}</p>
+                <div class="mt-4 pt-3 border-top d-flex gap-4">
+                    <div>
+                        <small class="text-muted d-block text-uppercase fw-bold" style="font-size: 0.65rem;">Growth Signal</small>
+                        <span class="text-success fw-bold">Stable & Scaling</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.getElementById('orderModal').style.display = 'block';
+    }
+}

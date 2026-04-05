@@ -287,8 +287,8 @@
 
     <!-- ===== HEADER ===== -->
     <header>
-        <div class="header-title" style="border-radius: 2px;">
-             CLEANZO
+        <div class="header-title" style="border-radius: 2px; padding: 10px 0;">
+             <img src="img/genzo-logo.png" alt="Genzo Logo" style="height: 48px; width: auto; filter: invert(1) brightness(2);">
         </div>
     </header>
 
@@ -341,9 +341,12 @@
 
 
     <div class="container mt-4">
-        <h2 class="text-center   mb-4" style="color: #5EB09F;">TMG Shri Bahavan Groups</h2>
+        <div class="text-center mb-4">
+            <img src="img/logo tmg.png" alt="TMG Logo" style="height: 60px; width: auto; margin-bottom: 1rem;">
+            <h2 class="text-center mb-0" style="color: #5EB09F;">Shri Bahavan Groups</h2>
+        </div>
         <p class="text-center text-muted mb-5">
-            Behind every success of <strong>TMG – TMG Shri Bahavan Groups</strong> stand four visionary individuals —
+            Behind every success of <strong><img src="img/logo tmg.png" alt="TMG Logo" style="height:18px; vertical-align:middle;"> Shri Bahavan Groups</strong> stand four visionary individuals —
             <strong>Thangavel</strong>, <strong>Muthukumar T</strong>,<strong>Sutha M</strong>, <strong>Gokulakrishnan
                 M</strong>, and
             <strong>Yazhini M</strong>
@@ -358,7 +361,7 @@
 
     <!-- ===== FOOTER ===== -->
     <footer style="background-color:  #5EB09F;">
-        © 2025 CLEANZOD | TMG Team <br>
+        &copy; 2025 <img src="img/logo tmg.png" alt="TMG Logo" style="height: 18px; filter: invert(1) brightness(2);"> CLEANZOD | TMG Team <br>
         Contact us: <a href="tel:8110998030">8110998030</a> <br>
         e-mail us : <a href="gogularasai82@gmail.com">gogularasai82@gmail.com</a>
     </footer>
@@ -378,7 +381,7 @@
 
         if (name && email && phone && message) {
             // Create mailto link to send email
-            const mailtoLink = `mailto:gogularasai82@gmail.com?subject=Business Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(Name: ${ name }\nPhone: ${ phone }\nEmail: ${ email }\nMessage: ${ message })}`;
+            const mailtoLink = `mailto:gogularasai82@gmail.com?subject=Business Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`)}`;
             window.location.href = mailtoLink;
 
             // Display success message

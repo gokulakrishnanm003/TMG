@@ -473,12 +473,10 @@
 
     <nav class="navbar navbar-expand-lg glass-nav sticky-top">
         <div class="container-fluid px-4 px-lg-5">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="img/Tmglogo.jpg" alt="Logo" style="height: 50px;" class="rounded-pill border">
-                <div class="ms-3 d-none d-sm-block">
-                    <span class="fs-4 fw-bold text-dark d-block lh-1">GENZO</span>
-                    <small class="text-muted fw-semi-bold">TMG Shri Bahavan Groups</small>
-                </div>
+            <a class="navbar-brand d-flex align-items-center gap-3" href="index.html">
+                <img src="img/logo tmg.png" alt="TMG Logo" style="height: 40px; width: auto; object-fit: contain;">
+                <div style="width: 1px; height: 28px; background: rgba(0,0,0,0.1);"></div>
+                <img src="img/genzo-logo.png" alt="Genzo Logo" style="height: 44px; width: auto; object-fit: contain;">
             </a>
             <div class="d-flex align-items-center gap-2 ms-auto">
                 <button id="openProfileBtnNav" class="btn btn-light rounded-pill px-3 py-2 border shadow-sm">
@@ -695,10 +693,14 @@
                 items: CartSystem.getItems().map(p => ({ name: p.name, quantity: p.qty, price: p.price })),
                 totalAmount: CartSystem.getTotalPrice(), paymentMethod: method, notes: 'All Liquid Page'
             };
-            if(orderManager.addOrder(orderData)) {
-                CartSystem.clearCart();
-                alert("Order Placed!");
-                window.location.href = 'index.html';
+            const res = orderManager.addOrder(orderData);
+            if(res) {
+                CartSystem.clearCart(true);
+                if (method === 'COD' || method === 'WhatsApp (Paid)') {
+                    orderManager.sendToWhatsApp(res);
+                } else {
+                    window.location.href = 'index.html';
+                }
             }
         }
 

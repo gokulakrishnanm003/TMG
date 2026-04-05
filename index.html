@@ -714,6 +714,48 @@
             transform: scale(1.02);
             opacity: 0.9;
         }
+        /* Mobile Responsive For Founder Section */
+        @media (max-width: 768px) {
+            .founder-luxury-section {
+                padding: 100px 0 60px;
+                text-align: center;
+            }
+            .luxury-title {
+                font-size: clamp(1rem, 12vw, 3.5rem) !important;
+                letter-spacing: -4px !important;
+                margin-bottom: 2rem !important;
+                word-wrap: break-word;
+                line-height: 1.1 !important;
+            }
+            .luxury-eyebrow {
+                font-size: 0.75rem !important;
+                letter-spacing: 4px !important;
+            }
+            .luxury-quote-card {
+                padding: 2.2rem 1.5rem !important;
+                border-radius: 20px !important;
+                border-left: none !important;
+                border-bottom: 6px solid #11998e !important;
+                margin: 0 auto !important;
+                max-width: 100% !important;
+                text-align: center !important;
+            }
+            .luxury-quote-card p {
+                font-size: 1.15rem !important;
+                line-height: 1.6 !important;
+            }
+            .luxury-bg-text {
+                font-size: 40vw !important;
+                opacity: 0.02 !important;
+            }
+            .luxury-floating-badge {
+                position: relative !important;
+                right: auto !important;
+                bottom: auto !important;
+                margin-top: 2rem !important;
+                display: inline-block !important;
+            }
+        }
     </style>
 </head>
 
@@ -898,7 +940,7 @@
         <nav class="navbar navbar-expand-lg glass-nav sticky-top">
             <div class="container-fluid px-4 px-lg-5">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
-                    <img src="img/genzo-logo.png" alt="Genzo Logo" style="height: 52px; width: auto; object-fit: contain;">
+                    <img src="img/genzo-logo.png" alt="Genzo Logo" style="height: 58px; width: auto; object-fit: contain;">
                 </a>
 
                 <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -912,7 +954,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown">Shop</a>
                             <ul class="dropdown-menu border-0 shadow-lg p-3" aria-labelledby="productDropdown">
                                 <li><a class="dropdown-item rounded-3" href="all-liquid.html">All Liquid</a></li>
-                                <li><a class="dropdown-item rounded-3" href="home-wash.html">Home Wash</a></li>
+                                <li><a class="dropdown-item rounded-3" href="home-wash.html">Surface Cleaner</a></li>
                                 <li><a class="dropdown-item rounded-3" href="detergent-liquid.html">Detergent Liquid</a></li>
                                 <li><a class="dropdown-item rounded-3" href="dish-wash.html">Dish Wash</a></li>
                                 <li><a class="dropdown-item rounded-3" href="toilet-cleaner.html">Toilet Cleaner</a></li>
@@ -956,101 +998,175 @@
                     <div class="slide-progress-bar" id="slideProgressBar"></div>
                 </div>
                 <div class="carousel-inner h-100">
-                    <!-- Slide 1 -->
+                    <!-- Slide 1 — Innovative Redesign -->
                     <div class="carousel-item active h-100">
                         <div class="hero-bg hero-img-bg" style="background-image: url('img/genzo-hero-slide1.jpg'); background-size: cover; background-position: center center; background-color: #0a1a2e;">
-                            <!-- Vivid color overlay for brightness & depth -->
-                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,20,50,0.38) 0%,rgba(0,60,120,0.22) 40%,rgba(0,180,220,0.08) 100%);z-index:1;"></div>
-                            <!-- Shine sweep animation -->
-                            <div class="hero-shine-sweep" style="z-index:2;"></div>
-                            <!-- Floating sparkle dots -->
-                            <div class="hero-sparkle hero-sparkle-1" style="z-index:2;"></div>
-                            <div class="hero-sparkle hero-sparkle-2" style="z-index:2;"></div>
-                            <div class="hero-sparkle hero-sparkle-3" style="z-index:2;"></div>
-                            <!-- Floating product badge top-right -->
+                            <!-- Deep vivid overlay -->
+                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(2,8,30,0.32) 0%,rgba(0,40,100,0.22) 50%,rgba(0,150,200,0.06) 100%);z-index:1;"></div>
+                            <!-- Animated glow blobs -->
+                            <div style="position:absolute;bottom:-60px;left:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(0,200,255,0.18),transparent 68%);filter:blur(80px);z-index:2;"></div>
+                            <div style="position:absolute;top:-80px;right:-60px;width:450px;height:450px;background:radial-gradient(circle,rgba(17,153,142,0.22),transparent 68%);filter:blur(80px);z-index:2;"></div>
+                            <!-- Shine sweep -->
+                            <div class="hero-shine-sweep" style="z-index:3;"></div>
+                            <!-- Sparkles -->
+                            <div class="hero-sparkle hero-sparkle-1" style="z-index:3;"></div>
+                            <div class="hero-sparkle hero-sparkle-2" style="z-index:3;"></div>
+                            <!-- Premium badge -->
                             <div class="hero-float-badge" style="z-index:5;">
                                 <i class="fas fa-star" style="color:#FFD700;"></i>
                                 <span>Premium Quality</span>
                             </div>
                         </div>
-                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(5,15,40,0.45) 0%, rgba(5,15,40,0.25) 55%, transparent 100%);"></div>
-                        <div class="hero-content-wrapper">
-                            <div class="hero-center-content">
-                                <span class="glass-badge anim-1">
+                        <div class="hero-overlay-gradient" style="background:linear-gradient(110deg,rgba(2,8,30,0.30) 0%,rgba(2,8,30,0.15) 55%,rgba(0,0,0,0.05) 100%);"></div>
+
+                        <!-- Centered clean layout -->
+                        <div class="hero-content-wrapper" style="align-items:center;padding:0 5%;">
+                            <div style="width:100%;max-width:700px;color:white;text-align:center;">
+
+                                <!-- Badge -->
+                                <span class="glass-badge anim-1" style="margin-bottom:1.2rem;">
                                     <i class="fas fa-flask"></i>
                                     10+ CLEANING PRODUCTS
                                 </span>
-                                <h1 class="hero-title anim-2">
-                                    Complete <br> <span data-text="Cleaning Solutions">Cleaning Solutions</span>
-                                </h1>
 
-                                <div class="hero-divider anim-4"></div>
+                                <!-- Section label -->
+                                <p class="anim-2" style="font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:1.4rem;letter-spacing:0.5px;">
+                                    Choose your product &amp; shop now
+                                </p>
 
-                                <!-- Product Category Pills -->
-                                <div class="hero-product-strip anim-5">
-                                    <span class="hero-pill" onclick="location.href='all-liquid.html'" style="cursor:pointer;"><i class="fas fa-vial"></i> All Liquid</span>
-                                    <span class="hero-pill"><i class="fas fa-home"></i> Home Wash</span>
-                                    <span class="hero-pill"><i class="fas fa-utensils"></i> Dish Wash</span>
-                                    <span class="hero-pill"><i class="fas fa-tshirt"></i> Cloth Wash</span>
-                                    <span class="hero-pill"><i class="fas fa-car"></i> Vehicle Wash</span>
-                                    <span class="hero-pill"><i class="fas fa-wine-glass-alt"></i> Glass Wash</span>
+                                <!-- Category cards grid -->
+                                <div class="hero-slide1-cards anim-3" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.8rem;">
+                                    <a href="all-liquid.html" style="text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:18px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:all 0.35s;backdrop-filter:blur(14px);color:white;position:relative;overflow:hidden;" onmouseover="this.style.background='rgba(0,212,255,0.15)';this.style.borderColor='rgba(0,212,255,0.5)';this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.13)';this.style.transform='translateY(0)'">
+                                        <span style="width:42px;height:42px;background:linear-gradient(135deg,#00d4ff,#0070f3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 6px 20px rgba(0,212,255,0.35);"><i class="fas fa-vial" style="color:white;"></i></span>
+                                        <div style="text-align:left;">
+                                            <div style="font-size:0.85rem;font-weight:800;margin-bottom:2px;">All Liquid</div>
+                                            <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);">Multi-surface range</div>
+                                        </div>
+                                        <i class="fas fa-arrow-right" style="position:absolute;bottom:14px;right:14px;font-size:0.7rem;color:rgba(255,255,255,0.25);"></i>
+                                    </a>
+                                    <a href="home-wash.html" style="text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:18px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:all 0.35s;backdrop-filter:blur(14px);color:white;position:relative;overflow:hidden;" onmouseover="this.style.background='rgba(56,239,125,0.15)';this.style.borderColor='rgba(56,239,125,0.5)';this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.13)';this.style.transform='translateY(0)'">
+                                        <span style="width:42px;height:42px;background:linear-gradient(135deg,#38ef7d,#11998e);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 6px 20px rgba(56,239,125,0.3);"><i class="fas fa-home" style="color:white;"></i></span>
+                                        <div style="text-align:left;">
+                                            <div style="font-size:0.85rem;font-weight:800;margin-bottom:2px;">Home Wash</div>
+                                            <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);">Floor & surface care</div>
+                                        </div>
+                                        <i class="fas fa-arrow-right" style="position:absolute;bottom:14px;right:14px;font-size:0.7rem;color:rgba(255,255,255,0.25);"></i>
+                                    </a>
+                                    <a href="detergent-liquid.html" style="text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:18px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:all 0.35s;backdrop-filter:blur(14px);color:white;position:relative;overflow:hidden;" onmouseover="this.style.background='rgba(240,147,251,0.15)';this.style.borderColor='rgba(240,147,251,0.5)';this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.13)';this.style.transform='translateY(0)'">
+                                        <span style="width:42px;height:42px;background:linear-gradient(135deg,#f093fb,#f5576c);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 6px 20px rgba(240,147,251,0.35);"><i class="fas fa-soap" style="color:white;"></i></span>
+                                        <div style="text-align:left;">
+                                            <div style="font-size:0.85rem;font-weight:800;margin-bottom:2px;">Detergent Liquid</div>
+                                            <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);">Laundry & fabric care</div>
+                                        </div>
+                                        <i class="fas fa-arrow-right" style="position:absolute;bottom:14px;right:14px;font-size:0.7rem;color:rgba(255,255,255,0.25);"></i>
+                                    </a>
+                                    <a href="dish-wash.html" style="text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:18px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;transition:all 0.35s;backdrop-filter:blur(14px);color:white;position:relative;overflow:hidden;" onmouseover="this.style.background='rgba(251,191,36,0.15)';this.style.borderColor='rgba(251,191,36,0.5)';this.style.transform='translateY(-5px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.13)';this.style.transform='translateY(0)'">
+                                        <span style="width:42px;height:42px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 6px 20px rgba(251,191,36,0.35);"><i class="fas fa-utensils" style="color:white;"></i></span>
+                                        <div style="text-align:left;">
+                                            <div style="font-size:0.85rem;font-weight:800;margin-bottom:2px;">Dish Wash</div>
+                                            <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);">Grease-cutting power</div>
+                                        </div>
+                                        <i class="fas fa-arrow-right" style="position:absolute;bottom:14px;right:14px;font-size:0.7rem;color:rgba(255,255,255,0.25);"></i>
+                                    </a>
+                                    <!-- Toilet Cleaner — full width -->
+                                    <a href="toilet-cleaner.html" class="hero-slide1-toilet" style="text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:18px 14px;display:flex;flex-direction:row;align-items:center;gap:14px;transition:all 0.35s;backdrop-filter:blur(14px);color:white;position:relative;overflow:hidden;grid-column:span 2;" onmouseover="this.style.background='rgba(0,229,255,0.12)';this.style.borderColor='rgba(0,229,255,0.45)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.13)';this.style.transform='translateY(0)'">
+                                        <span style="width:42px;height:42px;background:linear-gradient(135deg,#00e5ff,#0070f3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 6px 20px rgba(0,229,255,0.35);"><i class="fas fa-toilet" style="color:white;"></i></span>
+                                        <div style="text-align:left;">
+                                            <div style="font-size:0.85rem;font-weight:800;margin-bottom:2px;">Toilet Cleaner</div>
+                                            <div style="font-size:0.68rem;color:rgba(255,255,255,0.5);">Deep-clean & disinfect with 20X power</div>
+                                        </div>
+                                        <i class="fas fa-arrow-right" style="margin-left:auto;font-size:0.8rem;color:rgba(0,229,255,0.6);"></i>
+                                    </a>
                                 </div>
 
-                                <div class="hero-btn-group anim-6">
-                                    <a href="#productContainer" class="gradient-btn hero-btn px-5 py-3 shadow-lg">Browse Shop <i class="fas fa-shopping-bag ms-2"></i></a>
+                                <!-- CTA -->
+                                <div class="anim-4" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
                                     <a href="aboutus.html" class="btn-hero-glass"><i class="fa fa-play"></i> Our Story</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
+
+
+                    <!-- Slide 2 — Innovative Redesign -->
+
                     <div class="carousel-item h-100">
-                        <div class="hero-bg hero-img-bg" style="background-image: url('img/hero-genzo-categories.jpg'); background-size: cover; background-position: center center; background-color: #1a0535;">
-                            <!-- Colourful vibrant overlay to boost brightness & saturation -->
-                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,0,40,0.35) 0%,rgba(80,0,130,0.2) 40%,rgba(0,0,20,0.1) 100%);z-index:1;"></div>
-                            <!-- Neon glow accents -->
-                            <div style="position:absolute;bottom:-60px;left:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,80,200,0.25),transparent 70%);filter:blur(60px);z-index:2;"></div>
-                            <div style="position:absolute;top:-60px;right:-60px;width:400px;height:400px;background:radial-gradient(circle,rgba(80,120,255,0.3),transparent 70%);filter:blur(60px);z-index:2;"></div>
-                            <!-- Shine sweep -->
-                            <div class="hero-shine-sweep hero-shine-sweep-2" style="z-index:3;"></div>
-                            <!-- Sparkles -->
-                            <div class="hero-sparkle hero-sparkle-4" style="z-index:3;"></div>
-                            <div class="hero-sparkle hero-sparkle-5" style="z-index:3;"></div>
-                            <!-- Floating badge -->
+                        <div class="hero-bg hero-img-bg" style="background-image: url('img/hero-genzo-categories.jpg'); background-size: cover; background-position: center center;">
+                            <!-- Light overlay for readability -->
+                            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,0,30,0.2) 0%,rgba(30,0,80,0.1) 50%,rgba(0,10,60,0.15) 100%);z-index:1;"></div>
+                            <!-- Neon blobs -->
+                            <div style="position:absolute;bottom:-80px;left:-60px;width:450px;height:450px;background:radial-gradient(circle,rgba(255,60,200,0.18),transparent 70%);filter:blur(70px);z-index:2;"></div>
+                            <div style="position:absolute;top:-60px;right:-40px;width:420px;height:420px;background:radial-gradient(circle,rgba(60,130,255,0.2),transparent 70%);filter:blur(70px);z-index:2;"></div>
+                            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(120,0,255,0.1),transparent 65%);filter:blur(80px);z-index:2;"></div>
+                            <!-- Floating badge top-right -->
                             <div class="hero-float-badge hero-float-badge-2" style="z-index:5;">
                                 <i class="fas fa-shield-virus" style="color:#00e5ff;"></i>
                                 <span>99.9% Germ Kill</span>
                             </div>
                         </div>
-                        <div class="hero-overlay-gradient" style="background:linear-gradient(to right, rgba(10,0,40,0.48) 0%, rgba(10,0,40,0.28) 55%, transparent 100%);"></div>
+                        <div class="hero-overlay-gradient" style="background:linear-gradient(120deg,rgba(5,0,30,0.15) 0%,rgba(5,0,30,0.05) 60%,transparent 100%);"></div>
                         <div class="hero-content-wrapper">
-                            <div class="hero-center-content">
-                                <span class="glass-badge anim-1" style="border-color:rgba(200,100,255,0.4);">
-                                    <i class="fas fa-shield-alt"></i>
-                                    INDUSTRIAL & HOME GRADE
+                            <div class="hero-center-content" style="max-width:900px;">
+
+                                <!-- Top label badge -->
+                                <span class="glass-badge anim-1" style="border-color:rgba(180,100,255,0.5);color:#d4b4ff;background:rgba(120,0,255,0.15);">
+                                    <i class="fas fa-bolt"></i>
+                                    INDUSTRIAL &amp; HOME GRADE FORMULA
                                 </span>
-                                <h1 class="hero-title anim-2">
-                                    Pure & <br> <span data-text="Powerful">Powerful</span>
+
+                                <!-- Big bold headline -->
+                                <h1 class="anim-2 hero-slide2-headline" style="font-size:clamp(2.8rem,7vw,5rem);font-weight:950;line-height:1;letter-spacing:-2px;color:#fff;margin:1.2rem 0;">
+                                    
+                                    <span style="display:block;background:linear-gradient(90deg,#ff6ef7,#7b2fff,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 20px rgba(190,100,255,0.5));">
+                                        Clean &amp; Pure
+                                    </span>
                                 </h1>
 
-                                <div class="hero-divider anim-4" style="background:linear-gradient(90deg,#ff5ecb,#7b2fff,transparent);"></div>
+                        
 
-                                <!-- Product Category Pills -->
-                                <div class="hero-product-strip anim-5">
-                                    <span class="hero-pill"><i class="fas fa-toilet"></i> Toilet Cleaner</span>
-                                    <span class="hero-pill"><i class="fas fa-pump-soap"></i> Phynoyl</span>
-                                    <span class="hero-pill"><i class="fas fa-oil-can"></i> Sop Oil</span>
-                                    <span class="hero-pill"><i class="fas fa-broom"></i> Ala Wash</span>
+                                <!-- Divider -->
+                                <div class="hero-divider anim-4" style="background:linear-gradient(90deg,#ff5ecb,#7b2fff,#00d4ff);box-shadow:0 0 12px rgba(180,100,255,0.4);"></div>
+
+                                <!-- Innovative Category Grid -->
+                                <div class="anim-5 hero-slide2-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:2rem;">
+                                    <a href="all-liquid.html" style="text-decoration:none;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all 0.3s;backdrop-filter:blur(10px);color:white;" onmouseover="this.style.background='rgba(123,47,255,0.3)';this.style.borderColor='rgba(180,100,255,0.6)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.transform='translateY(0)'">
+                                        <span style="width:36px;height:36px;background:linear-gradient(135deg,#00d4ff,#7b2fff);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;"><i class="fas fa-vial" style="color:white;"></i></span>
+                                        <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.3px;text-align:center;">All Liquid</span>
+                                    </a>
+                                    <a href="home-wash.html" style="text-decoration:none;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all 0.3s;backdrop-filter:blur(10px);color:white;" onmouseover="this.style.background='rgba(123,47,255,0.3)';this.style.borderColor='rgba(180,100,255,0.6)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.transform='translateY(0)'">
+                                        <span style="width:36px;height:36px;background:linear-gradient(135deg,#43e97b,#00d4ff);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;"><i class="fas fa-home" style="color:white;"></i></span>
+                                        <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.3px;text-align:center;">Surface Cleaner</span>
+                                    </a>
+                                    <a href="detergent-liquid.html" style="text-decoration:none;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all 0.3s;backdrop-filter:blur(10px);color:white;" onmouseover="this.style.background='rgba(123,47,255,0.3)';this.style.borderColor='rgba(180,100,255,0.6)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.transform='translateY(0)'">
+                                        <span style="width:36px;height:36px;background:linear-gradient(135deg,#f093fb,#f5576c);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;"><i class="fas fa-soap" style="color:white;"></i></span>
+                                        <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.3px;text-align:center;">Detergent</span>
+                                    </a>
+                                    <a href="dish-wash.html" style="text-decoration:none;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all 0.3s;backdrop-filter:blur(10px);color:white;" onmouseover="this.style.background='rgba(123,47,255,0.3)';this.style.borderColor='rgba(180,100,255,0.6)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.transform='translateY(0)'">
+                                        <span style="width:36px;height:36px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;"><i class="fas fa-utensils" style="color:white;"></i></span>
+                                        <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.3px;text-align:center;">Dish Wash</span>
+                                    </a>
+                                    <a href="toilet-cleaner.html" style="text-decoration:none;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:all 0.3s;backdrop-filter:blur(10px);color:white;" onmouseover="this.style.background='rgba(123,47,255,0.3)';this.style.borderColor='rgba(180,100,255,0.6)';this.style.transform='translateY(-4px)'" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.15)';this.style.transform='translateY(0)'">
+                                        <span style="width:36px;height:36px;background:linear-gradient(135deg,#00e5ff,#0070f3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;"><i class="fas fa-toilet" style="color:white;"></i></span>
+                                        <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.3px;text-align:center;">Toilet Cleaner</span>
+                                    </a>
                                 </div>
 
+                                <!-- CTA Buttons -->
                                 <div class="hero-btn-group anim-6">
-                                    <a href="bulkpro.html" class="gradient-btn hero-btn px-5 py-3 shadow-lg">Explore Bulk <i class="fas fa-boxes ms-2"></i></a>
-                                    <a href="service.html" class="btn-hero-glass"><i class="fas fa-tools"></i> Services</a>
+                                    <a href="bulkpro.html" class="gradient-btn hero-btn px-5 py-3 shadow-lg" style="background:linear-gradient(135deg,#7b2fff,#00d4ff);box-shadow:0 10px 35px rgba(123,47,255,0.45);">
+                                        Explore Bulk <i class="fas fa-boxes ms-2"></i>
+                                    </a>
+                                    <a href="service.html" class="btn-hero-glass">
+                                        <i class="fas fa-tools"></i> Our Services
+                                    </a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
+
 
 
                 <!-- Carousel Indicators/Controls -->
@@ -1081,9 +1197,8 @@
                     <h2 class="showcase-title">Pure <span class="showcase-title-accent">Power Line</span></h2>
                     <p class="showcase-subtitle">Professional-grade cleaning solutions crafted for every surface</p>
                 </div>
-
-                <!-- 4 Bottles Row -->
-                <div class="bottles-row">
+                <!-- 5 Bottles Row -->
+                <div class="bottles-row bottles-grid-5">
 
                     <!-- Bottle 1: Dish Wash -->
                     <div class="bottle-item bottle-reveal" id="bottle-1" onclick="window.location.href='dish-wash.html'">
@@ -1094,7 +1209,7 @@
                         </div>
                         <div class="bottle-label">
                             <span class="bottle-cat">Kitchen Care</span>
-                            <h4 class="bottle-name">Dish Wash Liquid</h4>
+                            <h4 class="bottle-name">Dish Wash Liquid - 1L</h4>
                             <span class="bottle-tag">100+ Colours &amp; Grime+</span>
                         </div>
                         <a href="dish-wash.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
@@ -1145,6 +1260,21 @@
                         <a href="toilet-cleaner.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
                     </div>
 
+                    <!-- Bottle 5: All Liquids (Requested) -->
+                    <div class="bottle-item bottle-reveal" id="bottle-5" onclick="window.location.href='all-liquid.html'">
+                        <div class="bottle-number">5</div>
+                        <div class="bottle-shine"></div>
+                        <div class="bottle-img-wrap">
+                            <img src="img/genzo-hero-slide1.jpg" alt="Genzo All Liquids" class="bottle-img" style="border-radius: 20px;">
+                        </div>
+                        <div class="bottle-label">
+                            <span class="bottle-cat">Full Range</span>
+                            <h4 class="bottle-name">All Liquids</h4>
+                            <span class="bottle-tag">Professional Grade</span>
+                        </div>
+                        <a href="all-liquid.html" class="bottle-cta-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
                 </div><!-- /.bottles-row -->
 
             </div>
@@ -1170,7 +1300,7 @@
 
         <!-- ================= FOUNDER: KINETIC LUXURY ================= -->
         <section class="founder-luxury-section" id="founderLuxury">
-            <div class="luxury-bg-text" id="scrollText">TMG TMG TMG TMG TMG TMG TMG TMG TMG TMG TMG TMG</div>
+            <div class="luxury-bg-text" id="scrollText">GENZO GENZO GENZO GENZO GENZO GENZO GENZO GENZO</div>
             <div class="liquid-blob"></div>
 
             <div class="container luxury-content-wrap">
@@ -1178,7 +1308,7 @@
                     
                     <!-- CONTENT: Typography Power -->
                     <div class="col-lg-12 text-center">
-                        <span class="luxury-eyebrow">The Man Behind TMG</span>
+                        <span class="luxury-eyebrow">The Man Behind GENZO</span>
                         <h2 class="luxury-title mx-auto">
                             T.&nbsp;<span class="luxury-title-span">MUTHUKUMAR</span>
                         </h2>
@@ -1189,7 +1319,9 @@
                             </p>
                             <div class="mt-5 d-flex align-items-center justify-content-center gap-3">
                                 <div style="width: 40px; height: 1px; background: #11998e;"></div>
-                                <span class="text-primary small fw-bold uppercase tracking-widest">TMG Shri Bahavan Groups</span>
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="text-primary small fw-bold uppercase tracking-widest">TMG Shri Bahavan Groups</span>
+                                </div>
                                 <div style="width: 40px; height: 1px; background: #11998e;"></div>
                             </div>
                         </div>
@@ -1218,13 +1350,13 @@
         </script>
 
         <!-- ================= FOOTER ================= -->
-        <footer class="tmg-footer">
+        <footer class="genzo-footer">
             <div class="container">
                 <div class="row g-5">
                     <!-- Brand Column -->
                     <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                         <a href="index.html" class="text-decoration-none">
-                            <h3 class="footer-brand-premium">GEN<span>ZO</span></h3>
+                            <img src="img/genzo-logo.png" alt="Genzo Logo" style="height: 60px; width: auto; object-fit: contain; margin-bottom: 1.5rem;">
                         </a>
                         <p class="text-white-50 mb-4 pe-lg-5" style="line-height: 1.8;">
                             Premium homemade cleaning oils and industrial grade hygiene solutions. Trusted globally, produced locally.
@@ -1290,7 +1422,7 @@
                 <div class="footer-bottom">
                     <div class="row align-items-center">
                         <div class="col-md-6 text-center text-md-start">
-                            <p class="text-white-50 small mb-0">&copy; 2025 TMG Shri Bahavan Groups. All Rights Reserved.</p>
+                            <p class="text-white-50 small mb-0 d-flex align-items-center justify-content-center justify-content-md-start gap-2">&copy; 2025 TMG Shri Bahavan Groups. All Rights Reserved.</p>
                         </div>
                         <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
                             <a href="#" class="footer-bottom-link">Privacy Policy</a>
